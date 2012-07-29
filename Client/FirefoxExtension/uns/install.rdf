@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>uns@randomintervals.net</em:id>
+		<em:name>UNS Client</em:name>
+		<em:version>0.1</em:version>
+		<em:type>2</em:type>
+		<em:description>Displays UNS Client page in the browser</em:description>
+		<em:creator>Andrew Calcutt</em:creator>
+		<em:homepageURL>http://uns.randomintervals.com</em:homepageURL>
+		
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>0.9</em:minVersion>
+				<em:maxVersion>4.0b8pre</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+				
+		<em:iconURL>chrome://uns/skin/uns.png</em:iconURL>
+		<em:aboutURL>chrome://uns/content/about.xul</em:aboutURL>
+		<em:optionsURL>chrome://uns/content/options.xul</em:optionsURL>
+
+	</Description>
+
+</RDF>

@@ -1,0 +1,73 @@
+overlay   chrome://browser/content/browser.xul chrome://adblockplus/content/ui/firefoxOverlay.xul application={ec8030f7-c20a-464f-9b0e-13a3a9e97384} application=songbird@songbirdnest.com
+overlay   chrome://browser/content/browser.xul chrome://adblockplus/content/ui/fennecOverlay.xul application={a23983c0-fd0e-11dc-95ff-0800200c9a66}
+overlay   chrome://messenger/content/msgHdrViewOverlay.xul chrome://adblockplus/content/ui/thunderbirdOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay   chrome://navigator/content/navigator.xul chrome://adblockplus/content/ui/seamonkeyOverlay.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay   chrome://messenger/content/mailWindowOverlay.xul chrome://adblockplus/content/ui/mailOverlay.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay   chrome://midbrowser/content/midbrowser.xul chrome://adblockplus/content/ui/firefoxOverlay.xul application={aa5ca914-c309-495d-91cf-3141bbb04115}
+overlay   chrome://emusic/content/startup.xul chrome://adblockplus/content/ui/firefoxOverlay.xul application=dlm@emusic.com
+overlay   chrome://webrunner/content/webrunner.xul chrome://adblockplus/content/ui/prismOverlay.xul application=prism@developer.mozilla.org
+content   adblockplus jar:chrome/adblockplus.jar!/content/
+skin      adblockplus classic/1.0 jar:chrome/adblockplus.jar!/skin/
+style     chrome://global/content/customizeToolbar.xul  chrome://adblockplus/skin/overlay.css
+locale    adblockplus en-US jar:chrome/adblockplus.jar!/locale/en-US/
+locale    adblockplus ar jar:chrome/adblockplus.jar!/locale/ar/
+locale    adblockplus bg jar:chrome/adblockplus.jar!/locale/bg/
+locale    adblockplus ca jar:chrome/adblockplus.jar!/locale/ca/
+locale    adblockplus cs jar:chrome/adblockplus.jar!/locale/cs/
+locale    adblockplus da jar:chrome/adblockplus.jar!/locale/da/
+locale    adblockplus de jar:chrome/adblockplus.jar!/locale/de/
+locale    adblockplus el jar:chrome/adblockplus.jar!/locale/el/
+locale    adblockplus en-GB jar:chrome/adblockplus.jar!/locale/en-GB/
+locale    adblockplus es-AR jar:chrome/adblockplus.jar!/locale/es-AR/
+locale    adblockplus es-ES jar:chrome/adblockplus.jar!/locale/es-ES/
+locale    adblockplus fi jar:chrome/adblockplus.jar!/locale/fi/
+locale    adblockplus fr jar:chrome/adblockplus.jar!/locale/fr/
+locale    adblockplus fy-NL jar:chrome/adblockplus.jar!/locale/fy-NL/
+locale    adblockplus gl jar:chrome/adblockplus.jar!/locale/gl/
+locale    adblockplus he jar:chrome/adblockplus.jar!/locale/he/
+locale    adblockplus hr jar:chrome/adblockplus.jar!/locale/hr/
+locale    adblockplus hu jar:chrome/adblockplus.jar!/locale/hu/
+locale    adblockplus hy-AM jar:chrome/adblockplus.jar!/locale/hy-AM/
+locale    adblockplus id jar:chrome/adblockplus.jar!/locale/id/
+locale    adblockplus is jar:chrome/adblockplus.jar!/locale/is/
+locale    adblockplus it jar:chrome/adblockplus.jar!/locale/it/
+locale    adblockplus ja jar:chrome/adblockplus.jar!/locale/ja/
+locale    adblockplus kk-KZ jar:chrome/adblockplus.jar!/locale/kk-KZ/
+locale    adblockplus ko jar:chrome/adblockplus.jar!/locale/ko/
+locale    adblockplus mn jar:chrome/adblockplus.jar!/locale/mn/
+locale    adblockplus ms-MY jar:chrome/adblockplus.jar!/locale/ms-MY/
+locale    adblockplus nl jar:chrome/adblockplus.jar!/locale/nl/
+locale    adblockplus pl jar:chrome/adblockplus.jar!/locale/pl/
+locale    adblockplus pt-BR jar:chrome/adblockplus.jar!/locale/pt-BR/
+locale    adblockplus pt-PT jar:chrome/adblockplus.jar!/locale/pt-PT/
+locale    adblockplus ro jar:chrome/adblockplus.jar!/locale/ro/
+locale    adblockplus ru jar:chrome/adblockplus.jar!/locale/ru/
+locale    adblockplus sk jar:chrome/adblockplus.jar!/locale/sk/
+locale    adblockplus sl jar:chrome/adblockplus.jar!/locale/sl/
+locale    adblockplus sr jar:chrome/adblockplus.jar!/locale/sr/
+locale    adblockplus sv-SE jar:chrome/adblockplus.jar!/locale/sv-SE/
+locale    adblockplus th jar:chrome/adblockplus.jar!/locale/th/
+locale    adblockplus tr jar:chrome/adblockplus.jar!/locale/tr/
+locale    adblockplus uk jar:chrome/adblockplus.jar!/locale/uk/
+locale    adblockplus vi jar:chrome/adblockplus.jar!/locale/vi/
+locale    adblockplus zh-CN jar:chrome/adblockplus.jar!/locale/zh-CN/
+locale    adblockplus zh-TW jar:chrome/adblockplus.jar!/locale/zh-TW/
+ 
+# Component registration
+component {d32a3c00-4ed3-11de-8a39-0800200c9a66} components/AdblockPlus.js
+contract @adblockplus.org/abp/startup;1 {d32a3c00-4ed3-11de-8a39-0800200c9a66}
+category profile-after-change @adblockplus.org/abp/startup;1 @adblockplus.org/abp/startup;1
+component {259c2980-505f-11de-8a39-0800200c9a66} components/AdblockPlus.js
+contract @mozilla.org/adblockplus;1 {259c2980-505f-11de-8a39-0800200c9a66}
+category content-policy @mozilla.org/adblockplus;1 @mozilla.org/adblockplus;1
+category net-channel-event-sinks @mozilla.org/adblockplus;1 @mozilla.org/adblockplus;1
+
+# Hack to prevent .Net Framework Assistant from messing up the browser
+override chrome://dotnetassistant/content/bootstrap.xul data:text/xml,<nada/>
+
+# Hack to make icon.png available as adblockplus.png in the skin
+skin      adblockplus_icon classic/1.0 ./
+override  chrome://adblockplus/skin/adblockplus.png chrome://adblockplus_icon/skin/icon.png
+
+# fennec settings
+override chrome://adblockplus/content/ui/settings.xul chrome://adblockplus/content/ui/fennecSettings.xul application={a23983c0-fd0e-11dc-95ff-0800200c9a66}

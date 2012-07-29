@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<prefwindow
+     title="UNS Client Preferences"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<prefpane label="UNS Client Preferences">
+		<preferences>
+			<preference id="autorun" name="extensions.uns.autorun" type="bool" />
+			<preference id="run" name="extensions.uns.run" type="bool" />
+			<preference id="serverurl" name="extensions.uns.serverurl" type="string" />
+			<preference id="clientid" name="extensions.uns.clientid" type="string" />
+			<preference id="lasturl" name="extensions.uns.lasturl" type="string" />
+			<preference id="emergencyflag" name="extensions.uns.emergencyflag" type="bool" />
+	   </preferences>
+	
+	<groupbox align="center" orient="horizontal">
+	<vbox>
+	 <checkbox id="autorunField" preference="autorun" label="Run UNS Client on startup" />
+	 <checkbox id="runField" preference="run" label="Run UNS" />
+	 <text value="serverurl"/>
+	 <textbox preference="serverurl" id="serverurlField" />
+	 <text value="clientid"/>
+	 <textbox preference="clientid" id="clientidField" />
+	</vbox>
+	<spring flex="1"/>
+	<image src="chrome://uns/skin/unsb.png"/>
+	</groupbox>
+
+	</prefpane>
+</prefwindow>

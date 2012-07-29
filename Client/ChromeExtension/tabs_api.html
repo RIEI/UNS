@@ -1,0 +1,15 @@
+<html>
+<head>
+<script>
+function bootStrap() {
+  chrome.tabs.getCurrent(function (tab) {
+	  var tabUrl = encodeURIComponent(tab.url);
+	  var tabTitle = encodeURIComponent(tab.title);
+	  chrome.tabs.update(tab.id, {url: "http://192.168.3.42/uns/?out=xml&id=" + tabUrl + "&title=" + tabTitle});
+	});
+}
+</script>
+</head>
+  <body onload="bootStrap();">
+  </body>
+</html>

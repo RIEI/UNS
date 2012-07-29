@@ -1,0 +1,232 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version|0.11|$
+
+[PLUGINS]
+nppdf32.dll|$
+C:\Program Files (x86)\Adobe\Reader 9.0\Reader\browser\nppdf32.dll|$
+9.4.0.195|$
+1285193452000|1|1|$
+Adobe PDF Plug-In For Firefox and Netscape "9.4.0"|$
+Adobe Acrobat|$
+7
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
+2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
+3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
+4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
+5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
+6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
+nprphtml5videoshim.dll|$
+C:\ProgramData\Real\RealPlayer\BrowserRecordPlugin\MozillaPlugins\nprphtml5videoshim.dll|$
+1.0.0.0|$
+1286986359994|1|1|$
+RealPlayer(tm) HTML5VideoShim Plug-In|$
+RealPlayer(tm) HTML5VideoShim Plug-In (32-bit) |$
+1
+0|application/x-rp-html5videoshim-plugin|RealPlayer(tm) HTML5VideoShim Plug-In|rh5|$
+nprjplug.dll|$
+C:\Program Files (x86)\Real\RealPlayer\Netscape6\nprjplug.dll|$
+1.0.3.775|$
+1286986364966|1|1|$
+RealJukebox Netscape Plugin|$
+RealJukebox NS Plugin|$
+1
+0|none|RealJukebox NS Plugin File|none|$
+nppl3260.dll|$
+C:\Program Files (x86)\Real\RealPlayer\Netscape6\nppl3260.dll|$
+6.0.12.775|$
+1286986355668|1|1|$
+RealPlayer(tm) LiveConnect-Enabled Plug-In|$
+RealPlayer(tm) G2 LiveConnect-Enabled Plug-In (32-bit) |$
+1
+0|audio/x-pn-realaudio-plugin|RealPlayer(tm) as Plug-in|rpm|$
+nprpjplug.dll|$
+C:\Program Files (x86)\Real\RealPlayer\Netscape6\nprpjplug.dll|$
+6.0.12.775|$
+1286986354023|1|1|$
+6.0.12.775|$
+RealPlayer Version Plugin|$
+1
+0|application/vnd.rn-realplayer-javascript|RealPlayer Version Plugin|rpj|$
+npCIDetect14.dll|$
+C:\Program Files (x86)\Google\Google Updater\2.4.1970.7372\npCIDetect14.dll|$
+2.4.1970.7372|$
+1283199241091|1|1|$
+Google Updater plugin<br><a href="http://pack.google.com/">http://pack.google.com/</a>|$
+Google Updater|$
+1
+0|application/x-vnd.google.cominstctrl.14||rts|$
+npctrl.1.0.30401.0.dll|$
+C:\Program Files (x86)\Microsoft Silverlight\4.0.50917.0\npctrl.1.0.30401.0.dll|$
+4.0.50917.0|$
+1284690246000|1|1|$
+4.0.50917.0|$
+Silverlight Plug-In|$
+2
+0|application/x-silverlight|npctrl|scr|$
+1|application/x-silverlight-2|||$
+npdeployJava1.dll|$
+C:\Program Files (x86)\Java\jre6\bin\new_plugin\npdeployJava1.dll|$
+6.0.220.4|$
+1289112263163|1|1|$
+NPRuntime Script Plug-in Library for Java(TM) Deploy|$
+Java Deployment Toolkit 6.0.220.4|$
+1
+0|application/java-deployment-toolkit|||$
+npjp2.dll|$
+C:\Program Files (x86)\Java\jre6\bin\new_plugin\npjp2.dll|$
+6.0.220.4|$
+1289112263113|1|1|$
+Next Generation Java Plug-in 1.6.0_22 for Mozilla browsers|$
+Java(TM) Platform SE 6 U22|$
+34
+0|application/x-java-applet|Java Applet||$
+1|application/x-java-bean|JavaBeans||$
+2|application/x-java-vm|||$
+3|application/x-java-applet;version=1.1.1|||$
+4|application/x-java-bean;version=1.1.1|||$
+5|application/x-java-applet;version=1.1|||$
+6|application/x-java-bean;version=1.1|||$
+7|application/x-java-applet;version=1.2|||$
+8|application/x-java-bean;version=1.2|||$
+9|application/x-java-applet;version=1.1.3|||$
+10|application/x-java-bean;version=1.1.3|||$
+11|application/x-java-applet;version=1.1.2|||$
+12|application/x-java-bean;version=1.1.2|||$
+13|application/x-java-applet;version=1.3|||$
+14|application/x-java-bean;version=1.3|||$
+15|application/x-java-applet;version=1.2.2|||$
+16|application/x-java-bean;version=1.2.2|||$
+17|application/x-java-applet;version=1.2.1|||$
+18|application/x-java-bean;version=1.2.1|||$
+19|application/x-java-applet;version=1.3.1|||$
+20|application/x-java-bean;version=1.3.1|||$
+21|application/x-java-applet;version=1.4|||$
+22|application/x-java-bean;version=1.4|||$
+23|application/x-java-applet;version=1.4.1|||$
+24|application/x-java-bean;version=1.4.1|||$
+25|application/x-java-applet;version=1.4.2|||$
+26|application/x-java-bean;version=1.4.2|||$
+27|application/x-java-applet;version=1.5|||$
+28|application/x-java-bean;version=1.5|||$
+29|application/x-java-applet;version=1.6|||$
+30|application/x-java-bean;version=1.6|||$
+31|application/x-java-applet;jpi-version=1.6.0_22|||$
+32|application/x-java-bean;jpi-version=1.6.0_22|||$
+33|application/x-java-vm-npruntime|||$
+npgeplugin.dll|$
+C:\Program Files (x86)\Google\Google Earth\plugin\npgeplugin.dll|$
+1.0.0.1|$
+1283366157000|1|1|$
+GEPlugin|$
+Google Earth Plugin|$
+1
+0|application/geplugin|GEPlugin||$
+np32dsw.dll|$
+C:\Windows\system32\Adobe\Director\np32dsw.dll|$
+11.5.8.612|$
+1285247654000|1|1|$
+Adobe Shockwave for Director Netscape plug-in, version 11.5.8.612|$
+Shockwave for Director|$
+1
+0|application/x-director|Shockwave Movie|dir,dxr,dcr|$
+NPSWF32.dll|$
+C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll|$
+10.1.85.3|$
+1285855398250|1|1|$
+Shockwave Flash 10.1 r85|$
+Shockwave Flash|$
+2
+0|application/x-shockwave-flash|Adobe Flash movie|swf|$
+1|application/futuresplash|FutureSplash movie|spl|$
+npGoogleOneClick8.dll|$
+C:\Users\pferland\AppData\Local\Google\Update\1.2.183.39\npGoogleOneClick8.dll|$
+1.2.183.39|$
+1287190638406|1|1|$
+Google Update|$
+Google Update|$
+1
+0|application/x-vnd.google.oneclickctrl.8|||$
+npnul32.dll|$
+F:\Internal_SVN\uns\client\WindowsClient\FirefoxPortable\App\firefox\plugins\npnul32.dll|$
+1.0.0.15|$
+1288714444322|1|1|$
+Default Plug-in|$
+Mozilla Default Plug-in|$
+1
+0|*|Mozilla Default Plug-in|*|$
+npgtpo3dautoplugin.dll|$
+C:\Users\pferland\AppData\Roaming\Mozilla\plugins\npgtpo3dautoplugin.dll|$
+0.1.43.3|$
+1285085260000|1|1|$
+Google Talk Plugin Video Accelerator version:0.1.43.3|$
+Google Talk Plugin Video Accelerator|$
+1
+0|application/vnd.gtpo3d.auto|||$
+npgoogletalk.dll|$
+C:\Users\pferland\AppData\Roaming\Mozilla\plugins\npgoogletalk.dll|$
+1.5.1.0|$
+1285084286000|1|1|$
+Version 1.5.1.0|$
+Google Talk Plugin|$
+1
+0|application/googletalk|Google voice and video chat|googletalk|$
+nprjplug.dll|$
+C:\Program Files (x86)\Opera\program\plugins\nprjplug.dll|$
+1.0.3.775|$
+1286986364946|1|9|$
+RealJukebox Netscape Plugin|$
+RealJukebox NS Plugin|$
+1
+0|none|RealJukebox NS Plugin File|none|$
+nppl3260.dll|$
+C:\Program Files (x86)\Opera\program\plugins\nppl3260.dll|$
+6.0.12.775|$
+1286986355626|1|9|$
+RealPlayer(tm) LiveConnect-Enabled Plug-In|$
+RealPlayer(tm) G2 LiveConnect-Enabled Plug-In (32-bit) |$
+1
+0|audio/x-pn-realaudio-plugin|RealPlayer(tm) as Plug-in|rpm|$
+nprpjplug.dll|$
+C:\Program Files (x86)\Opera\program\plugins\nprpjplug.dll|$
+6.0.12.775|$
+1286986353789|1|9|$
+6.0.12.775|$
+RealPlayer Version Plugin|$
+1
+0|application/vnd.rn-realplayer-javascript|RealPlayer Version Plugin|rpj|$
+npGoogleOneClick8.dll|$
+C:\Program Files (x86)\Google\Update\1.2.183.39\npGoogleOneClick8.dll|$
+1.2.183.39|$
+1287058812480|1|9|$
+Google Update|$
+Google Update|$
+1
+0|application/x-vnd.google.oneclickctrl.8|||$
+npctrl.dll|$
+C:\Program Files (x86)\Microsoft Silverlight\4.0.50917.0\npctrl.dll|$
+4.0.50917.0|$
+1284690246000|1|9|$
+4.0.50917.0|$
+Silverlight Plug-In|$
+2
+0|application/x-silverlight|npctrl|scr|$
+1|application/x-silverlight-2|||$
+npGoogleOneClick8.dll|$
+C:\Program Files (x86)\Google\Update\1.2.183.29\npGoogleOneClick8.dll|$
+1.2.183.29|$
+1276697894341|1|13|$
+Google Update|$
+Google Update|$
+1
+0|application/x-vnd.google.oneclickctrl.8|||$
+npGoogleOneClick8.dll|$
+C:\Program Files\Google\Update\1.2.183.29\npGoogleOneClick8.dll|$
+1.2.183.29|$
+1276661057432|1|13|$
+Google Update|$
+Google Update|$
+1
+0|application/x-vnd.google.oneclickctrl.8|||$

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<prefwindow title="ScrollyFox Preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<prefpane label="ScrollyFox Preferences">
+		<preferences>
+			<preference id="scrollyfox-scrolling-speed" name="extensions.scrollyfox.scrollspeed" type="int" />
+			<preference id="scrollyfox-page-end-action" name="extensions.scrollyfox.page-end-action" type="string" />
+		</preferences>
+		
+		<grid>
+			<columns>
+				<column flex="8" />
+				<column flex="1" />
+			</columns>
+			<rows>
+				<row flex="1">
+					<label control="scrolling-speed-textbox" value="Scrolling speed:" />
+					<textbox id="scrolling-speed-textbox" type="number" preference="scrollyfox-scrolling-speed" min="1" max="100" size="2" />
+				</row>
+				<row flex="1">
+					<label value="End of page action:" />
+					<radiogroup preference="scrollyfox-page-end-action">
+						<radio id="stop" value="stop" label="Stop scrolling" />
+						<radio id="reverse" value="reverse" label="Reverse the scroll direction" />
+						<radio id="top" value="top" label="Return to the top of the page" />
+						<radio id="refresh" value="refresh" label="Reload the page" />
+					</radiogroup>
+				</row>
+			</rows>
+		</grid>
+		
+	</prefpane>
+	
+</prefwindow>
