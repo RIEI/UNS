@@ -1,0 +1,124 @@
+/* 
+    Document   : styles
+    Created on : Sep 25, 2010, 11:52:34 PM
+    Author     : pferland
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.main_body {
+    background-color: #3366aa;
+    color: #001100;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+}
+.T_BODY {
+    background-color: #FFF;
+    color: #000;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+}
+a {
+    color: Black;
+}
+a.side_links {
+    color: #9BAB9B;
+}
+.Emerg {
+    background-color: Red;
+}
+.Good {
+    background-color: greenyellow;
+}
+.navtd {
+    width: 14%;
+    align: center;
+    color: #9BAB9B;
+}
+
+.pre {
+    color: #9BAB9B;
+    background-color: #334433;
+}
+
+a.nav_link {
+    color: lawngreen;
+}
+.client_table_body {
+    background-color: #aabbbb;
+}
+.main_cell
+{
+    background-color: #99B4D0;
+}
+.client_table_head {
+    background-color: #6699aa;
+}
+
+.client_table_tail {
+    background-color: #778877;
+}
+
+table.all_tables {
+    width: 100%;
+}
+
+.nav_bar {
+    background-color: #334433;
+    border: 1px;
+    width: 100%;
+}
+
+.side_bar {
+    background-color: #334433;
+    border: 1px;
+    vertical-align: top;
+}
+
+.td {
+    
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    width: 200px;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-top-color: black;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+}
+
+.msg {
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    width: 600px;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-top-color: black;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+}

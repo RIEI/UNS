@@ -1,0 +1,42 @@
+RanInt -> UNS -> Read-me
+===================
+
+  A set of PHP-scripts to manage Displays for Notifications
+
+  Project Phase: Alpha
+  --------------
+  http://uns.randomintervals.com/
+
+    This program is free software; you can redistribute it and/or modify it under
+	the terms of the GNU General Public License version 2, as published by the 
+	Free Software Foundation.   This program is distributed in the hope that it 
+	will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty 
+	of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General 
+	Public License for more details. You should have received a copy of the GNU 
+	General Public License along with this program; if not, you can get it at: 
+		
+		Free Software Foundation, Inc.,
+		51 Franklin St, Fifth Floor
+		Boston, MA  02110-1301 USA
+		
+	Or go here:  http://www.gnu.org/licenses/gpl-2.0.txt
+		
+  Requirements:
+		PHP 5.0 or later
+		MySQL 5.0 or later
+		Apache or IIS
+		A Web-browser (doh!)
+		
+  Summary:
+		UNS is a PHP and MySQL based set of scripts that is intended to manage and
+		display messages on monitors. With the ability to enable emergency messages
+		globaly, or have unique lists of URLS for each display.
+		
+  Support:
+		Go to http://forum.techidiots.net/forum/viewforum.php?f=55
+		
+		
+  Documentation:
+		Can be found on the website. 
+		As of the initial release Documentation is a little sparce, so please be 
+		patient and post any questions on the forum.
