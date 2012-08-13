@@ -157,28 +157,29 @@
                     <tr class="client_table_head">
                         <th>+/-</th><th>Name</th><th>Date</th><th>Options</th>
                     </tr>
+                    {foreach item='saved' from=$client_saved_links}
                     <tr class="client_table_body">
                         <td
-                            onclick="expandcontract('SavedRow<?php echo $tablerowid;?>','SavedClickIcon<?php echo $tablerowid;?>')"
-                            id="SavedClickIcon<?php echo $tablerowid;?>" style="cursor: pointer; cursor: hand;">+</td>
+                            onclick="expandcontract('SavedRow{$saved.id}','SavedClickIcon{$saved.id}')"
+                            id="SavedClickIcon{$saved.id}" style="cursor: pointer; cursor: hand;">+</td>
                         <td>
-                            <?php echo $client_arc['name'];?>
+                            {$saved.name}
                         </td>
                         <td>
-                            <?php echo date('F j, Y, g:i a', $client_arc['date']);?>
+                            {$saved.date}
                         </td>
                         <td>
                             <table>
                                 <tr>
                                     <td>
-                                        <form name="saved" action="?func=edit_urls&client=<?php echo $client_get;?>&cl_func=restore" method="POST">
-                                            <input type="hidden" name="urls" value="<?php echo $client_arc['urls']; ?>">
+                                        <form name="saved_restore" action="?func=edit_urls&client={$client_name}&cl_func=restore_saved" method="POST">
+                                            <input type="hidden" name="id" value="{$saved.id}">
                                             <input type='submit' value='Restore'>
                                         </form>
                                     </td>
                                     <td>
-                                        <form name="saved" action="?func=edit_urls&client=<?php echo $client_get;?>&cl_func=remove" method="POST">
-                                            <input type="hidden" name="id" value="<?php echo $client_arc['id']; ?>">
+                                        <form name="saved_remove" action="?func=edit_urls&client={$client_name}&cl_func=remove_saved" method="POST">
+                                            <input type="hidden" name="id" value="{$saved.id}">
                                             <input type='submit' value='Remove'>
                                         </form>
                                     </td>
@@ -186,17 +187,20 @@
                             </table>
                         </td>
                     </tr>
-                    <tbody id="SavedRow<?php echo $tablerowid;?>" style="display:none">
+                    <tbody id="SavedRow{$saved.id}" style="display:none">
                         <tr>
                             <td colspan="4">
                                 <table border="1" width="100%">
+                                    {foreach item='url' from=$saved.url_array}
                                     <tr class="client_table_body">
-                                        <td><?php echo $url;?></td>
+                                        <td>{$url}</td>
                                     </tr>
+                                    {/foreach}
                                 </table>
                             </td>
                         </tr>
                     </tbody>
+                    {/foreach}
                 </table>
                 <hr />
                 <table border="1px" class="all_tables">
@@ -206,41 +210,45 @@
                     <tr class="client_table_head">
                         <th>+/-</th><th>Name</th><th>Date</th><th>Options</th>
                     </tr>
+                    {foreach item="archive" from=$client_archived_links}
                     <tr class="client_table_body">
-                        <td onclick="expandcontract('Row<?php echo $tablerowid;?>','ClickIcon<?php echo $tablerowid;?>')"
-                            id="ClickIcon<?php echo $tablerowid;?>" style="cursor: pointer; cursor: hand;">+</td>
-                        <td><?php echo $client_arc['name'];?></td>
-                        <td><?php echo date('F j, Y, g:i a', $client_arc['date']);?></td>
+                        <td onclick="expandcontract('Row{$archive.id}','ClickIcon{$archive.id}')"
+                            id="ClickIcon{$archive.id}" style="cursor: pointer; cursor: hand;">+</td>
+                        <td>{$archive.name}</td>
+                        <td>{$archive.date}</td>
                         <td>
                             <table>
                                 <tr>
                                     <td>
-                                        <form name="saved" action="?func=edit_urls&client=<?php echo $client_get;?>&cl_func=restore" method="POST">
-                                            <input type="hidden" name="urls" value="<?php echo $client_arc['urls']; ?>">
-                                            <input type='submit' name="copy" value='Restore'>
+                                        <form name="archived_restore" action="?func=edit_urls&client={$client_name}&cl_func=restore_archive" method="POST">
+                                            <input type="hidden" name="id" value="{$archive.id}">
+                                            <input type='submit' name="restore_archive_button" value='Restore'>
                                         </form>
                                     </td>
                                     <td>
-                                        <form name="saved" action="?func=rm_arc_urls&client=<?php echo $client_get;?>" method="POST">
-                                            <input type="hidden" name="id" value="<?php echo $client_arc['id']; ?>">
-                                            <input type='submit' name="copy" value='Remove'>
+                                        <form name="archive_remove" action="?func=rm_arc_urls&client={$client_name}&cl_func=remove_archive" method="POST">
+                                            <input type="hidden" name="id" value="{$archive.id}">
+                                            <input type='submit' name="remove_archive_button" value='Remove'>
                                         </form>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
-                    <tbody id="Row<?php echo $tablerowid;?>" style="display:none">
+                    <tbody id="Row{$archive.id}" style="display:none">
                         <tr>
                             <td colspan="4">
+                                {foreach item='url' from=$saved.url_array}
                                 <table border="1" width="100%">
                                     <tr class="client_table_body">
-                                        <td><?php echo $url;?></td>
+                                        <td>{$url}</td>
                                     </tr>
                                 </table>
+                                {/foreach}
                             </td>
                         </tr>
                     </tbody>
+                {/foreach}
                 </table>
                 
                 

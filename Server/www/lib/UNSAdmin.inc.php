@@ -104,8 +104,9 @@ class UNSAdmin extends UNSCore
         if($error == "00000"){return 0;}
         else
         {
+            #var_dump($obj);
             $info = $obj->errorInfo();
-            throw new Exception($info[2]);
+            throw new Exception(implode("<br>",$info));
             return 1;
         }
     }
@@ -134,80 +135,80 @@ class UNSAdmin extends UNSCore
             $prep = $this->sql->conn->prepare($sql);
             $prep->execute(array($copy_client));
             $links = array(); #get list of URLS from Client that you want to copy to
-
             while($client_links = $prep->fetch(2))
             {
                 $links[] = $client_links['url']."~".$client_links['refresh'];
             }
+            
             #lets get its friendly name
-            $friend = $this->GetFriendly($copy_client);
+            $this->copy_friendly = $this->GetFriendly($copy_client);
+            
             if(!@is_null($links[0]))
             {
-                $name = "Backup of URLS for $friend on ".date("F j, Y \a\t g:i a");
-                $imp_links = implode("|", $links);
-                $sql = "INSERT INTO `archive_links` (`id`, `client`, `urls`, `name`, `details`, `date`) 
-                    VALUES ('', ?,?,?,?,?)";
+                $date = date($this->DateFormat, time());
+                $name = "Backup of URLS for {$this->friendly} on {$date}";
+                $this->ArchiveLinks($name, $links);
+            }else
+            {
+                $this->AddMessage("Client: $this->copy_friendly Does not have any URLs yet. No need to back them up.");
+            }
+
+            $ids = explode("|", $this->url_imp);
+            
+            $sql = "DELETE FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array($copy_client));
+            if($this->check_pdo_error($prep)){echo "Error Truncating table<br />".$prep->errorInfo();}
+            foreach($ids as $id)
+            {
+                $this->AddMessage("Start Copy of ID: $id for Client: {$this->copy_friendly}");
+                $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` where `id` = ?";
                 $result = $this->sql->conn->prepare($sql);
-                $result->execute(array($copy_client, $imp_links, $name, 'Automated backup.', time()));
-                if(!$this->check_pdo_error($result))
+                $result->execute(array($id));
+                $copy_link = $result->fetch(2);
+                
+                $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `url`, `disabled`, `refresh`, `client`) 
+                    VALUES ( NULL, ?,?,?,?)";
+                $prep = $this->sql->conn->prepare($sql);
+                $prep->execute(array($copy_link['url'], 0, $copy_link['refresh'], $copy_client));
+
+                if($this->check_pdo_error($prep))
                 {
-                    $this->AddMessage("URLs for Client: $friend have been backed up.");
+                    $this->AddMessage("Failed to copy URL [$id] to client: $this->copy_friendly.");
                 }else
                 {
-                    $this->AddMessage("URLs for Client: $friend have <u><b>NOT</b></u> been backed up.");
-                    $fail = 1;
+                    $this->AddMessage("Copied URL [$id] to Client: $this->copy_friendly.");
                 }
-            }else
-            {
-                $this->AddMessage("Client: $friend Does not have any URLs yet.");
-            }
-
-            if(!$fail)
-            {
-                $ids = explode("|", $this->url_imp);
-
-                $sql = "DELETE FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
-                $prep = $this->sql->conn->prepare($sql);
-                $prep->execute(array($copy_client));
-                if($this->check_pdo_error($prep)){echo "Error Truncating table<br />".$prep->errorInfo();}
-                foreach($ids as $id)
-                {
-                    $this->AddMessage("Start Copy of ID: $id for Client: $friend");
-                    $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` where `id` = ?";
-                    $result = $this->sql->conn->prepare($sql);
-                    $result->execute(array($id));
-                    $copy_link = $result->fetch(2);
-                    $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `url`, `disabled`, `refresh`, `client`) 
-                        VALUES ( '', ?,?,?,?)";
-                    $prep = $this->sql->conn->prepare($sql);
-                    $prep->execute(array($copy_link['url'], 0, $copy_link['refresh'], $copy_client));
-
-                    if($this->check_pdo_error($prep))
-                    {
-                        $this->AddMessage("Failed to copy URL [$id] to client: $friend.");
-                    }else
-                    {
-                        $this->AddMessage("Copied URL [$id] to Client: $friend.");
-                    }
-                }
-            }else
-            {
-                $this->AddMessage("URLs for Client: $friend have <u><b>NOT</b></u> been copied.");
             }
         }
-        
+    }
+    
+    function ArchiveLinks($name="", $links="")
+    {
+        $links_imp = implode("|", $links);
+        $sql = "INSERT INTO `{$this->sql->db}`.`archive_links` (`id`, `client`, `urls`, `name`, `details`, `date`) 
+            VALUES ('', ?,?,?,?,?)";
+        $result = $this->sql->conn->prepare($sql);
+        $result->execute(array($this->copy_client, $links_imp, $name, 'Automated backup.', date($this->DateFormat, time())));
+        if(!$this->check_pdo_error($result))
+        {
+            $this->AddMessage("URLs for Client: {$this->copy_friendly} have been backed up.");
+        }else
+        {
+            $this->AddMessage("URLs for Client: {$this->copy_friendly} have <u><b>NOT</b></u> been backed up.");
+        }
     }
     
     function CreateClient($name, $led)
     {
         $new_client = sha256(rand(000000,999999));
-        $sql = "INSERT INTO `allowed_clients` VALUES('', ?, ?)";
+        $sql = "INSERT INTO `{$this->sql->db}`.`allowed_clients` VALUES('', ?, ?)";
         $prep = $this->sql->conn->prepare($sql);
         $prep->execute(array($new_client, $led));
         
         if(!$this->check_pdo_error($prep))
         {
-            $sql = "INSERT INTO `friendly` VALUES('', ?, ?)";
+            $sql = "INSERT INTO `{$this->sql->db}`.`friendly` VALUES('', ?, ?)";
             $prep = $this->sql->conn->prepare($sql);
             $prep->execute(array($name, $new_client));
             if(!$this->check_pdo_error($prep))
@@ -223,10 +224,10 @@ class UNSAdmin extends UNSCore
     {
         if($skip!==NULL)
         {
-            $sql = "SELECT * FROM `friendly` where `client` NOT LIKE ?";
+            $sql = "SELECT * FROM `{$this->sql->db}`.`friendly` where `client` NOT LIKE ?";
         }else
         {
-            $sql = "SELECT * FROM `friendly`";
+            $sql = "SELECT * FROM `{$this->sql->db}`.`friendly`";
         }
         
         $prep = $this->sql->conn->prepare($sql);
@@ -244,22 +245,148 @@ class UNSAdmin extends UNSCore
 
     function GetSavedLists()
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_lists`";
-        $result = $this->sql->conn->query($sql);
-        $save = $result->fetchAll(2);
-        $this->SavedLists = $save;
+        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_lists` WHERE `client` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($this->client));
+        $saved = array();
+        while($save = $prep->fetch(2))
+        {
+            $saved[] = array_merge($save, array("url_array" => explode("|", $save['urls'])));
+        }
+        
+        $this->SavedLists = $saved;
     }
 
-    function SaveList()
+    function SaveList($append=0)
     {
-        $sql = "INSERT INTO `{$this->sql->db}`.`saved_lists` ( `id` ,`urls` ,`name` ,`details` ,`date` )
-                VALUES ( NULL ,  ?,  ?, ?, ? )";
-        $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->parsed_edit_uri['urls'],$this->parsed_edit_uri['name'],$this->parsed_edit_uri['details'], date($this->DateFormat)));
+        $urls = "";
+        $name = @$this->parsed_edit_uri['name'];
+        foreach(explode("|", $this->parsed_edit_uri['urls']) as $url_id)
+        {
+            $sql = "SELECT `url` FROM `{$this->sql->db}`.`client_links` WHERE `id` = ?";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array($url_id));
+            $this->check_pdo_error($prep);
+            $url_fetch = $prep->fetch(1);
+            $url[] = $url_fetch['url'];
+        }
+        $date = date($this->DateFormat,time());
+        if($append != 0)
+        {
+            $sql = "SELECT `urls`,`name` FROM `{$this->sql->db}`.`saved_lists` WHERE `id` = ?";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array($append));
+            $this->check_pdo_error($prep);
+            $url_fetch = $prep->fetch(1);
+            
+            $urls = $url_fetch['urls'].'|'.implode("|", $url);
+            $name = $url_fetch['name'];
+            $sql = "UPDATE `{$this->sql->db}`.`saved_lists` SET `urls` = ?, `date` = ? WHERE `id` = ?";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array( $urls, $date, $append ));
+        }else
+        {
+            $urls = implode("|", $url);
+            $sql = "INSERT INTO `{$this->sql->db}`.`saved_lists` ( `id`, `client`, `urls` ,`name` ,`details` ,`date` )
+                VALUES ( NULL, ?, ?, ?, ?, ?)";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array($this->client, $urls ,$this->parsed_edit_uri['name'],@$this->parsed_edit_uri['details'], $date));
+        }
+        
         $this->check_pdo_error($prep);
-        $this->AddMessage("Saved List: {$this->parsed_edit_uri['name']}");
+        $this->AddMessage("Saved List: {$name} on {$date} by {$this->user}");
         return 1;
     }
+    
+    function RemoveSavedList($id)
+    {
+        $sql = "DELETE FROM `{$this->sql->db}`.`saved_lists` WHERE `id` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($id));
+        $this->check_pdo_error($prep);
+        return 1;
+    }
+    
+    function RemoveArchivedList($id)
+    {
+        $sql = "DELETE FROM `{$this->sql->db}`.`archive_lists` WHERE `id` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($id));
+        $this->check_pdo_error($prep);
+        return 1;
+    }
+    
+    
+    function RestoreArchivedList($id)
+    {
+        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($this->client));
+        $this->check_pdo_error($prep);
+        $old_list = $prep->fetch_all(1);
+        
+        $date = date($this->DateFormat, time());
+        $sql = "INSERT INTO `{$this->sql->db}`.`archive_links` (`id`, `client`, `urls`, `name`, `details`, `date`)
+            VALUES ( NULL, ?, ?, ?, ?, ?)";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($this->client, implode("|", $old_list['url']), "Automated backup on {$date}", "Automated backup of URLS for Client {$this->friendly}[{$this->client}] by {$this->user}", $date ));
+        $this->check_pdo_error($prep);
+        
+        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `id` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($id));
+        $this->check_pdo_error($prep);
+        $archived_list = $prep->fetch(1);
+        $archived_list_exp = explode("|", $archived_list['urls']);
+        
+        foreach($archived_list_exp as $url)
+        {
+            $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `client`, `url`, `refresh`, `disabled`)
+                VALUES ( NULL, ?, ?, ?, ?)";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array($this->client, $url, 30, 0));
+            $this->check_pdo_error($prep);
+        }
+        $this->AddMessage("Restored urls from {$archived_list['name']} to {$this->friendly} on {$date} by {$this->user}");
+        return 1;
+    }
+    
+    function RestoreSavedList($id)
+    {
+        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($this->client));
+        $this->check_pdo_error($prep);
+        $old_list = $prep->fetch_all(1);
+        
+        $date = date($this->DateFormat, time());
+        $sql = "INSERT INTO `{$this->sql->db}`.`saved_links` (`id`, `client`, `urls`, `name`, `details`, `date`)
+            VALUES ( NULL, ?, ?, ?, ?, ?)";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($this->client, implode("|", $old_list['url']), "Automated backup on {$date}", "Automated backup of URLS for Client {$this->friendly}[{$this->client}] by {$this->user}", $date ));
+        $this->check_pdo_error($prep);
+        
+        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_links` WHERE `id` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($id));
+        $this->check_pdo_error($prep);
+        $saved_list = $prep->fetch(1);
+        $saved_list_exp = explode("|", $saved_list['urls']);
+        
+        foreach($saved_list_exp as $url)
+        {
+            $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `client`, `url`, `refresh`, `disabled`)
+                VALUES ( NULL, ?, ?, ?, ?)";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->execute(array($this->client, $url, 30, 0));
+            $this->check_pdo_error($prep);
+        }
+        $this->AddMessage("Restored urls from {$saved_list['name']} to {$this->friendly} on {$date} by {$this->user}");
+        return 1;
+    }
+    
+    
+    
     
     /**
      * <pre>
@@ -347,12 +474,7 @@ class UNSAdmin extends UNSCore
         $sql = "SELECT * FROM `{$this->sql->db}`.`allowed_users` where `username` like ? LIMIT 1";
         $prep = $this->sql->conn->prepare($sql);
         $prep->execute(array($this->username));
-        if($prep->errorCode() != "00000")
-        {
-            $err = $prep->errorInfo();
-            throw new Exception($err[2]);
-            return 0;
-        }
+        $this->check_pdo_error($prep);
         $this->permissions = array('edit_urls'=>0,'edit_emerg'=>0,'edit_users'=>0,'img_messages'=>0,'c_messages'=>0,'rss_feeds'=>0,'edit_options'=>0);
         $perms = $prep->fetch(2);
         #############
@@ -439,6 +561,7 @@ class UNSAdmin extends UNSCore
         return 1;
     }
     
+    
     /**
      * <pre>
      * Generate TimeZone Options and set the smarty var
@@ -518,14 +641,32 @@ class UNSAdmin extends UNSCore
         }
     }
     
+    function GetArchivedLists()
+    {
+        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `client` = ?";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->execute(array($this->client));
+        $this->check_pdo_error($prep);
+        $archived = array();
+        while($archive = $prep->fetch(2))
+        {
+            $archived[] = array_merge($archive, array("url_array" => explode("|", $archive['urls'])));
+        }
+        
+        $this->ArchivedLists = $archived;
+    }
+    
     function GetClient()
     {
         $this->GetFriendly($this->client);
         $this->GetClientLED();
         $this->GenerateLEDGroups();
         $this->GetClientURLs();
+        $this->GetSavedLists();
+        $this->GetArchivedLists();
         
-        
+        $this->smarty->assign('client_archived_links', $this->ArchivedLists);
+        $this->smarty->assign('client_saved_links', $this->SavedLists);
         $this->smarty->assign("client_name", $this->client);
         $this->smarty->assign("friendly", $this->friendly);
         $this->smarty->assign("led_groups", $this->led_groups);
@@ -761,8 +902,9 @@ class UNSAdmin extends UNSCore
             'name'=>FILTER_SANITIZE_STRING,
             'urls'=>FILTER_SANITIZE_STRING,
             'details'=>FILTER_SANITIZE_STRING,
+            'saved'=>FILTER_SANITIZE_NUMBER_INT,
         );
-        $this->parsed_edit_uri = filter_var_array($request, $definition);
+        $this->parsed_edit_uri = array_filter(filter_var_array($request, $definition));
     }
     
     function AddURLs()

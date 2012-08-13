@@ -131,6 +131,7 @@ if($UNSAdmin->LoginCheck())
         case "edit_urls": 
             /* Things that you can do to the URLS of clients */
             $UNSAdmin->parse_edit_url($_REQUEST);
+            $UNSAdmin->smarty->assign("cl_func", $UNSAdmin->parsed_edit_uri['cl_func']);
             switch($UNSAdmin->parsed_edit_uri['cl_func'])
             {
                 case "copy2_proc":
@@ -184,7 +185,7 @@ if($UNSAdmin->LoginCheck())
                         
                         case "Set All":
                             $UNSAdmin->SetRefreshURLS();
-                            #$UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
                             $UNSAdmin->ShowResults("Add New URLs to Client: {$UNSAdmin->client}");
                             
                             break;
@@ -194,8 +195,104 @@ if($UNSAdmin->LoginCheck())
                     }
                     
                     break;
-
-                case "":
+                
+                case "restore_saved":
+                    
+                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    {
+                        case "yes":
+                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                            $UNSAdmin->RestoreSavedList($saved_id);
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->ShowResults("Restore Saved URL List");
+                            break;
+                        case "no":
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->AddMessage("User choose not to restore URLS");
+                            $UNSAdmin->ShowResults("Restore Saved URLs List");
+                            break;
+                        default:
+                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to restore this Saved URL List? </br>
+                                If you do this it will remove the current ones and replace them with the saved list. </br>
+                                Dont worry though, the URLS that were there will be archived.");
+                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            break;
+                    }
+                    break;
+                
+                case "remove_saved":
+                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    {
+                        case "yes":
+                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                            $UNSAdmin->RemoveSavedList($saved_id);
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->ShowResults("Removed Saved URL List");
+                            break;
+                        case "no":
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->AddMessage("User choose not to restore URLS");
+                            $UNSAdmin->ShowResults("Removal of Saved URLs List");
+                            break;
+                        default:
+                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove these Saved URL List? </br>
+                                If you do, you will not have this list any more.");
+                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            break;
+                    }
+                    break;
+                
+                case "removed_archive":
+                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    {
+                         case "yes":
+                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                            $UNSAdmin->RemoveArchivedList($saved_id);
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->ShowResults("Removed Archived URL List");
+                            break;
+                        case "no":
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->AddMessage("User choose NOT to restore URLS");
+                            $UNSAdmin->ShowResults("Removal of Archived List.");
+                            break;
+                        default:
+                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove this Archived URL List? </br>
+                                If you do this you will no longer have this list.");
+                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            break;
+                    }
+                    break;
+                
+                case "restore_archive":
+                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    {
+                         case "yes":
+                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                            $UNSAdmin->RestoreArcivedList($saved_id);
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->ShowResults("Restored Archived URL List");
+                            break;
+                        case "no":
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->AddMessage("User choose not to restore Archived URL List");
+                            $UNSAdmin->ShowResults("Restore URLS");
+                            break;
+                        default:
+                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to restore this Archived URL List? </br>
+                                If you do this it will remove the current ones and replace them with the saved list. </br>
+                                Dont worry though, the URLS that were there will be archived.");
+                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            break;
+                    }
+                    
+                    break;
+                
+                case "save_append":
+                    $append_id = $UNSAdmin->parsed_edit_uri['saved'];
+                    $UNSAdmin->SaveList($append_id);
+                    $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                    $UNSAdmin->ShowResults("Append Saved URL List");
                     
                     break;
                 
