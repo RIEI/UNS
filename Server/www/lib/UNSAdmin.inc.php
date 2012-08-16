@@ -67,19 +67,20 @@ class UNSAdmin extends UNSCore
     function check_archives()
     {
         if($this->max_archives === 0){return 0;}
-        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `client` = ? ORDER BY `date` ASC";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `client` = :client ORDER BY `date` ASC";
         $prep = $this->sql->conn->prepare($conn);
-        $prep->execute(array($$this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         $rows = $prep->rowCount();
         if($this->max_archives < $rows)
         {
-            $sql = "DELETE FROM `{$this->sql->db}`.`archive_links` WHERE `id` = ?";
+            $sql = "DELETE FROM `{$this->sql->db}`.`archive_links` WHERE `id` = :id";
             $prep = $this->sql->conn->prepare($sql);
             while($arcs = $prep->fetchAll(2))
             {
                 if($rows+1 == $this->max_archives){break;}
-                
-                $prep->execute(array($arcs['id']));
+                $prep->bindParam(":id", $arcs['id'], PDO::PARAM_INT);
+                $prep->execute();
                 if($prep->errorCode() != "00000")
                 {
                     $err = $prep->errorInfo();
@@ -113,9 +114,9 @@ class UNSAdmin extends UNSCore
     
     function ClearLoginHashes()
     {
-        $sql = "DELETE FROM `{$this->sql->db}`.`login_hashes` WHERE `user` = ?";
+        $sql = "DELETE FROM `{$this->sql->db}`.`login_hashes` WHERE `user` = :user";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->username));
+        $prep->bindParam(":user", $this->username, PDO::PARAM_STR);
         
         if($prep->errorCode() != "00000")
         {
@@ -131,9 +132,10 @@ class UNSAdmin extends UNSCore
         foreach($_POST['copy_clients'] as $copy_client)
         {
             $fail = 0;
-            $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+            $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = :client";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($copy_client));
+            $prep->bindParam(":client", $copy_client, PDO::PARAM_STR);
+            $prep->execute();
             $links = array(); #get list of URLS from Client that you want to copy to
             while($client_links = $prep->fetch(2))
             {
@@ -155,22 +157,28 @@ class UNSAdmin extends UNSCore
 
             $ids = explode("|", $this->url_imp);
             
-            $sql = "DELETE FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+            $sql = "DELETE FROM `{$this->sql->db}`.`client_links` WHERE `client` = :client";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($copy_client));
+            $prep->bindParam(":client", $copy_client, PDO::PARAM_STR);
+            $prep->execute();
             if($this->check_pdo_error($prep)){echo "Error Truncating table<br />".$prep->errorInfo();}
             foreach($ids as $id)
             {
                 $this->AddMessage("Start Copy of ID: $id for Client: {$this->copy_friendly}");
-                $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` where `id` = ?";
+                $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` where `id` = :id";
                 $result = $this->sql->conn->prepare($sql);
-                $result->execute(array($id));
+                $prep->bindParam(":id", $id, PDO::PARAM_INT);
+                $result->execute();
                 $copy_link = $result->fetch(2);
                 
                 $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `url`, `disabled`, `refresh`, `client`) 
-                    VALUES ( NULL, ?,?,?,?)";
+                    VALUES ( NULL, :url, :disabled, :refresh, :client)";
                 $prep = $this->sql->conn->prepare($sql);
-                $prep->execute(array($copy_link['url'], 0, $copy_link['refresh'], $copy_client));
+                $prep->bindParam(":url", $copy_link['url'], PDO::PARAM_STR);
+                $prep->bindParam(":disabled", 0, PDO::PARAM_STR);
+                $prep->bindParam(":refresh", $copy_link['refresh'], PDO::PARAM_INT);
+                $prep->bindParam(":client", $copy_client, PDO::PARAM_STR);
+                $prep->execute();
 
                 if($this->check_pdo_error($prep))
                 {
@@ -187,9 +195,15 @@ class UNSAdmin extends UNSCore
     {
         $links_imp = implode("|", $links);
         $sql = "INSERT INTO `{$this->sql->db}`.`archive_links` (`id`, `client`, `urls`, `name`, `details`, `date`) 
-            VALUES ('', ?,?,?,?,?)";
+            VALUES ('', :client, :urls, :name, :details, :date)";
         $result = $this->sql->conn->prepare($sql);
-        $result->execute(array($this->copy_client, $links_imp, $name, 'Automated backup.', date($this->DateFormat, time())));
+        $prep->bindParam(":client", $this->copy_client, PDO::PARAM_STR);
+        $prep->bindParam(":urls", $links_imp, PDO::PARAM_STR);
+        $prep->bindParam(":name", $name, PDO::PARAM_STR);
+        $prep->bindParam(":details", 'Automated backup.', PDO::PARAM_STR);
+        $prep->bindParam(":date", date($this->DateFormat, time()), PDO::PARAM_STR);
+        
+        $result->execute();
         if(!$this->check_pdo_error($result))
         {
             $this->AddMessage("URLs for Client: {$this->copy_friendly} have been backed up.");
@@ -202,14 +216,19 @@ class UNSAdmin extends UNSCore
     function CreateClient($name, $led)
     {
         $new_client = sha256(rand(000000,999999));
-        $sql = "INSERT INTO `{$this->sql->db}`.`allowed_clients` VALUES('', ?, ?)";
+        $sql = "INSERT INTO `{$this->sql->db}`.`allowed_clients` VALUES('', :client, :led)";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($new_client, $led));
+        $prep->bindParam(":client", $new_client, PDO::PARAM_STR);
+        $prep->bindParam(":led", $led, PDO::PARAM_INT);
+        
+        $prep->execute();
         
         if(!$this->check_pdo_error($prep))
         {
-            $sql = "INSERT INTO `{$this->sql->db}`.`friendly` VALUES('', ?, ?)";
+            $sql = "INSERT INTO `{$this->sql->db}`.`friendly` VALUES('', :freindly, :client)";
             $prep = $this->sql->conn->prepare($sql);
+            $prep->bindParam(":freindly", $name, PDO::PARAM_STR);
+            $prep->bindParam(":client", $new_client, PDO::PARAM_STR);
             $prep->execute(array($name, $new_client));
             if(!$this->check_pdo_error($prep))
             {
@@ -224,14 +243,15 @@ class UNSAdmin extends UNSCore
     {
         if($skip!==NULL)
         {
-            $sql = "SELECT * FROM `{$this->sql->db}`.`friendly` where `client` NOT LIKE ?";
+            $sql = "SELECT * FROM `{$this->sql->db}`.`friendly` where `client` NOT LIKE :client";
         }else
         {
             $sql = "SELECT * FROM `{$this->sql->db}`.`friendly`";
         }
         
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         while($all_clients = $prep->fetch(2))
         {
             $clients[] = array(
@@ -245,9 +265,11 @@ class UNSAdmin extends UNSCore
 
     function GetSavedLists()
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_lists` WHERE `client` = ?";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_lists` WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
+        
         $saved = array();
         while($save = $prep->fetch(2))
         {
@@ -263,9 +285,11 @@ class UNSAdmin extends UNSCore
         $name = @$this->parsed_edit_uri['name'];
         foreach(explode("|", $this->parsed_edit_uri['urls']) as $url_id)
         {
-            $sql = "SELECT `url` FROM `{$this->sql->db}`.`client_links` WHERE `id` = ?";
+            $sql = "SELECT `url` FROM `{$this->sql->db}`.`client_links` WHERE `id` = :id";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($url_id));
+            $prep->bindParam(":id", $url_id, PDO::PARAM_INT);
+            $prep->execute();
+            
             $this->check_pdo_error($prep);
             $url_fetch = $prep->fetch(1);
             $url[] = $url_fetch['url'];
@@ -273,24 +297,34 @@ class UNSAdmin extends UNSCore
         $date = date($this->DateFormat,time());
         if($append != 0)
         {
-            $sql = "SELECT `urls`,`name` FROM `{$this->sql->db}`.`saved_lists` WHERE `id` = ?";
+            $sql = "SELECT `urls`,`name` FROM `{$this->sql->db}`.`saved_lists` WHERE `id` = :id";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($append));
+            $prep->bindParam(":id", $append, PDO::PARAM_INT);
+            $prep->execute();
             $this->check_pdo_error($prep);
             $url_fetch = $prep->fetch(1);
             
             $urls = $url_fetch['urls'].'|'.implode("|", $url);
             $name = $url_fetch['name'];
-            $sql = "UPDATE `{$this->sql->db}`.`saved_lists` SET `urls` = ?, `date` = ? WHERE `id` = ?";
+            $sql = "UPDATE `{$this->sql->db}`.`saved_lists` SET `urls` = :urls, `date` = :date WHERE `id` = :id";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array( $urls, $date, $append ));
+            $prep->bindParam(":urls", $urls, PDO::PARAM_STR);
+            $prep->bindParam(":date", $date, PDO::PARAM_STR);
+            $prep->bindParam(":id", $append, PDO::PARAM_INT);
+            $prep->execute();
         }else
         {
             $urls = implode("|", $url);
             $sql = "INSERT INTO `{$this->sql->db}`.`saved_lists` ( `id`, `client`, `urls` ,`name` ,`details` ,`date` )
-                VALUES ( NULL, ?, ?, ?, ?, ?)";
+                VALUES ( NULL, :client, :urls, :name, :details, :date)";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($this->client, $urls ,$this->parsed_edit_uri['name'],@$this->parsed_edit_uri['details'], $date));
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->bindParam(":urls", $urls, PDO::PARAM_STR);
+            $prep->bindParam(":name", $this->parsed_edit_uri['name'], PDO::PARAM_STR);
+            $prep->bindParam(":details", @$this->parsed_edit_uri['details'], PDO::PARAM_STR);
+            $prep->bindParam(":date", $date, PDO::PARAM_STR);
+            
+            $prep->execute();
         }
         
         $this->check_pdo_error($prep);
@@ -300,18 +334,20 @@ class UNSAdmin extends UNSCore
     
     function RemoveSavedList($id)
     {
-        $sql = "DELETE FROM `{$this->sql->db}`.`saved_lists` WHERE `id` = ?";
+        $sql = "DELETE FROM `{$this->sql->db}`.`saved_lists` WHERE `id` = :id";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($id));
+        $prep->bindParam(":id", $id, PDO::PARAM_INT);
+        $prep->execute();
         $this->check_pdo_error($prep);
         return 1;
     }
     
     function RemoveArchivedList($id)
     {
-        $sql = "DELETE FROM `{$this->sql->db}`.`archive_lists` WHERE `id` = ?";
+        $sql = "DELETE FROM `{$this->sql->db}`.`archive_lists` WHERE `id` = :id";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($id));
+        $prep->bindParam(":id", $id, PDO::PARAM_INT);
+        $prep->execute();
         $this->check_pdo_error($prep);
         return 1;
     }
@@ -319,22 +355,30 @@ class UNSAdmin extends UNSCore
     
     function RestoreArchivedList($id)
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         $this->check_pdo_error($prep);
         $old_list = $prep->fetch_all(1);
         
         $date = date($this->DateFormat, time());
         $sql = "INSERT INTO `{$this->sql->db}`.`archive_links` (`id`, `client`, `urls`, `name`, `details`, `date`)
-            VALUES ( NULL, ?, ?, ?, ?, ?)";
+            VALUES ( NULL, :client, :urls, :name, :details, :date)";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client, implode("|", $old_list['url']), "Automated backup on {$date}", "Automated backup of URLS for Client {$this->friendly}[{$this->client}] by {$this->user}", $date ));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->bindParam(":urls", implode("|", $old_list['url']), PDO::PARAM_STR);
+        $prep->bindParam(":name", "Automated backup on {$date}", PDO::PARAM_STR);
+        $prep->bindParam(":details", "Automated backup of URLS for Client {$this->friendly}[{$this->client}] by {$this->user}", PDO::PARAM_STR);
+        $prep->bindParam(":date", $date, PDO::PARAM_STR);
+
+        $prep->execute();
         $this->check_pdo_error($prep);
         
-        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `id` = ?";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `id` = :id";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($id));
+        $prep->bindParam(":id", $id, PDO::PARAM_INT);
+        $prep->execute();
         $this->check_pdo_error($prep);
         $archived_list = $prep->fetch(1);
         $archived_list_exp = explode("|", $archived_list['urls']);
@@ -342,9 +386,13 @@ class UNSAdmin extends UNSCore
         foreach($archived_list_exp as $url)
         {
             $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `client`, `url`, `refresh`, `disabled`)
-                VALUES ( NULL, ?, ?, ?, ?)";
+                VALUES ( NULL, :client, :url, :refresh, :disabled)";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($this->client, $url, 30, 0));
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->bindParam(":url", $url, PDO::PARAM_STR);
+            $prep->bindParam(":refresh", 30, PDO::PARAM_INT);
+            $prep->bindParam(":disabled", 0, PDO::PARAM_INT);
+            $prep->execute();
             $this->check_pdo_error($prep);
         }
         $this->AddMessage("Restored urls from {$archived_list['name']} to {$this->friendly} on {$date} by {$this->user}");
@@ -353,22 +401,30 @@ class UNSAdmin extends UNSCore
     
     function RestoreSavedList($id)
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = ?";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         $this->check_pdo_error($prep);
         $old_list = $prep->fetch_all(1);
         
         $date = date($this->DateFormat, time());
         $sql = "INSERT INTO `{$this->sql->db}`.`saved_links` (`id`, `client`, `urls`, `name`, `details`, `date`)
-            VALUES ( NULL, ?, ?, ?, ?, ?)";
+            VALUES ( NULL, :client, :urls, :name, :details, :date)";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client, implode("|", $old_list['url']), "Automated backup on {$date}", "Automated backup of URLS for Client {$this->friendly}[{$this->client}] by {$this->user}", $date ));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->bindParam(":urls", implode("|", $old_list['url']) , PDO::PARAM_STR);
+        $prep->bindParam(":name", "Automated backup on {$date}", PDO::PARAM_STR);
+        $prep->bindParam(":details", "Automated backup of URLS for Client {$this->friendly}[{$this->client}] by {$this->user}", PDO::PARAM_STR);
+        $prep->bindParam(":date", $date, PDO::PARAM_STR);
+        $prep->execute();
+        
         $this->check_pdo_error($prep);
         
-        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_links` WHERE `id` = ?";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`saved_links` WHERE `id` = :id";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($id));
+        $prep->bindParam(":id", $id, PDO::PARAM_STR);
+        $prep->execute();
         $this->check_pdo_error($prep);
         $saved_list = $prep->fetch(1);
         $saved_list_exp = explode("|", $saved_list['urls']);
@@ -376,9 +432,13 @@ class UNSAdmin extends UNSCore
         foreach($saved_list_exp as $url)
         {
             $sql = "INSERT INTO `{$this->sql->db}`.`client_links` (`id`, `client`, `url`, `refresh`, `disabled`)
-                VALUES ( NULL, ?, ?, ?, ?)";
+                VALUES ( NULL, :client, :url, :refresh, :disabled)";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($this->client, $url, 30, 0));
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->bindParam(":url", $url, PDO::PARAM_STR);
+            $prep->bindParam(":refresh", 30, PDO::PARAM_INT);
+            $prep->bindParam(":disabled", 0, PDO::PARAM_INT);
+            $prep->execute();
             $this->check_pdo_error($prep);
         }
         $this->AddMessage("Restored urls from {$saved_list['name']} to {$this->friendly} on {$date} by {$this->user}");
@@ -399,45 +459,39 @@ class UNSAdmin extends UNSCore
     {
         if($this->permissions['edit_users'])
         {
-            $user = filter_input(INPUT_POST, 'user_N', FILTER_SANITIZE_STRING);
+            $user = @filter_input(INPUT_POST, 'user_N', FILTER_SANITIZE_STRING);
             $internal_user = @filter_input(INPUT_POST, 'internal_user', FILTER_SANITIZE_STRING);
-            
             if(!$internal_user)
             {
                 $domain = @filter_input(INPUT_POST, 'domain_N', FILTER_SANITIZE_STRING);
-                $sql = "INSERT INTO `allowed_users` (`id`, `username`, `domain`, `edit_urls`, `edit_emerg`, `edit_users`)
-                VALUES ('', '$user', '$domain', '1', '0', '0')";
-                if($this->sql->conn->query($sql))
-                {
-                    $ret = "Added new User ($domain\\$user).";
-                    $this->Redirect('func=view_users');
-                }else
-                {
-                    $ret = "Failed to add new User.<br />\r\n".$this->sql->conn->error;
-                }
+                $sql = "INSERT INTO `{$this->sql->db}`.`allowed_users` (`id`, `username`, `domain`, `edit_urls`, `edit_emerg`, `edit_users`)
+                VALUES (NULL, :user, :domain, '1', '0', '0')";
+                
+                $prep = $this->sql->conn->prepare($sql);
+                $prep->bindParam(":user", $_POST['user_N'], PDO::PARAM_STR);
+                $prep->bindParam(":domain", $_POST['domain_N'], PDO::PARAM_STR);
+                $prep->execute();
+                $this->check_pdo_error($prep);
+                $ret = "Added new User ({$domain}\\{$user}).";
+                
             }else
             {
                 $userseed = $this->GernerateSeed();
                 $pwd = @filter_input(INPUT_POST, 'pwd_N', FILTER_SANITIZE_STRING);
                 $pwd = sha256($pwd.$userseed.$this->global_login_seed);
-                $sql = "INSERT INTO `allowed_users` (`id`, `username`, `domain`, `edit_urls`, `edit_emerg`, `edit_users`)
-                VALUES ('', '$user', '', '1', '0', '0')";
-                if($this->sql->conn->query($sql))
-                {
-                    $sql = "INSERT INTO `internal_users` (`id`, `username`, `password`, `disabled`, `failed`)
-                    VALUES ('', '$user', 'SHA256:{$userseed}:{$pwd}', '0', '0')";
-                    if($this->sql->conn->query($sql))
-                    {
-                        $ret = "Added new Internal User ($user).";
-                        $this->Redirect('func=view_users');
-                    }else
-                    {
-                        $ret = "Failed to add new User.<br />\r\n".$this->sql->conn->errorInfo;
-                    }
-                }else
-                {
-                    $ret = "Failed to add new User.<br />\r\n".$this->sql->conn->errorInfo;
-                }
+                $sql = "INSERT INTO `{$this->sql->db}`.`allowed_users` (`id`, `username`, `domain`, `edit_urls`, `edit_emerg`, `edit_users`)
+                VALUES (NULL, :user, '', '1', '0', '0')";
+                $prep = $this->sql->conn->prepare($sql);
+                $prep->bindParam(":user", $_POST['user_N'], PDO::PARAM_STR);
+                $prep->execute();
+                $this->check_pdo_error($prep);
+                
+                $sql = "INSERT INTO `{$this->sql->db}`.`internal_users` (`id`, `username`, `password`, `disabled`, `failed`)
+                VALUES (NULL, :user, :pwd, '0', '0')";
+                $prep->bindParam(":user", $_POST['user_N'], PDO::PARAM_STR);
+                $prep->bindParam(":pwd", $pwd, PDO::PARAM_STR);
+                $prep->execute();
+                $ret = "Added new Internal User ($user).";
             }
         }else
         {
@@ -471,9 +525,10 @@ class UNSAdmin extends UNSCore
      */
     function GetPermissions()
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`allowed_users` where `username` like ? LIMIT 1";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`allowed_users` where `username` like :user LIMIT 1";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->username));
+        $prep->bindParam(":user",$this->username, PDO::PARAM_STR);
+        $prep->execute();
         $this->check_pdo_error($prep);
         $this->permissions = array('edit_urls'=>0,'edit_emerg'=>0,'edit_users'=>0,'img_messages'=>0,'c_messages'=>0,'rss_feeds'=>0,'edit_options'=>0);
         $perms = $prep->fetch(2);
@@ -569,9 +624,11 @@ class UNSAdmin extends UNSCore
      */
     function GenTzOpts()
     {
-        $sql = "SELECT `tz` FROM `{$this->sql->db}`.`allowed_users` where `username` = '$this->username'";
-        $result = $this->sql->conn->query($sql);
-        $array = $result->fetch(2);
+        $sql = "SELECT `tz` FROM `{$this->sql->db}`.`allowed_users` where `username` = :user";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->bindParam(":user", $this->username, PDO::PARAM_STR);
+        $prep->execute();
+        $array = $prep->fetch(1);
         $user_TZ = explode(":",$array['tz']);
         $tz_opts = array();
         foreach(timezone_abbreviations_list() as $key=>$TZ_L)
@@ -608,9 +665,10 @@ class UNSAdmin extends UNSCore
      */
     function GetClientLED()
     {
-        $sql = "SELECT `led` FROM `{$this->sql->db}`.`allowed_clients` WHERE `client_name` like ?";
+        $sql = "SELECT `led` FROM `{$this->sql->db}`.`allowed_clients` WHERE `client_name` like :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         $led = $prep->fetch(2);
         $this->client_led = $led['led'];
         return $this->client_led;
@@ -643,9 +701,10 @@ class UNSAdmin extends UNSCore
     
     function GetArchivedLists()
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `client` = ?";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`archive_links` WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam("client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         $this->check_pdo_error($prep);
         $archived = array();
         while($archive = $prep->fetch(2))
@@ -677,16 +736,19 @@ class UNSAdmin extends UNSCore
     function GetClientURLs()
     {
         $this->client;
-        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = ? ORDER BY `url` ASC";
+        $sql = "SELECT * FROM `{$this->sql->db}`.`client_links` WHERE `client` = :client ORDER BY `url` ASC";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->client));
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         $this->client_urls = $prep->fetchAll(2);
         return $this->client_urls;
     }
     
     function GetAllClients()
     {
-        $sql = "SELECT `friendly`.`id`,`client`,`friendly`,`led` FROM `{$this->sql->db}`.`allowed_clients`,`{$this->sql->db}`.`friendly` WHERE `friendly`.`client` = `allowed_clients`.`client_name`";
+        $sql = "SELECT `friendly`.`id`,`client`,`friendly`,`led` FROM 
+            `{$this->sql->db}`.`allowed_clients`,`{$this->sql->db}`.`friendly` 
+                WHERE `friendly`.`client` = `allowed_clients`.`client_name`";
         $result = $this->sql->conn->query($sql);
         $i = 0;
         $client = array();
@@ -736,9 +798,11 @@ class UNSAdmin extends UNSCore
         #    return 1;
         #}
         
-        $sql = "SELECT * FROM `{$this->sql->db}`.`internal_users` WHERE `username` = '{$this->username}'";
-        $result = $this->sql->conn->query($sql);
-        $user_array = $result->fetch(2);
+        $sql = "SELECT * FROM `{$this->sql->db}`.`internal_users` WHERE `username` = :user";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->bindParam(":user", $this->username, PDO::PARAM_STR);
+        $prep->execute();
+        $user_array = $prep->fetch(2);
         if($user_array['disabled'])
         {
             return -1;
@@ -766,24 +830,20 @@ class UNSAdmin extends UNSCore
                 $this->ClearLoginHashes();
                 
                 
-                $sql = "INSERT INTO `{$this->sql->db}`.`login_hashes` VALUES ('', ?, ?, ?)";
+                $sql = "INSERT INTO `{$this->sql->db}`.`login_hashes` VALUES (NULL, :hash, :expire, :user)";
                 $prep = $this->sql->conn->prepare($sql);
-                $prep->execute(array($LOGIN_HASH, $expire, $this->username));
+                $prep->bindParam(":hash", $LOGIN_HASH, PDO::PARAM_STR);
+                $prep->bindParam(":expire", $expire, PDO::PARAM_STR);
+                $prep->bindParam(":user", $this->username, PDO::PARAM_STR);
+                $prep->execute();
+                $this->check_pdo_error($prep);
                 
-                if($prep->errorCode() != "00000")
-                {
-                    $err = $prep->errorInfo();
-                    throw new Exception($err[2]);
-                }
-                
-                $sql = "UPDATE `{$this->sql->db}`.`allowed_users` SET `last_active` = ?, `failed` = ?";
+                $sql = "UPDATE `{$this->sql->db}`.`allowed_users` SET `last_active` = :last, `failed` = :failed";
                 $prep = $this->sql->conn->prepare($sql);
-                $prep->execute(array($time_stamp, 0));
-                if($prep->errorCode() != "00000")
-                {
-                    $err = $prep->errorInfo();
-                    throw new Exception($err[2]);
-                }
+                $prep->bindParam(":last", $time_stamp, PDO::PARAM_INT);
+                $prep->bindParam(":failed", 0, PDO::PARAM_INT);
+                $prep->execute();
+                $this->check_pdo_error($prep);
                 
                 setcookie("UNS_LOGIN_HASH", $this->username.":".$LOGIN_HASH, ($time_stamp+$this->cookie_timeout), "/".$this->root."admin/", str_replace(array("/","http://"), "", $this->host), $this->SSL, 1);
 #                echo "UNS_LOGIN_HASH"."\r\n", $this->username.":".$LOGIN_HASH."\r\n", ($time_stamp+$this->cookie_timeout)."\r\n", "/".$this->root."admin/"."\r\n", str_replace(array("/","http://"), "", $this->host)."\r\n", $this->SSL."\r\n", 1;
@@ -793,9 +853,10 @@ class UNSAdmin extends UNSCore
             }else
             {
                 /* User failed to supply the correct password, lets increment the failed login apptempt flag, and return a failure flag */
-                $sql = "SELECT `failed` FROM `{$this->sql->db}`.`allowed_users` WHERE `username` = '{$this->username}'";
-                $result = $this->sql->conn->query($sql);
-                $failed = $result->fetch(2);
+                $sql = "SELECT `failed` FROM `{$this->sql->db}`.`allowed_users` WHERE `username` = :user";
+                $prep = $this->sql->conn->prepare($sql);
+                $prep->bindParam(":user", $this->username, PDO::PARAM_STR);
+                $failed = $prep->fetch(1);
                 $failed_count = $failed['failed']+1;
                 
                 if($failed_count >= $this->max_bad_logins)
@@ -804,7 +865,6 @@ class UNSAdmin extends UNSCore
                     $sql = "UPDATE `{$this->sql->db}`.`allowed_users` SET `disabled` = ?";
                     $prep = $this->sql->conn->prepare($sql);
                     $prep->execute(array(1));
-                
                 }
                 else
                 {
@@ -814,11 +874,7 @@ class UNSAdmin extends UNSCore
                     $prep->execute(array($failed_count));
                 }
                 
-                if($prep->errorCode() != "00000")
-                {
-                    $err = $prep->errorInfo();
-                    throw new Exception($err[2]);
-                }
+                $this->check_pdo_error($prep);
                 return -2;
             }
         }else
@@ -832,9 +888,10 @@ class UNSAdmin extends UNSCore
         if(!@$_COOKIE['UNS_LOGIN_HASH']){return 0;}
         $cookie_exp = explode(":", html_entity_decode($_COOKIE['UNS_LOGIN_HASH']));
         
-        $sql = "SELECT `hash`, `user` FROM `{$this->sql->db}`.`login_hashes` WHERE `user` = ?";
+        $sql = "SELECT `hash`, `user` FROM `{$this->sql->db}`.`login_hashes` WHERE `user` = :user";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($cookie_exp[0]));
+        $prep->bindParam(":user", $cookie_exp[0]);
+        $prep->execute();
         $login_hashes = $prep->fetch(2);
         #var_dump($login_hashes);
         if(strcasecmp($login_hashes['hash'], $cookie_exp[1]) === 0)
@@ -854,15 +911,17 @@ class UNSAdmin extends UNSCore
             $cookie_exp = explode(":", $_COOKIE['UNS_LOGIN_HASH']);
             $cookie_hash = $cookie_exp[1];
 
-            $sql = "SELECT * FROM `{$this->sql->db}`.`hash_links` where `hash` like ?";
+            $sql = "SELECT * FROM `{$this->sql->db}`.`hash_links` where `hash` like :hash";
             
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($cookie_hash));
+            $prep->bindParam(":hash",$cookie_hash, PDO::PARAM_STR);
+            $prep->execute();
             $links = $prep->fetch(2);
             
-            $sql = "DELETE FROM `{$this->sql->db}`.`login_hashes` where `id` = ?";
+            $sql = "DELETE FROM `{$this->sql->db}`.`login_hashes` where `id` = :id";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($links['id']));
+            $prep->bindParam(":id", $links['id'], PDO::PARAM_STR);
+            $prep->execute();
             $time_stamp = time();
             if($prep->errorCode() != "00000")
             {
@@ -912,11 +971,16 @@ class UNSAdmin extends UNSCore
         $urls = explode("\n", $this->parsed_edit_uri['NEWURLS']);
         $sql = "INSERT INTO `{$this->sql->db}`.`client_links` 
                 (`id`, `url`, `client`, `disabled`, `refresh`) 
-                VALUES (NULL, ?, ?, ?, ?)";
+                VALUES (NULL, :url, :client, :disabled, :refresh)";
         $prep = $this->sql->conn->prepare($sql);
+
         foreach($urls as $url)
         {
-            $prep->execute(array($url, $this->client, 0, $this->parsed_edit_uri['refresh']));
+            $prep->bindParam(":url", $url, PDO::PARAM_STR);
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->bindParam(":diabled", 0, PDO::PARAM_INT);
+            $prep->bindParam(":refresh", $this->parsed_edit_uri['refresh'], PDO::PARAM_INT);
+            $prep->execute();
             $this->check_pdo_error($prep);
         }
         $this->AddMessage("URLs Added Successfully");
@@ -927,9 +991,12 @@ class UNSAdmin extends UNSCore
     {
         foreach($_POST['urls'] as $key=>$url)
         {
-            $sql = "UPDATE ``.`client_links` SET `refresh` = ? WHERE `client` = ? AND `id` = ?";
+            $sql = "UPDATE `{$this->sql->db}`.`client_links` SET `refresh` = :refresh WHERE `client` = :client AND `id` = :id";
             $prep = $this->sql->conn->prepare($sql);
-            $prep->execute(array($_POST['refresh_time'][$key], $this->client, $url));
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->bindParam(":id", $_POST['refresh_time'][$key], PDO::PARAM_INT);
+            $prep->bindParam(":refresh", $this->parsed_edit_uri['refresh'], PDO::PARAM_INT);
+            $prep->execute();
             $this->check_pdo_error($prep);
             $this->AddMessage("Updated Client [{$this->client}] URL [{$url}] Refresh time");
         }
@@ -1003,9 +1070,11 @@ class UNSAdmin extends UNSCore
     
     function RenameClient()
     {
-        $sql = "UPDATE `{$this->sql->db}`.`friendly` SET `friendly` = ? WHERE `client` = ?";
+        $sql = "UPDATE `{$this->sql->db}`.`friendly` SET `friendly` = :friendly WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($this->clientNewName, $this->client));
+        $prep->bindParam(":friendly", $this->clientNewName, PDO::PARAM_STR);
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
         if(!$this->check_pdo_error($prep))
         {
             $this->AddMessage("Successfully renamed Client to {$this->clientNewName}");
@@ -1019,9 +1088,12 @@ class UNSAdmin extends UNSCore
             $this->username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $OldPassword = filter_input(INPUT_POST, 'oldpassword', FILTER_SANITIZE_SPECIAL_CHARS);
             $old_pwd_hash = md5($OldPassword.$this->global_login_seed);
-            $sql = "SELECT * FROM `{$this->sql->db}`.`internal_users` WHERE `username` = '{$this->username}'";
-            $result = $this->sql->conn->query($sql);
-            $array = $result->fetch(2);
+            $sql = "SELECT * FROM `{$this->sql->db}`.`internal_users` WHERE `username` = :user";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->bindParam(":user", $this->username, PDO::PARAM_STR);
+            $prep->execute();
+            $array = $prep->fetch(2);
+            
             if(strcasecmp($old_pwd_hash, $array['password']) !== 0)
             {
                 $this->smarty->assign("message", "Passwords do not match, try again please.");
@@ -1035,22 +1107,14 @@ class UNSAdmin extends UNSCore
             {
                 $user_seed = $this->GenerateSeed();
                 $pass_hash = sha256($Password.$user_seed.$this->global_login_seed);
-                $sql = "UPDATE `{$this->sql->db}`.`internal_users` SET `password` = ? WHERE `username` = ?";
-                echo "sha256:{$user_seed}:{$pass_hash}";
-                $values = array(
-                    "sha256:{$user_seed}:{$pass_hash}",
-                    $this->username
-                );
+                $sql = "UPDATE `{$this->sql->db}`.`internal_users` SET `password` = :pwd WHERE `username` = :user";
+                #echo "sha256:{$user_seed}:{$pass_hash}";
                 $prep = $this->sql->conn->prepare($sql);
-                $prep->execute($values);
-                if($prep->errorCode() != "00000")
-                {
-                    $err = $prep->errorInfo();
-                    throw new Exception($err[2]);
-                }else
-                {
-                    return 1;
-                }
+                $prep->bindParam(":user", $this->usernme, PDO::PARAM_STR);
+                $prep->bindParam(":pwd", "sha256:{$user_seed}:{$pass_hash}", PDO::PARAM_STR);
+                $prep->execute();
+                $this->check_pdo_error($prep);
+                return 1;
             }else
             {
                 $this->smarty->assign("message", "Passwords do not match, try again please.");

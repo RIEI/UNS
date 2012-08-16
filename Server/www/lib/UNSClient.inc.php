@@ -41,20 +41,23 @@ class UNSClient extends UNSCore
     
     function CheckConnTable()
     {
-        $sql = "SELECT * FROM `{$this->sql->db}`.`connections` WHERE `client` = '{$this->client}'";
-        $result = $this->sql->conn->query($sql);
-        if($this->max_conn_history == @$result->rowCount)
+        $sql = "SELECT * FROM `{$this->sql->db}`.`connections` WHERE `client` = :client";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
+        if($this->max_conn_history == @$prep->rowCount)
         {
-            $sql = "SELECT id FROM `{$this->sql->db}`.`connections` WHERE `client` = '{$this->client}' ORDER BY `last_conn` ASC LIMIT 1";
-            $result = $this->sql->conn->query($sql);
-            while($array = $result->fetch(2))
+            $sql = "SELECT id FROM `{$this->sql->db}`.`connections` WHERE `client` = :client ORDER BY `last_conn` ASC LIMIT 1";
+            $prep = $this->sql->conn->prepare($sql);
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->execute();
+            while($array = $prep->fetch(2))
             {
-                $sql = "DELETE FROM `{$this->sql->db}`.`connections` WHERE `id` = '".$array['id']."'";
-                $result1 = $this->sql->conn->query($sql);
-                if(!$result1)
-                {
-                    throw new Exception($this->sql->conn->errorInfo);
-                }
+                $sql = "DELETE FROM `{$this->sql->db}`.`connections` WHERE `id` = :id";
+                $prep1 = $this->sql->conn->prepare($sql);
+                $prep1->bindParam(":id", $array['id'], PDO::PARAM_INT);
+                $prep1->execute();
+                $this->check_pdo_error($prep1);
             }
         }
         return 1;
@@ -78,9 +81,11 @@ class UNSClient extends UNSCore
     
     function GetClientLEDid()
     {
-        $query = "SELECT led FROM `{$this->sql->db}`.`allowed_clients` where `client_name` = '{$this->client}' LIMIT 1";
-        $result = $this->sql->conn->query($query);
-        $array = $result->fetch(2);
+        $query = "SELECT `led` FROM `{$this->sql->db}`.`allowed_clients` where `client_name` = :client LIMIT 1";
+        $prep = $this->sql->conn->prepare($query);
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
+        $array = $prep->fetch(2);
         if(!$array['led'])
         {
             return 0;
@@ -94,10 +99,12 @@ class UNSClient extends UNSCore
     {
         $ret1   = array();
         $ret    = "";
-        $query  = "SELECT * FROM `{$this->sql->db}`.`allowed_clients` where `client_name` = '{$this->client}' LIMIT 1";
+        $query  = "SELECT * FROM `{$this->sql->db}`.`allowed_clients` where `client_name` = :client LIMIT 1";
         
-        $result = $this->sql->conn->query($query);
-        $array  = $result->fetch(2);
+        $prep = $this->sql->conn->prepare($query);
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->execute();
+        $array  = $prep->fetch(2);
         $cl_id  = $array['id'];
         
         if(!$array['client_name'])
@@ -111,26 +118,31 @@ class UNSClient extends UNSCore
         $emerg_fl = $array['emerg'];
         if(!$emerg_fl)
         {
-            $query = "SELECT * FROM `{$this->sql->db}`.`connections` where `client` LIKE '{$this->client}' ORDER by `last_conn` DESC LIMIT 1";
-            $result = $this->sql->conn->query($query);
-            if($result)
+            $query = "SELECT * FROM `{$this->sql->db}`.`connections` where `client` LIKE :client ORDER by `last_conn` DESC LIMIT 1";
+            $prep = $this->sql->conn->prepare($query);
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->execute();
+            if($prep->rowCount > 0)
             {
-                $prev = $result->fetch(2);
+                $prev = $prep->fetch(2);
                 $prev_url = $prev['last_url'];
                 
-                $query = "SELECT * FROM `{$this->sql->db}`.`{$this->client}_links` where `disabled` NOT LIKE '1' AND `url` NOT LIKE '$prev_url'";
-                $result = $this->sql->conn->query($query);
-                while($array = $result->fetch(2))
+                $query = "SELECT * FROM `{$this->sql->db}`.`client_links` where `disabled` NOT LIKE '1' AND `url` NOT LIKE :prev_url";
+                $prep = $this->sql->conn->prepare($query);
+                $prep->bindParam(":prev_url", $prev_url, PDO::PARAM_STR);
+                $prep->execute();
+                while($array = $prep->fetch(2))
                 {
                     $ret1[] = array($array['url'], $array['refresh']);
                 }
 
                 if(@$ret[0] == "")
                 {
-                    $query = "SELECT * FROM `{$this->sql->db}`.`{$this->client}_links` where `disabled` != '1'";
-                    
-                    $result = $this->sql->conn->query($query);
-                    while($array = $result->fetch(2))
+                    $query = "SELECT * FROM `{$this->sql->db}`.`client_links` where `disabled` != '1' AND `client` = :client";
+                    $prep = $this->sql->conn->prepare($query);
+                    $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+                    $prep->execute();
+                    while($array = $prep->fetch(2))
                     {
                         $ret1[] = array($array['url'], $array['refresh']);
                     }
@@ -138,9 +150,11 @@ class UNSClient extends UNSCore
             }
             else
             {
-                $query = "SELECT * FROM `{$this->sql->db}`.`{$this->client}_links` where `disabled` NOT LIKE '1'";
-                $result = $conn->query($query);
-                while($array = $result->fetch(2))
+                $query = "SELECT * FROM `{$this->sql->db}`.`client_links` where `disabled` NOT LIKE '1' AND `client` = :client";
+                $prep = $this->sql->conn->prepare($query);
+                $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+                $prep->execute();
+                while($array = $prep->fetch(2))
                 {
                     $ret1[] = array($array['url'], $array['refresh']);
                 }
@@ -148,10 +162,11 @@ class UNSClient extends UNSCore
         }
         else
         {
-            $query = "SELECT * FROM `{$this->sql->db}`.`emerg` WHERE `cl_id` = '$cl_id' OR `cl_id` = '0' AND `enabled` = '1'";
-            $result = $this->sql->conn->query($query);
-
-            while($array = $result->fetch(2))
+            $query = "SELECT * FROM `{$this->sql->db}`.`emerg` WHERE `cl_id` = :client OR `cl_id` = '0' AND `enabled` = '1'";
+            $prep = $this->sql->conn->prepare($query);
+            $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+            $prep->execute();
+            while($array = $prep->fetch(2))
             {
                 $ret1[] = array($array['url'], $array['refresh'], 1);
             }
@@ -174,11 +189,15 @@ class UNSClient extends UNSCore
         $time = time();
         $last_url = $ret[0];
         
-        $sql = "INSERT INTO `{$this->sql->db}`.`connections` (`id`, `client`, `last_conn`, `last_url`) VALUES ('', '{$this->client}', '$time', '$last_url')";
-        if(!$this->sql->conn->query($sql))
-        {
-            throw new Exception(($this->sql->conn->errorInfo()));
-        }
+        $sql = "INSERT INTO `{$this->sql->db}`.`connections` 
+            (`id`, `client`, `last_conn`, `last_url`) 
+            VALUES ( NULL, :client, :time, :last_url)";
+        
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $prep->bindParam(":time", $time, PDO::PARAM_INT);
+        $prep->bindParam(":last_url", $last_url, PDO::PARAM_STR);
+        $prep->execute();
+        $this->check_pdo_error($prep);
 
         if($emerg_fl)
         {

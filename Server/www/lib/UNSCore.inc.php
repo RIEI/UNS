@@ -182,9 +182,10 @@ class UNSCore
     
     function GetFriendly($id)
     {
-        $sql = "SELECT `friendly` FROM `{$this->sql->db}`.`friendly` WHERE `client` = ?";
+        $sql = "SELECT `friendly` FROM `{$this->sql->db}`.`friendly` WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array($id));
+        $prep->bindParam(":client", $id, PDO::PARAM_STR);
+        $prep->execute();
         $friendly_ret = $prep->fetch(2);
         $this->friendly = $friendly_ret['friendly'];
         return $this->friendly;
@@ -252,9 +253,10 @@ class UNSCore
     
     function last_conn()
     {
-        $sql = "SELECT last_conn, last_url FROM `{$this->sql->db}`.`connections` WHERE `client` = '{$this->client}' ORDER BY `last_conn` DESC LIMIT 1";
-        $result = $this->sql->conn->query($sql);
-        $info = $result->fetch(2);
+        $sql = "SELECT last_conn, last_url FROM `{$this->sql->db}`.`connections` WHERE `client` = :client ORDER BY `last_conn` DESC LIMIT 1";
+        $prep = $this->sql->conn->prepare($sql);
+        $prep->bindParam(":client", $this->client, PDO::PARAM_STR);
+        $info = $prep->fetch(2);
         if($info['last_conn'])
         {
             return $info;
@@ -266,13 +268,13 @@ class UNSCore
     
     function Log($message = "", $type = 0)
     {
-        $sql = "INSERT INTO `{$this->sql->db}`.`log` VALUES ('', ?, ?, ?)";
+        $sql = "INSERT INTO `{$this->sql->db}`.`log` (`id`, `detail`, `level`, `time`) VALUES (NULL, :detail, :level, :time)";
         $prep = $this->sql->conn->prepare($sql);
-        $prep->execute(array(time(),$message, $type));
-        if($prep->errorCode() != "00000")
-        {
-            
-        }
+        $prep->bindParam(":detail", $message, PDO::PARAM_STR);
+        $prep->bindParam(":level", $type, PDO::PARAM_STR);
+        $prep->bindParam(":time", time(), PDO::PARAM_INT);
+        $prep->execute();
+        $this->check_pdo_error($prep);
         return 1;
     }
 }
