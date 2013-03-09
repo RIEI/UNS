@@ -1,0 +1,43 @@
+/* 
+    Document   : styles
+    Created on : Sep 25, 2010, 11:52:34 PM
+    Author     : pferland
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.body {
+    background-color: #3366aa;
+    color: #fff;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+}
+a {
+    color: Black;
+}
+
+/*
+    Created on : Oct 18, 2010
+    Author     : Andrew Calcutt
+    Description: Styles for RSS messages
+*/
+
+.RSS_feed_title {
+	font-size: x-large;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.RSS_title {
+	font-size: x-large;
+	font-weight: bold;
+	color: #04336C;
+}
+
+.RSS_desc{
+	font-size: medium;
+	color: #054594;
+}
+
+.RSS_table_back {
+	background-color: #DCE3EF;
+}

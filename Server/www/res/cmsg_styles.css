@@ -1,0 +1,16 @@
+/* 
+    Document   : styles
+    Created on : Sep 25, 2010, 11:52:34 PM
+    Author     : pferland
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.body {
+    background-color: #3366aa;
+    color: #fff;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+}
+a {
+    color: Black;
+}

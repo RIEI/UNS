@@ -28,10 +28,33 @@
 /* Include and create the UNS Object*/
 require '../lib/UNSAdmin.inc.php';
 $UNSAdmin = new UNSAdmin();
+$UNSAdmin->parse_edit_url($_REQUEST);
 
+if($UNSAdmin->parsed_edit_uri['func'] == 'password_reset')
+{
+    if(@$UNSAdmin->parsed_edit_uri['password_reset_flag'])
+    {
+        if($UNSAdmin->SetPassword())
+        {$UNSAdmin->Redirect("");}
+        #else
+        #{$UNSAdmin->Redirect("?func=password_reset&hash={$UNSAdmin->reset_hash}");}
+        
+        $UNSAdmin->ShowResults("Password Reset Results.");
+    }else
+    {
+        if($UNSAdmin->PrepPasswordReset())
+        {
+            #$UNSAdmin->Redirect("?func=password_reset&hash={$UNSAdmin->reset_hash}");
+            $UNSAdmin->smarty->assign("hash", $UNSAdmin->reset_hash);
+            $UNSAdmin->smarty->assign("username", $UNSAdmin->reset_username);
+            $UNSAdmin->smarty->display("reset_password.tpl");
+        }
+    }
+    exit;
+}
 
 /* Filter and set variables*/
-$login_flag = @filter_input(INPUT_GET, 'login', FILTER_SANITIZE_NUMBER_INT)+0;
+$login_flag = @filter_input(INPUT_GET, 'login', FILTER_SANITIZE_NUMBER_INT);
 $update_pwd_flag = filter_input(INPUT_POST, "update_password", FILTER_SANITIZE_NUMBER_INT);
 $update_pwd_flag_get = filter_input(INPUT_GET, "update_password", FILTER_SANITIZE_NUMBER_INT);
 $UNSAdmin->update_pwd = $update_pwd_flag_get;
@@ -49,7 +72,7 @@ if($update_pwd_flag && $update_pwd_flag_get)
 if($login_flag)
 {
     $UNSAdmin->username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $UNSAdmin->password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $UNSAdmin->password_unen = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     switch($UNSAdmin->login())
     {
         case -2: /* Passwords do not match, bad login, increment failed login flag, Log it, and tell the user.*/
@@ -85,12 +108,28 @@ if($UNSAdmin->LoginCheck())
 {
     $UNSAdmin->GenTzOpts();
     $UNSAdmin->GetPermissions();
-    $UNSAdmin->client = @filter_input(INPUT_GET, 'client', FILTER_SANITIZE_STRING);
-    $func = @filter_input(INPUT_GET, 'func', FILTER_SANITIZE_STRING);
-    switch($func)
+    if(!$UNSAdmin->CheckPermissions())
     {
-        case "chg_tz": /* Change the timezone */
-            $cl_timezone = filter_input(INPUT_POST, 'cl_timezone', FILTER_SANITIZE_SPECIAL_CHARS);
+        $UNSAdmin->AddMessage("You are not provisioned to use the area that you have selected, please go back and stay within the playground.", 1);
+        $UNSAdmin->ShowResults();
+    }
+    $UNSAdmin->client = @filter_input(INPUT_GET, 'client', FILTER_SANITIZE_STRING);
+    $UNSAdmin->smarty->assign("client", $UNSAdmin->client);
+    $UNSAdmin->smarty->assign("host_path", $UNSAdmin->host_path);
+    
+    if($UNSAdmin->led_blink)
+    {
+        $blink_flag = "";
+    }else
+    {
+        $blink_flag = "disabled";
+    }
+    $UNSAdmin->smarty->assign("led_blink", $blink_flag);
+    switch($UNSAdmin->parsed_edit_uri['func'])
+    {
+        /* Change the timezone */
+        case "chg_tz":
+            $cl_timezone = $UNSAdmin->parsed_edit_uri['cl_timezone'];
             $sql = "UPDATE `{$UNSAdmin->sql->db}`.`allowed_users` SET `tz` = '$cl_timezone' WHERE `username` = '{$UNSAdmin->username}'";
             if($UNSAdmin->sql->conn->query($sql))
             {
@@ -106,7 +145,7 @@ if($UNSAdmin->LoginCheck())
             switch($UNSAdmin->Logout())
             {
                 case 1:
-                    #echo "Logout Successful!";
+                    echo "Logout Successful!";
                     $UNSAdmin->Redirect("");
                     break;
             
@@ -130,12 +169,12 @@ if($UNSAdmin->LoginCheck())
         
         case "edit_urls": 
             /* Things that you can do to the URLS of clients */
-            $UNSAdmin->parse_edit_url($_REQUEST);
+            $UNSAdmin->GetFriendly();
             $UNSAdmin->smarty->assign("cl_func", $UNSAdmin->parsed_edit_uri['cl_func']);
             switch($UNSAdmin->parsed_edit_uri['cl_func'])
             {
                 case "copy2_proc":
-                    $UNSAdmin->url_imp = filter_input(INPUT_POST, "urls", FILTER_SANITIZE_STRING);
+                    $UNSAdmin->ids_imp = filter_input(INPUT_POST, "allids", FILTER_SANITIZE_STRING);
                     $UNSAdmin->CopyClientURLS();
                     $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
                     $UNSAdmin->ShowResults("Copy Client Links");
@@ -154,41 +193,62 @@ if($UNSAdmin->LoginCheck())
                     break;
                 
                 case "edit_proc":
-                    switch($UNSAdmin->parsed_edit_uri['jobtodo'])
+                    $UNSAdmin->smarty->assign("jobtodo", $UNSAdmin->parsed_edit_uri['jobtodo']);
+                    switch(strtolower($UNSAdmin->parsed_edit_uri['jobtodo']))
                     {
-                        case "Copy":
+                        case "copy":
                             $UNSAdmin->GetClientList($UNSAdmin->client);
-                            
                             $UNSAdmin->smarty->assign("clients", $UNSAdmin->client_list);
-                            $UNSAdmin->smarty->assign("urls_imp", implode("|",$_POST['urls']));
-                            $UNSAdmin->smarty->assign("client", $UNSAdmin->client);
-                            
+                            $UNSAdmin->smarty->assign("allids", implode("|",$_POST['ids']));
                             $UNSAdmin->smarty->display("copy_links_client_select.tpl");
-                            
                             break;
                         
-                        case "Save To List":
+                        case "save to list":
                             $UNSAdmin->GetSavedLists();
                             $UNSAdmin->smarty->assign("saved_lists", $UNSAdmin->SavedLists);
                             $UNSAdmin->smarty->assign("urls_imp", implode("|",$_POST['urls']));
-                            $UNSAdmin->smarty->assign("client", $UNSAdmin->client);
                             $UNSAdmin->smarty->display("save_list_details.tpl");
                             break;
                         
-                        case "Remove":
-                            
+                        case "remove":
+                            switch(strtolower(@$UNSAdmin->parsed_edit_uri['save_q']))
+                            {
+                                case "yes":
+                                    $UNSAdmin->RemoveURLs($UNSAdmin->parsed_edit_uri['allids']);
+                                    $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                                    $UNSAdmin->ShowResults("Removed URL");
+                                    break;
+                                case "no":
+                                    $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                                    $UNSAdmin->AddMessage("User choose not to remove the URL(s)");
+                                    $UNSAdmin->ShowResults("");
+                                    break;
+                                default:
+                                    $ids = array();
+                                    foreach($_REQUEST['ids'] as $id)
+                                    {
+                                        $ids[] = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+                                    }
+                                    $UNSAdmin->smarty->assign("allids", implode("|", $ids));
+                                    $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove this/these URL(s)? <br>[".implode("|", $ids)."] </br>
+                                        If you do it will be archived.");
+                                    $UNSAdmin->DisplayPage('ask_user.tpl');
+                                    break;
+                            }
                             break;
                         
-                        case "Disable":
-                            
+                        case "disable":
+                            $UNSAdmin->DisableURLs();
+                            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+                            $UNSAdmin->ShowResults("Toggle Disable/Enable for URLs on Client: {$UNSAdmin->client}");
                             break;
                         
-                        case "Set All":
+                        case "set all":
                             $UNSAdmin->SetRefreshURLS();
                             $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
-                            $UNSAdmin->ShowResults("Add New URLs to Client: {$UNSAdmin->client}");
-                            
+                            $UNSAdmin->ShowResults("Updated Refresh time for URLs on Client: {$UNSAdmin->client}");
                             break;
+                        
                         default:
                             exit("go away.");
                             break;
@@ -197,11 +257,10 @@ if($UNSAdmin->LoginCheck())
                     break;
                 
                 case "restore_saved":
-                    
-                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                    switch(strtolower(@$UNSAdmin->parsed_edit_uri['save_q']))
                     {
                         case "yes":
-                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
                             $UNSAdmin->RestoreSavedList($saved_id);
                             $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
                             $UNSAdmin->ShowResults("Restore Saved URL List");
@@ -215,16 +274,16 @@ if($UNSAdmin->LoginCheck())
                             $UNSAdmin->smarty->assign("Question", "Are you sure you want to restore this Saved URL List? </br>
                                 If you do this it will remove the current ones and replace them with the saved list. </br>
                                 Dont worry though, the URLS that were there will be archived.");
-                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            $UNSAdmin->DisplayPage('ask_user.tpl');
                             break;
                     }
                     break;
                 
                 case "remove_saved":
-                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                    switch(strtolower(@$UNSAdmin->parsed_edit_uri['save_q']))
                     {
                         case "yes":
-                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
                             $UNSAdmin->RemoveSavedList($saved_id);
                             $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
                             $UNSAdmin->ShowResults("Removed Saved URL List");
@@ -235,19 +294,20 @@ if($UNSAdmin->LoginCheck())
                             $UNSAdmin->ShowResults("Removal of Saved URLs List");
                             break;
                         default:
-                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove these Saved URL List? </br>
+                            $UNSAdmin->smarty->assign("saved_id", $saved_id);
+                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove this/these Saved URL List(s)? </br>
                                 If you do, you will not have this list any more.");
-                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            $UNSAdmin->DisplayPage('ask_user.tpl');
                             break;
                     }
                     break;
                 
-                case "removed_archive":
-                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                case "remove_archive":
+                    switch(strtolower(@$UNSAdmin->parsed_edit_uri['save_q']))
                     {
                          case "yes":
-                            $saved_id = $UNSAdmin->parsed_edit_uri['id'];
-                            $UNSAdmin->RemoveArchivedList($saved_id);
+                            $allids = $UNSAdmin->parsed_edit_uri['allids'];
+                            $UNSAdmin->RemoveArchivedList($allids);
                             $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
                             $UNSAdmin->ShowResults("Removed Archived URL List");
                             break;
@@ -257,15 +317,19 @@ if($UNSAdmin->LoginCheck())
                             $UNSAdmin->ShowResults("Removal of Archived List.");
                             break;
                         default:
-                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove this Archived URL List? </br>
-                                If you do this you will no longer have this list.");
-                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            $allids = implode("|", $_REQUEST['ids']);
+                            $UNSAdmin->smarty->assign("allids", $allids);
+                            $UNSAdmin->smarty->assign("Question", "Are you sure you want to remove this/these Archived List(s)? </br>
+                                If you do this you will no longer have this list.</br>
+                                {$allids}");
+                            $UNSAdmin->DisplayPage('ask_user.tpl');
                             break;
                     }
                     break;
                 
                 case "restore_archive":
-                    switch(strtolower($UNSAdmin->parse_edit_url['yes_save']))
+                    $saved_id = $UNSAdmin->parsed_edit_uri['id'];
+                    switch(strtolower(@$UNSAdmin->parsed_edit_uri['save_q']))
                     {
                          case "yes":
                             $saved_id = $UNSAdmin->parsed_edit_uri['id'];
@@ -279,13 +343,13 @@ if($UNSAdmin->LoginCheck())
                             $UNSAdmin->ShowResults("Restore URLS");
                             break;
                         default:
+                            $UNSAdmin->smarty->assign("saved_id", $saved_id);
                             $UNSAdmin->smarty->assign("Question", "Are you sure you want to restore this Archived URL List? </br>
                                 If you do this it will remove the current ones and replace them with the saved list. </br>
                                 Dont worry though, the URLS that were there will be archived.");
-                            $UNSAdmin->smarty->dispaly('ask_user.tpl');
+                            $UNSAdmin->DisplayPage('ask_user.tpl');
                             break;
                     }
-                    
                     break;
                 
                 case "save_append":
@@ -300,7 +364,7 @@ if($UNSAdmin->LoginCheck())
             break;
         
         case "add_client":
-            $name = filter_input(INPUT_POST, 'friendly', FILTER_SANITIZE_STRING);
+            $name = $UNSAdmin->parsed_edit_uri['friendly'];
             if(!$UNSAdmin->CreateClient($name, 1))
             {
                 throw new Exception("Failed to create new client.");
@@ -319,25 +383,153 @@ if($UNSAdmin->LoginCheck())
             break;
             
         case "rename_client":
-            $UNSAdmin->clientNewName = filter_input(INPUT_POST, 'client_name', FILTER_SANITIZE_STRING);
-            $UNSAdmin->client = filter_input(INPUT_POST, 'client_id', FILTER_SANITIZE_STRING);
+            $UNSAdmin->GetFriendly();
+            $UNSAdmin->client = $UNSAdmin->parsed_edit_uri['client_id'];
+            $UNSAdmin->clientNewName = $UNSAdmin->parsed_edit_uri['client_name'];
+            
             $UNSAdmin->RenameClient();
             
-            $UNSAdmin->Redirect('');
-            $UNSAdmin->ShowResults($title);
+            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+            $UNSAdmin->ShowResults("Renamed Client ({$UNSAdmin->friendly}) to ({$UNSAdmin->clientNewName})");
             break;
         
+        case "client_led_set":
+            $UNSAdmin->GetFriendly();
+            $UNSAdmin->ChangeClientLED($UNSAdmin->parsed_edit_uri['cl_led_id']);
+            
+            $UNSAdmin->Redirect("?func=view_client&client={$UNSAdmin->client}");
+            $UNSAdmin->ShowResults("Set Client LED Group");
+            break;
         
-        default:
+        case "img_messages":
+            $UNSAdmin->GetImgMessages();
+            $UNSAdmin->smarty->assign("AllImgMessages", $UNSAdmin->AllImgMessages);
+            $UNSAdmin->smarty->display("ImgMessages.tpl");
+            
+            break;
+        
+        case "edit_emerg":
+            $UNSAdmin->GetEmergFlag();
+            if($UNSAdmin->emerg_flag)
+            {
+                $toggle_label = "Disable";
+            }else
+            {
+                $toggle_label = "Enable";
+            }
+            $UNSAdmin->GetEmergencyMessages();
+            $UNSAdmin->smarty->assign("all_emerg_msgs", $UNSAdmin->all_emerg_msgs);
+            $UNSAdmin->smarty->assign("Toggle_Label", $toggle_label);
+            $UNSAdmin->smarty->display("emergency.tpl");
+            break;
+        
+        case "emerg_proc":
+            switch(strtolower(@$UNSAdmin->parsed_edit_uri['jobtodo']))
+            {
+                case "enable/disable":
+                    $UNSAdmin->ToggleEmergURL();
+                    $UNSAdmin->Redirect("?func=edit_emerg");
+                    $UNSAdmin->ShowResults("Toggle Emergency Message State");
+                    break;
+                case "delete":
+                    $UNSAdmin->DeleteEmergencyMessage();
+                    $UNSAdmin->Redirect("?func=edit_emerg");
+                    $UNSAdmin->ShowResults("Delete Emergency Message");
+                    break;
+                case "update refresh":
+                    $UNSAdmin->SetEmergRefreshURLS();
+                    $UNSAdmin->Redirect("?func=edit_emerg");
+                    $UNSAdmin->ShowResults("Set Emergency Refresh Times");
+                    break;
+                default:
+                    #var_dump($UNSAdmin->parsed_edit_uri);
+                    if(@$UNSAdmin->parsed_edit_uri['toggle_global_emerg'])
+                    {
+                        $UNSAdmin->ToggleEmergState();
+                        $UNSAdmin->GetEmergFlag();
+                        $UNSAdmin->smarty->assign("emerg_flag", $this->emerg_flag);
+                        $UNSAdmin->Redirect("?func=edit_emerg");
+                        $UNSAdmin->ShowResults("Toggle the Global Emergency Messages");
+                    }else
+                    {
+                        echo "ummmmm...";
+                    }
+                    break;
+            }
+            
+            break;
+        
+        case "add_emerg":
+            $UNSAdmin->AddEmergURLs($UNSAdmin->parsed_edit_uri['new_emerg_urls']);
+            $UNSAdmin->Redirect("?func=edit_emerg");
+            $UNSAdmin->ShowResults("Toggle the Global Emergency Messages");
+            break;
+        
+        case "create_user":
+            $UNSAdmin->CreateUser();
+            $UNSAdmin->Redirect("?func=view_users", 5);
+            $UNSAdmin->ShowResults("Add New UNS User"); 
+            break;
+        
+        case "view_users":
+            $UNSAdmin->GetUserInfo($UNSAdmin->username);
+            $UNSAdmin->smarty->assign("UNS_all_users", $UNSAdmin->all_user_info);
+            $UNSAdmin->smarty->display("view_users.tpl");
+            break;
+        
+        case "edit_users":
+            #var_dump($UNSAdmin->parsed_edit_uri['jobtodo']);
+            switch(strtolower($UNSAdmin->parsed_edit_uri['jobtodo']))
+            {
+                case "update permissions":
+                    $UNSAdmin->UpdatePermissions();
+                    $UNSAdmin->Redirect("?func=view_users");
+                    $UNSAdmin->ShowResults("Update Permissions for ({$UNSAdmin->parsed_edit_uri['username']})");
+                    break;
+                case "remove":
+                    $UNSAdmin->RemoveUsers();
+                    $UNSAdmin->Redirect("?func=view_users", 5);
+                    $UNSAdmin->ShowResults("Remove User: ({$UNSAdmin->parsed_edit_uri['username']})");
+                    break;
+                case "enable":
+                    $UNSAdmin->ToggleUser();
+                    $UNSAdmin->Redirect("?func=view_users");
+                    $UNSAdmin->ShowResults("Disabled User");
+                    break;
+                case "disable":
+                    $UNSAdmin->ToggleUser();
+                    $UNSAdmin->Redirect("?func=view_users");
+                    $UNSAdmin->ShowResults("Enabled User");
+                    break;
+                case "send password reset":
+                    $UNSAdmin->SendPasswordReset();
+                    $UNSAdmin->Redirect("?func=view_users");
+                    $UNSAdmin->ShowResults("Sent User ({$UNSAdmin->parsed_edit_uri['username']}) a Password Reset Email.");
+                    break;
+                case "reset failed logins":
+                    $UNSAdmin->ResetFailedLogin();
+                    $UNSAdmin->Redirect("?func=view_users");
+                    $UNSAdmin->ShowResults("Reset Failed Logins for User: {$UNSAdmin->parsed_edit_uri['username']}.");
+                    break;
+                default:
+                    echo "ummmm....";
+                    break;
+            }
+            break;
+        
+        case "view_clients":
             $UNSAdmin->GetAllClients();
             $UNSAdmin->smarty->assign("AllClients", $UNSAdmin->client_all_data);
             $UNSAdmin->smarty->display("admin_index.tpl");
             break;
+        
+        default:
+            $UNSAdmin->Redirect("?func=view_clients", 0);
+            $UNSAdmin->ShowResults("Redirect to Index");
+            break;
     }
-    
 }else
 {
     $UNSAdmin->smarty->display("admin_login.tpl");
 }
-
 ?>

@@ -1,12 +1,8 @@
-Re-write Things to do:
-	Client Saved Links
-	Client Archived Links
-	Emergency Messages Page
-	User Permissions Page
-	Image Message Management Page
-	Custom Messages Management Page
-	RSS Feeds Management Page
-	UNS Options page
-	Make the install page.
-Things to do after re-write:
-	Add Support for other SQL DBs (postgres)
+Add support for smarty
+Add support for PDO
+Rewrite install for other SQL DBs (postgres)
+rewrite to OO code
+    write core code [core()]
+    admin code	[admin()]
+    client fetch code [client()]
+    XML API [api()]

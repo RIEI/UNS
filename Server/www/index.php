@@ -25,6 +25,7 @@
  */
 require 'lib/UNSClient.inc.php';
 $UNSClient = new UNSClient();
+$UNSClient->parse_edit_url($_REQUEST);
 
 $UNSClient->out = @strtolower(filter_input(INPUT_GET, 'out', FILTER_SANITIZE_SPECIAL_CHARS));
 $UNSClient->client = filter_input(INPUT_GET, 'client', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -55,8 +56,26 @@ switch($UNSClient->out)
             $UNSClient->DisplayClientURL();
         }else
         {
-            $UNSClient->GetClientList();
-            $UNSClient->DisplayAllClients();
+            switch($UNSClient->type)
+            {
+                case "img":
+                    $UNSClient->GetImageMsg($UNSClient->msgid);
+                    
+                    break;
+                
+                case "c_msg":
+                    $UNSClient->GetCustomMsg($UNSClient->cmsgid);
+                    break;
+                
+                case "rss":
+                    $UNSClient->GetRSSFeed($UNSClient->rssid);
+                    break;
+                
+                default :
+                    $UNSClient->GetClientList();
+                    $UNSClient->DisplayAllClients();
+                    break;
+            }
         }
     break;
 

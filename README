@@ -3,8 +3,7 @@ RanInt -> UNS -> Read-me
 
   A set of PHP-scripts to manage Displays for Notifications
 
-  Project Phase: V1 (Stable)
-				 V2 (Beta)
+  Project Phase: Alpha
   --------------
   http://uns.randomintervals.com/
 
@@ -30,17 +29,8 @@ RanInt -> UNS -> Read-me
 		
   Summary:
 		UNS is a PHP and MySQL based set of scripts that is intended to manage and
-		show messages and web pages on Area Displays. With the ability to enable 
-		emergency messages globaly, or have unique lists of URLS for each display.
-		
-		Client computers connect with a web browser to the server and get a web page 
-		that has been configured for that client. So on the server say you set up a 
-		client for the Front Lobby and add URLs to the companies homepage, some news 
-		sites that relate to the company, weather, or you can make custom pages 
-		(todays lunch menu, RSS feed view (area news or School news), or Images 
-		(marketing). There is an Emergency Mode that overrides all the clients and 
-		displays the current Emergency Message. (IE Intruder in the building lock all 
-		doors, or a Fire in a building and show the escape route.)
+		display messages on monitors. With the ability to enable emergency messages
+		globaly, or have unique lists of URLS for each display.
 		
   Support:
 		Go to http://forum.techidiots.net/forum/viewforum.php?f=55

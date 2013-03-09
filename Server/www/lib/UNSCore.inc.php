@@ -28,7 +28,7 @@
  */
 
 /** Should only be on for Development */
-error_reporting(E_ALL|E_STRICT);
+error_reporting(E_ALL & E_STRICT);
 
 
 class UNSCore
@@ -46,7 +46,7 @@ class UNSCore
         require WWW_DIR.'configs/vars.php';
         require WWW_DIR.'configs/conn.php';
         $this->version      = "2.0";
-        $this->release_date = "6/17/2012";
+        $this->release_date = "8/26/2012";
         $this->DateFormat   = "Y-m-d H:i:s";
         $this->emergency    = 0;
         $this->error_flag   = 0;
@@ -79,6 +79,7 @@ class UNSCore
 	$this->smarty->setCompileDir( WWW_DIR.'smarty/templates_c/' );
 	$this->smarty->setCacheDir( WWW_DIR.'smarty/cache/' );
 	$this->smarty->setConfigDir( WWW_DIR.'/smarty/configs/');
+        $this->smarty->error_reporting  = 0;
         $this->smarty->assign("UNS_Title", $this->title);
         $this->smarty->assign("UNS_URL", $this->host_path);
         $this->smarty->assign("version", $this->version);
@@ -107,7 +108,6 @@ class UNSCore
         }
         $this->sql->conn    = new PDO($this->sql->dsn, $sql_args['username'], @$sql_args['password'], $options);
 	/* Mike Rowe does some dirty jobs. */
-	
     }
     
     function blinky($id)
@@ -180,8 +180,12 @@ class UNSCore
         }
     }
     
-    function GetFriendly($id)
+    function GetFriendly($id="")
     {
+        if($id == "")
+        {
+            $id = $this->client;
+        }
         $sql = "SELECT `friendly` FROM `{$this->sql->db}`.`friendly` WHERE `client` = :client";
         $prep = $this->sql->conn->prepare($sql);
         $prep->bindParam(":client", $id, PDO::PARAM_STR);
@@ -189,6 +193,64 @@ class UNSCore
         $friendly_ret = $prep->fetch(2);
         $this->friendly = $friendly_ret['friendly'];
         return $this->friendly;
+    }
+    
+    function GetEmergFlag()
+    {
+        $sql = "SELECT `emerg` FROM `{$this->sql->db}`.`settings` LIMIT 1";
+        $query = $this->sql->conn->query($sql);
+        $query->execute();
+        $array = $query->fetch(2);
+        $this->emerg_flag = $array['emerg'];
+    }
+    
+    function parse_edit_url($request)
+    {
+        $definition = array(
+            #Admin page parsing
+            'allids'=>FILTER_SANITIZE_STRING,
+            'client'=>FILTER_SANITIZE_STRING,
+            'copy2'=>FILTER_SANITIZE_STRING,
+            'save_list'=>FILTER_SANITIZE_STRING,
+            'remove'=>FILTER_SANITIZE_STRING,
+            'disable'=>FILTER_SANITIZE_NUMBER_INT,
+            'refresh'=>FILTER_SANITIZE_NUMBER_INT,
+            'func'=>FILTER_SANITIZE_STRING,
+            'cl_func'=>FILTER_SANITIZE_STRING,
+            'copy_clients'=>FILTER_SANITIZE_STRING,
+            'jobtodo'=>FILTER_SANITIZE_STRING,
+            'NEWURLS'=>FILTER_SANITIZE_STRING,
+            'name'=>FILTER_SANITIZE_STRING,
+            'urls'=>FILTER_SANITIZE_STRING,
+            'details'=>FILTER_SANITIZE_STRING,
+            'saved'=>FILTER_SANITIZE_NUMBER_INT,
+            'save_q'=>FILTER_SANITIZE_STRING,
+            'id'=>FILTER_SANITIZE_NUMBER_INT,
+            'cl_led_id'=>FILTER_SANITIZE_NUMBER_INT,
+            'client_name'=>FILTER_SANITIZE_STRING,
+            'client_id'=>FILTER_SANITIZE_STRING,
+            'friendly'=>FILTER_SANITIZE_STRING,
+            'cl_timezone'=>FILTER_SANITIZE_SPECIAL_CHARS,
+            'toggle_global_emerg'=>FILTER_SANITIZE_STRING,
+            'edit_clients'=>FILTER_SANITIZE_STRING,
+            'edit_emerg'=>FILTER_SANITIZE_STRING,
+            'c_messages'=>FILTER_SANITIZE_STRING,
+            'img_messages'=>FILTER_SANITIZE_STRING,
+            'rss_feeds'=>FILTER_SANITIZE_STRING,
+            'edit_users'=>FILTER_SANITIZE_STRING,
+            'edit_options'=>FILTER_SANITIZE_STRING,
+            'username'=>FILTER_SANITIZE_STRING,
+            'userid'=>FILTER_SANITIZE_NUMBER_INT,
+            'hash'=>FILTER_SANITIZE_STRING,
+            'password_reset_flag'=>FILTER_SANITIZE_NUMBER_INT,
+            
+            #Client Fetching Parsing
+            'client'=>FILTER_SANITIZE_STRING,
+            'type'=>FILTER_SANITIZE_STRING,
+            'out'=>FILTER_SANITIZE_STRING,
+            
+        );
+        $this->parsed_edit_uri = array_filter(filter_var_array($request, $definition));
     }
     
     function read_lpt()
@@ -208,7 +270,7 @@ class UNSCore
         
         require WWW_DIR.'configs/conn.php'; #the configs have been found, lets load the SQL one, and see if the database is setup correctly.
         
-        $dsn = $GLOBALS['sql_args']['service'].':host='.$GLOBALS['sql_args']['server'].';dbname='.$GLOBALS['sql_args']['db'];;
+        $dsn = $GLOBALS['sql_args']['service'].':host='.$GLOBALS['sql_args']['server'].';dbname='.$GLOBALS['sql_args']['db'];
         if($GLOBALS['sql_args']['service'] == "mysql")
         {
             $options = array(
@@ -266,16 +328,42 @@ class UNSCore
         }
     }
     
-    function Log($message = "", $type = 0)
+    function Log($message, $type = 0)
     {
-        $sql = "INSERT INTO `{$this->sql->db}`.`log` (`id`, `detail`, `level`, `time`) VALUES (NULL, :detail, :level, :time)";
+        $time = time();
+        if($type == 1)
+        {
+            $message = $message.var_export($_REQUEST,1)."\r\n";
+        }
+        $sql = "INSERT INTO `{$this->sql->db}`.`log` (`id`, `detail`, `level`, `time`, `username`, `ip_addr`) VALUES (NULL, :detail, :level, :time, :username, :ip_addr)";
         $prep = $this->sql->conn->prepare($sql);
         $prep->bindParam(":detail", $message, PDO::PARAM_STR);
         $prep->bindParam(":level", $type, PDO::PARAM_STR);
-        $prep->bindParam(":time", time(), PDO::PARAM_INT);
+        $prep->bindParam(":time", $time, PDO::PARAM_INT);
+        $prep->bindParam(":username", $this->username, PDO::PARAM_STR);
+        $prep->bindParam(":ip_addr", $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
         $prep->execute();
         $this->check_pdo_error($prep);
         return 1;
+    }
+            
+    function check_pdo_error($obj)
+    {
+        $error = $obj->errorCode();
+        if($error == "00000" ){return 1;}
+        else
+        {
+            if($error == NULL)
+            {
+                $info = "You might have forgot to run execute on your PDO statement.";
+            }else
+            {
+                $info = $obj->errorInfo();
+            }
+            $this->log("CRITICAL ERROR: ".var_export($info,1)."\r\n", 2);
+            throw new Exception(implode("<br>",$info));
+            return 0;
+        }
     }
 }
 
@@ -290,8 +378,7 @@ class UNSCore
  * bunch of clients connecting and throwing errors
 */
 function exception_handler($err)
-{ 
-    
+{
     require_once(SMARTY_DIR.'Smarty.class.php');
     $smarty = new Smarty();
     $smarty->setTemplateDir( WWW_DIR.'smarty/templates/' );
@@ -307,7 +394,6 @@ function exception_handler($err)
                 'File'=>$err->getFile(),
                 'Line'=>strval($err->getLine())
                 );
-    
     $smarty->assign('UNS_Trace', $trace);
     $smarty->display('error.tpl');
 }

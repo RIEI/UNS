@@ -16,6 +16,7 @@
         </tr>
         <tr>
             <td align="center">
+                <input type="hidden" name="allids" value="{$allids}" >
                 <input type='submit' name="submit" value='submit'>
             </td>
         </tr>
