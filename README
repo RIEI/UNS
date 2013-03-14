@@ -1,5 +1,5 @@
-RanInt -> UNS -> Read-me
-===================
+Random Intervals -> UNS -> Read-me
+==================================
 
   A set of PHP-scripts to manage Displays for Notifications
 
@@ -22,8 +22,8 @@ RanInt -> UNS -> Read-me
 	Or go here:  http://www.gnu.org/licenses/gpl-2.0.txt
 		
   Requirements:
-		PHP 5.0 or later
-		MySQL 5.0 or later
+		PHP 5.3 or later
+		MariaDB 5.2 or later
 		Apache or IIS
 		A Web-browser (doh!)
 		
