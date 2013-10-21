@@ -28,25 +28,25 @@
  */
 
 /** Should only be on for Development */
-error_reporting(E_ALL & E_STRICT);
 
+error_reporting(E_ALL); /** DEV USE ONLY */
+
+$folders    = explode("/", $_SERVER['SCRIPT_NAME']);
+$base       = "/{$folders[1]}/";
+define('WWW_DIR', $_SERVER['DOCUMENT_ROOT'].$base);
+define('SMARTY_DIR', $_SERVER['DOCUMENT_ROOT'].$base.'/smarty/');
 
 class UNSCore
 {
+    static $version = "2.0";
+    static $release_date = "2013";
     function __construct()
     {
-        $folders    = explode("/", $_SERVER['SCRIPT_NAME']);
-        $base       = "/{$folders[1]}/";
-        
-        define('WWW_DIR', $_SERVER['DOCUMENT_ROOT'].$base);
-	define('SMARTY_DIR', $_SERVER['DOCUMENT_ROOT'].$base.'/smarty/');
-        set_exception_handler('exception_handler');
-        $this->Install_Update_Check($base);
-        
+        set_error_handler('exception_handler');
+        $this->Install_Update_Check();
+
         require WWW_DIR.'configs/vars.php';
         require WWW_DIR.'configs/conn.php';
-        $this->version      = "2.0";
-        $this->release_date = "8/26/2012";
         $this->DateFormat   = "Y-m-d H:i:s";
         $this->emergency    = 0;
         $this->error_flag   = 0;
@@ -70,15 +70,16 @@ class UNSCore
         $this->lpt_write_bin    = $config['lpt_write_bin'];
         $this->lpt_read_bin     = $config['lpt_read_bin'];
         $this->client           = "";
+        $this->friendly         = "";
         /* 
 	 * Lets Setup Smarty
 	 */
-	require_once(SMARTY_DIR.'Smarty.class.php');
-	$this->smarty = new Smarty();
-	$this->smarty->setTemplateDir( WWW_DIR.'smarty/templates/' );
-	$this->smarty->setCompileDir( WWW_DIR.'smarty/templates_c/' );
-	$this->smarty->setCacheDir( WWW_DIR.'smarty/cache/' );
-	$this->smarty->setConfigDir( WWW_DIR.'/smarty/configs/');
+        require_once(SMARTY_DIR.'Smarty.class.php');
+        $this->smarty = new Smarty();
+        $this->smarty->setTemplateDir( WWW_DIR.'smarty/templates/' );
+        $this->smarty->setCompileDir( WWW_DIR.'smarty/templates_c/' );
+        $this->smarty->setCacheDir( WWW_DIR.'smarty/cache/' );
+        $this->smarty->setConfigDir( WWW_DIR.'/smarty/configs/');
         $this->smarty->error_reporting  = 0;
         $this->smarty->assign("UNS_Title", $this->title);
         $this->smarty->assign("UNS_URL", $this->host_path);
@@ -87,7 +88,6 @@ class UNSCore
         /* 
 	 * Lets Setup SQL
 	 */
-        require $this->path.'configs/conn.php';
         $this->sql                    = new stdClass();
         $this->sql->host              = $sql_args['server'];
         $this->sql->service           = $sql_args['service'];
@@ -107,16 +107,14 @@ class UNSCore
             );
         }
         $this->sql->conn    = new PDO($this->sql->dsn, $sql_args['username'], @$sql_args['password'], $options);
-	/* Mike Rowe does some dirty jobs. */
     }
     
     function blinky($id)
     {
-        if(!$this->led_blink){return 1;}
-        if(!@$id){return 0;}
-        
-        
-        $binary_array = array(
+        if(!$this->led_blink){return 0;}
+        if($id > 6 || $id <= 0){return -1;}
+
+        $binary_array = array( # High is off, Low is On (at least on my hardware it was)
             0=>1,# Client 1
             1=>1,# Client 2
             2=>1,# Client 3
@@ -127,37 +125,22 @@ class UNSCore
             7=>1 # Emerg flag
         );
         
-        $sql = "SELECT `emerg` FROM `{$this->sql->db}`.`settings` LIMIT 1";
+        $sql = "SELECT `emerg` FROM `uns`.`settings` LIMIT 1";
         $result = $this->sql->conn->query($sql);
         $emerg = $result->fetch(2);
-        if($emerg['emerg']){$binary_array[7]=0;} #set Emerg led in var
-       #echo "INIT: $dec\r\n".decbin($dec)."\r\n";
+        if($emerg['emerg'] == 1){$binary_array[7]=0;} #set Emerg led in var
+        #echo "INIT: $dec\r\n".decbin($dec)."\r\n";
         
         $binary_string = implode("", $binary_array);
         $dec = bindec($binary_string);
-        
         $this->blink($dec); #set initial
 
-        if($id > 6)
-        {
-            
-        }else
-        {
-            $on = $dec - $c_leds[$id];
-        }
-       #echo "ON: $on\r\n".decbin($on)."\r\n";
-
+        $on = $dec - $c_leds[$id];
+        #echo "ON: $on\r\n".decbin($on)."\r\n";
         $this->blink($on);
 
-        if($id > 6)
-        {
-            
-        }else
-        {
-            
-        }
-       #echo "OFF: $off\r\n".decbin($off)."\r\n";
-
+        $off = $dec + $c_leds[$id];
+        #echo "OFF: $off\r\n".decbin($off)."\r\n";
         $this->blink($off);
     }
 
@@ -259,18 +242,19 @@ class UNSCore
         return $read;
     }
     
-    function Install_Update_Check($base = "")
+    function Install_Update_Check()
     {
         
-        if(!file_exists($_SERVER['DOCUMENT_ROOT'].$base."configs/vars.php"))
+        if(!file_exists(WWW_DIR."configs/vars.php"))
         {throw new Exception("Could not find configs/vars.php");}
         
-        if(!file_exists($_SERVER['DOCUMENT_ROOT'].$base."configs/conn.php"))
+        if(!file_exists(WWW_DIR."configs/conn.php"))
         {throw new Exception("Could not find configs/conn.php");}
         
         require WWW_DIR.'configs/conn.php'; #the configs have been found, lets load the SQL one, and see if the database is setup correctly.
         
         $dsn = $GLOBALS['sql_args']['service'].':host='.$GLOBALS['sql_args']['server'].';dbname='.$GLOBALS['sql_args']['db'];
+        #var_dump($dsn);
         if($GLOBALS['sql_args']['service'] == "mysql")
         {
             $options = array(
@@ -294,21 +278,25 @@ class UNSCore
         }
         else
         {
-            {throw new Exception("SQL Error: ".var_export($conn->errorInfo()));}
+            echo "SQL Error: ".var_export( $conn->errorInfo() );
         }
+
+        /* Mike Rowe does some dirty jobs. */
 
         if($uns_ver['uns_ver'] == "")
         {
-            {throw new Exception("UNS Has some tables, but seems to have no data. You may need to install or update. <a href='{$base}install.php'>Install Page</a>");}
+            echo "UNS Has some tables, but seems to have no data. You may need to install or update. <a href='setup.php'>Install Page</a>";
+            die();
         }
         else
         {
             if($uns_ver['uns_ver'] != "2.0")
             {
-                {throw new Exception("UNS Is out of date, you need to upgrade it. <a href='{$base}upgrade.php'>Upgrade Page</a>");}
+                echo "UNS Is out of date, you need to upgrade it. To upgrade, go to the <a href='upgrade.php'>Upgrade page</a>";
+                die();
             }else
             {
-                return $uns_ver['uns_ver'];
+                return 0;
             }
         }
     }
@@ -386,14 +374,25 @@ function exception_handler($err)
     $smarty->setCacheDir( WWW_DIR.'smarty/cache/' );
     $smarty->setConfigDir( WWW_DIR.'/smarty/configs/');
     $smarty->assign("UNS_Title", "UNS");
-    
-    $trace = array( 
-                'Error' =>strval($err->getCode()),
-                'Message'=>$err->getMessage(),
-                'Code'=>strval($err->getCode()),
-                'File'=>$err->getFile(),
-                'Line'=>strval($err->getLine())
-                );
+    if(is_array($err))
+    {
+        $trace = array(
+                    'Error' =>strval($err->getCode()),
+                    'Message'=>$err->getMessage(),
+                    'Code'=>strval($err->getCode()),
+                    'File'=>$err->getFile(),
+                    'Line'=>strval($err->getLine())
+                    );
+    }else
+    {
+        $trace = array(
+            'Error' =>0,
+            'Message'=>$err,
+            'Code'=>0,
+            'File'=>"",
+            'Line'=>0,
+        );
+    }
     $smarty->assign('UNS_Trace', $trace);
     $smarty->display('error.tpl');
 }

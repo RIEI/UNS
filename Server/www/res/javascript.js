@@ -40,3 +40,9 @@ function expandcontract(tbodyid,ClickIcon)
         document.getElementById(ClickIcon).innerHTML = "+";
     }
 }
+
+
+function endisable( ) {
+    document.forms['UNS_Install'].elements['ldap_host'].disabled =! document.forms['UNS_Install'].elements['ldap'].checked;
+    document.forms['UNS_Install'].elements['ldap_port'].disabled =! document.forms['UNS_Install'].elements['ldap'].checked;
+}

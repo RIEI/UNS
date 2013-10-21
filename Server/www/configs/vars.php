@@ -2,9 +2,9 @@
 global $config;
 $config = array(
     'name_title' => 'URL Notification System DEV',              # Name of your Install, Will be displayed on all papes
-    'host' => '172.16.1.27/',                                   # The HTTP server the clients will connect to. (needs to be an IP or DNS name)
+    'host' => '172.16.1.77/',                                   # The HTTP server the clients will connect to. (needs to be an IP or DNS name)
     'path' => '/var/www/',                                      # HTTP Server root folder. (usually /var/www/ )
-    'root' => 'UNS2/',                                          # Folder UNS lives in (usually uns/ )
+    'root' => 'UNS/',                                          # Folder UNS lives in (usually uns/ )
     'SSL' => 0,                                                 # Cookie SSL only?
     'LDAP' => 0,                                                # If this flag is set, internal users will be overridden, except for the Admin.
     'LDAP_domain' => '',                                        # LDAP Domain to connect to for user authentication

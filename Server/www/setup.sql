@@ -4,10 +4,25 @@
 -- VER: 1.1
 -- 
 -- --------------------------------------------------------
+
+--
+-- create then use the UNS database.
+--
+
+CREATE DATABASE IF NOT EXISTS `uns`;
+USE `uns`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `allowed_clients`
+--
+
 CREATE TABLE IF NOT EXISTS `allowed_clients` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `client_name` varchar(255) NOT NULL,
   `led` int(11) NOT NULL DEFAULT '1',
+  `allowed_users` TEXT NOT NULL DEFAULT 'admin',
+  FULLTEXT (`allowed_users`),
   PRIMARY KEY (`id`),
   UNIQUE KEY `client_name` (`client_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
