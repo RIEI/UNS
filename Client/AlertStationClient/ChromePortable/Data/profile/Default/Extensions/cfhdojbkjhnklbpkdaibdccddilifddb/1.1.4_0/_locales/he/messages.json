@@ -1,0 +1,161 @@
+{
+   "add": {
+      "description": "This is the label for the 'Add' buttons.",
+      "message": "\u05D4\u05D5\u05E1\u05E4\u05D4"
+   },
+   "add_a_filter_list": {
+      "message": "\u05D4\u05E8\u05E9\u05DE\u05D4 \u05DC\u003Ca href='$url$'\u003E\u05E8\u05E9\u05D9\u05DE\u05EA \u05D4\u05DE\u05E1\u05E0\u05E0\u05D9\u05DD\u003C/a\u003E \u05E9\u05DC Adblock Plus \u05DC\u05BEFirefox:",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "add_domain_button": {
+      "message": "\u05D4\u05D5\u05E1\u05E4\u05EA \u05E9\u05DD \u05DE\u05EA\u05D7\u05DD"
+   },
+   "add_filter_button": {
+      "message": "\u05D4\u05D5\u05E1\u05E4\u05EA \u05DE\u05E1\u05E0\u05DF"
+   },
+   "add_filters_msg": {
+      "message": "\u05D4\u05D0\u05DD \u05DC\u05D4\u05D5\u05E1\u05D9\u05E3 \u05DE\u05E1\u05E0\u05DF/\u05D9\u05DD?"
+   },
+   "add_url_button": {
+      "message": "\u05D4\u05D5\u05E1\u05E4\u05EA \u05DB\u05EA\u05D5\u05D1\u05EA"
+   },
+   "add_your_own_filters": {
+      "message": "\u05D4\u05D5\u05E1\u05E4\u05EA \u05DE\u05E1\u05E0\u05E0\u05D9\u05DD \u05DE\u05E9\u05DC\u05DA"
+   },
+   "apply_changes": {
+      "message": "\u05D4\u05D7\u05DC\u05EA \u05D4\u05E9\u05D9\u05E0\u05D5\u05D9\u05D9\u05DD"
+   },
+   "block_youtube": {
+      "message": "\u05D7\u05E1\u05D9\u05DE\u05EA \u05E4\u05E8\u05E1\u05D5\u05DE\u05D5\u05EA \u05D1\u05EA\u05D5\u05DA \u05E1\u05E8\u05D8\u05D5\u05E0\u05D9 YouTube"
+   },
+   "cancel": {
+      "description": "Cancel button label",
+      "message": "\u05D1\u05D9\u05D8\u05D5\u05DC"
+   },
+   "clickhide_instructions": {
+      "message": "\u05DC\u05D0\u05D7\u05E8 \u05E1\u05D2\u05D9\u05E8\u05EA \u05D7\u05DC\u05D5\u05E0\u05D9\u05EA \u05D6\u05D5, \u05D9\u05E9 \u05DC\u05DC\u05D7\u05D5\u05E5 (\u05DC\u05D0 \u05DE\u05E9\u05E0\u05D4 \u05D1\u05D0\u05D9\u05D6\u05D4 \u05DC\u05D7\u05E6\u05DF) \u05E2\u05DC \u05E8\u05DB\u05D9\u05D1 \u05D1\u05E2\u05DE\u05D5\u05D3 \u05D6\u05D4."
+   },
+   "delete": {
+      "description": "Word for 'delete'.",
+      "message": "\u05DE\u05D7\u05D9\u05E7\u05D4"
+   },
+   "description": {
+      "message": "\u05EA\u05D5\u05E1\u05E3 \u05E9\u05D7\u05D5\u05E1\u05DD \u05E4\u05E8\u05E1\u05D5\u05DE\u05D5\u05EA \u05D1\u05D0\u05DE\u05E6\u05E2\u05D5\u05EA \u05D4\u05DE\u05E0\u05D2\u05E0\u05D5\u05DF \u05E9\u05DC \u05D4\u05DE\u05E1\u05E0\u05DF Adblock Plus \u05DC\u05BEFirefox. \u05E0\u05E9\u05E7\u05D5 \u05D0\u05EA \u05D4\u05E4\u05E8\u05E1\u05D5\u05DE\u05D5\u05EA \u05DC\u05E9\u05DC\u05D5\u05DD!"
+   },
+   "disable_inline": {
+      "message": "\u05D1\u05D9\u05D8\u05D5\u05DC \u05E4\u05E8\u05E1\u05D5\u05DE\u05D5\u05EA \u05D8\u05E7\u05E1\u05D8"
+   },
+   "disabled_for_these_domains": {
+      "message": "Adblock Plus \u05DE\u05E0\u05D5\u05D8\u05E8\u05DC \u05E2\u05D1\u05D5\u05E8 \u05E9\u05DE\u05D5\u05EA \u05D4\u05DE\u05EA\u05D7\u05DD \u05D4\u05DE\u05D5\u05E4\u05D9\u05E2\u05D9\u05DD \u05DC\u05D4\u05DC\u05DF. \u05E0\u05D9\u05EA\u05DF \u05DC\u05D4\u05D5\u05E1\u05D9\u05E3 \u05E9\u05DD \u05DE\u05EA\u05D7\u05DD \u05D0\u05D5 \u05D3\u05E8\u05DA \u05D4\u05E1\u05DE\u05DC \u05E9\u05DC Adblock Plus \u05E9\u05D1\u05E9\u05D5\u05E8\u05EA \u05D4\u05DB\u05EA\u05D5\u05D1\u05D5\u05EA \u05D0\u05D5 \u05E2\u05DC \u05D9\u05D3\u05D9 \u05D4\u05E7\u05DC\u05D3\u05EA \u05E9\u05DD \u05D4\u05DE\u05EA\u05D7\u05DD (\u05DC\u05D0 \u05D4\u05DB\u05EA\u05D5\u05D1\u05EA) \u05D1\u05EA\u05D9\u05D1\u05D4 \u05D5\u05DC\u05DC\u05D7\u05D5\u05E5 \u05E2\u05DC \u05D4\u05DC\u05D7\u05E6\u05DF \"\u05D4\u05D5\u05E1\u05E4\u05EA \u05E9\u05DD \u05DE\u05EA\u05D7\u05DD\"."
+   },
+   "easy_create_filter": {
+      "description": "Button label in popup balloon",
+      "message": "\u05D9\u05E6\u05D9\u05E8\u05EA \u05DE\u05E1\u05E0\u05DF \u05D1\u05E7\u05DC\u05D5\u05EA"
+   },
+   "edit_filters_raw": {
+      "message": "\u05E2\u05E8\u05D9\u05DB\u05EA \u05DE\u05E1\u05E0\u05E0\u05D9\u05DD \u05DB\u05D8\u05E7\u05E1\u05D8 \u05D2\u05D5\u05DC\u05DE\u05D9"
+   },
+   "enable_only_the": {
+      "message": "\u05DE\u05D5\u05DE\u05DC\u05E5 \u05DC\u05D4\u05E4\u05E2\u05D9\u05DC \u05E8\u05E7 \u05D0\u05EA \u05E8\u05E9\u05D9\u05DE\u05D5\u05EA \u05D4\u05DE\u05E1\u05E0\u05E0\u05D9\u05DD \u05D1\u05D4\u05DF \u05D9\u05E9 \u05E6\u05D5\u05E8\u05DA. \u05D9\u05D5\u05EA\u05E8 \u05DE\u05D3\u05D9 \u05E8\u05E9\u05D9\u05DE\u05D5\u05EA \u05E2\u05DC\u05D5\u05DC\u05D5\u05EA \u05DC\u05E4\u05D2\u05D5\u05E2 \u05D1\u05D1\u05D9\u05E6\u05D5\u05E2\u05D9 \u05D4\u05D3\u05E4\u05D3\u05E4\u05DF."
+   },
+   "enabled_for_site": {
+      "description": "Popup balloon checkbox label",
+      "message": "\u05E4\u05E2\u05D9\u05DC \u05E2\u05D1\u05D5\u05E8 \u05D0\u05EA\u05E8 \u05D6\u05D4"
+   },
+   "filter_list_desc": {
+      "description": "e.g. FooList by Mr. Foo",
+      "message": "$title$ \u05DE\u05D1\u05D9\u05EA $author$",
+      "placeholders": {
+         "author": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "filter_lists": {
+      "description": "This is a tab heading.",
+      "message": "\u05E8\u05E9\u05D9\u05DE\u05D5\u05EA \u05D4\u05DE\u05E1\u05E0\u05E0\u05D9\u05DD"
+   },
+   "filter_must_follow_syntax": {
+      "message": "\u05E2\u05DC \u05D4\u05DE\u05E1\u05E0\u05DF \u05E9\u05DC\u05DA \u05DC\u05E6\u05D9\u05D9\u05EA \u05DC\u003Ca href='$url$'\u003E\u05DB\u05DC\u05DC\u05D9 \u05D4\u05EA\u05D7\u05D1\u05D9\u05E8 \u05E9\u05DC \u05DE\u05E1\u05E0\u05E0\u05D9 Adblock Plus\u003C/a\u003E.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "found_a_bug": {
+      "message": "\u05DE\u05E6\u05D0\u05EA \u05D1\u05D0\u05D2? \u05D1\u05E8\u05E6\u05D5\u05E0\u05DA \u05DC\u05D9\u05E6\u05D5\u05E8 \u05EA\u05E8\u05D2\u05D5\u05DD \u05E9\u05DC Adblock Plus \u05DC\u05E9\u05E4\u05EA\u05DA? \u05E0\u05D0 \u003Ca href='$url$'\u003E\u05DC\u05E6\u05D9\u05D9\u05DF \u05D0\u05EA \u05D1\u05E7\u05E9\u05EA\u05DA \u05DB\u05D0\u05DF\u003C/a\u003E.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "general": {
+      "description": "This is a tab heading.",
+      "message": "\u05DB\u05DC\u05DC\u05D9"
+   },
+   "hovercraft": {
+      "description": "This is a sample translatable string. It happens to have comedic value.",
+      "message": "\u05D4\u05E8\u05D7\u05E4\u05EA \u05E9\u05DC\u05D9 \u05DE\u05DC\u05D0\u05D4 \u05D1\u05E6\u05DC\u05D5\u05E4\u05D7\u05D9\u05DD."
+   },
+   "last_updated_at": {
+      "description": "e.g. Last updated at 3:00pm on Apr 1, 2011",
+      "message": "\u05E2\u05D5\u05D3\u05DB\u05E0\u05D4 \u05DC\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05D1\u05E9\u05E2\u05D4 $time$ \u05D1\u05BE$date$",
+      "placeholders": {
+         "date": {
+            "content": "$2"
+         },
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "last_updated_at_today": {
+      "description": "e.g. Last updated at 3:00pm today",
+      "message": "\u05E2\u05D5\u05D3\u05DB\u05E0\u05D4 \u05DC\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05D1\u05E9\u05E2\u05D4 $time$ \u05D1\u05BE\u05D4\u05D9\u05D5\u05DD",
+      "placeholders": {
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "new_filters_added": {
+      "message": "\u05E0\u05D5\u05E1\u05E4\u05D5 \u05DE\u05E1\u05E0\u05E0\u05D9\u05DD \u05D7\u05D3\u05E9\u05D9\u05DD; \u05E0\u05D9\u05EA\u05DF \u05DC\u05E0\u05D4\u05DC \u05D0\u05D5\u05EA\u05DD \u05D3\u05E8\u05DA \u05D4\u003Ca id='options_url' target='_blank'\u003E\u05D0\u05E4\u05E9\u05E8\u05D5\u05D9\u05D5\u05EA\u003C/a\u003E."
+   },
+   "not_a_filter_list": {
+      "description": "In options.html, error displayed when filter list fetcher receives something not a filter list",
+      "message": "\u05D0\u05D9\u05E0\u05D4 \u05E8\u05E9\u05D9\u05DE\u05EA \u05DE\u05E1\u05E0\u05E0\u05D9\u05DD"
+   },
+   "not_found_on_server": {
+      "description": "In options.html, error displayed when filter list fetcher can't find filter list on server",
+      "message": "\u05DC\u05D0 \u05E0\u05DE\u05E6\u05D0 \u05D1\u05E9\u05E8\u05EA"
+   },
+   "options": {
+      "message": "\u05D0\u05E4\u05E9\u05E8\u05D5\u05D9\u05D5\u05EA Adblock Plus"
+   },
+   "out_of_date_lists": {
+      "message": "\u05E8\u05E9\u05D9\u05DE\u05D5\u05EA \u05E9\u05D0\u05D9\u05E0\u05DF \u05E2\u05D3\u05DB\u05E0\u05D9\u05D5\u05EA \u05DE\u05EA\u05E2\u05D3\u05DB\u05E0\u05D5\u05EA \u05D1\u05D0\u05D5\u05E4\u05DF \u05EA\u05D3\u05D9\u05E8."
+   },
+   "remove_button": {
+      "description": "This is the label for the 'Remove selected' buttons.",
+      "message": "\u05D4\u05E1\u05E8\u05EA \u05D4\u05D1\u05D7\u05D9\u05E8\u05D4"
+   },
+   "show_icon": {
+      "message": "\u05D4\u05E6\u05D2\u05EA \u05E1\u05DE\u05DC \u05D1\u05E1\u05E8\u05D2\u05DC \u05D4\u05DB\u05EA\u05D5\u05D1\u05D5\u05EA"
+   },
+   "update_now": {
+      "message": "\u05E2\u05D3\u05DB\u05D5\u05DF \u05DB\u05E2\u05EA"
+   },
+   "whitelisted_domains": {
+      "description": "This is a tab heading.",
+      "message": "\u05E9\u05DE\u05D5\u05EA \u05DE\u05EA\u05D7\u05DD \u05DE\u05D5\u05E8\u05E9\u05D9\u05DD"
+   }
+}

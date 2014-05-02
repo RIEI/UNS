@@ -1,0 +1,2116 @@
+{
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "apps_promo_counter": 11,
+   "browser": {
+      "check_default_browser": false,
+      "clear_data": {
+         "form_data": true,
+         "passwords": true,
+         "time_period": 4
+      },
+      "ntp": {
+         "theme_promo_remaining": -2
+      },
+      "show_home_button": true,
+      "window_placement": {
+         "bottom": 1147,
+         "left": 628,
+         "maximized": false,
+         "right": 1652,
+         "top": 379,
+         "work_area_bottom": 1410,
+         "work_area_left": 0,
+         "work_area_right": 2560,
+         "work_area_top": 0
+      }
+   },
+   "cloud_print": {
+      "email": ""
+   },
+   "countryid_at_install": 21843,
+   "default_apps_installed": true,
+   "default_search_provider": {
+      "enabled": true,
+      "encodings": "UTF-8",
+      "icon_url": "http://www.google.com/favicon.ico",
+      "id": "2",
+      "instant_url": "{google:baseURL}webhp?{google:RLZ}sourceid=chrome-instant&ie={inputEncoding}&ion=1{searchTerms}&nord=1",
+      "keyword": "google.com",
+      "name": "Google",
+      "prepopulate_id": "1",
+      "search_url": "{google:baseURL}search?{google:RLZ}{google:acceptedSuggestion}{google:originalQueryForSuggestion}sourceid=chrome&ie={inputEncoding}&q={searchTerms}",
+      "suggest_url": "{google:baseSuggestURL}search?client=chrome&hl={language}&q={searchTerms}"
+   },
+   "dns_prefetching": {
+      "enabled": false,
+      "host_referral_list": [ 2, [ "http://bcp.crwdcntrl.net/", [ "http://b.scorecardresearch.com/", 0.2822, "http://bcp.crwdcntrl.net/", 0.08499999999999999, "http://segment-pixel.invitemedia.com/", 0.08499999999999999 ] ], [ "http://c.brightcove.com/", [ "http://brightcove.vo.llnwd.net/", 0.8499999999999999, "http://c.brightcove.com/", 2.7199999999999993, "http://cache.boston.com/", 0.33999999999999997, "http://cdn.visiblemeasures.com/", 0.51, "http://goku.brightcove.com/", 0.33999999999999997, "http://load.tubemogul.com/", 0.6799999999999999, "http://receive.inplay.tubemogul.com/", 1.3599999999999997, "http://static.inplay.tubemogul.com/", 0.51, "http://static.vap.yahoo.net/", 1.3599999999999997, "http://video.od.visiblemeasures.com/", 0.51 ] ], [ "http://edge.sharethis.com/", [ "http://w.sharethis.com/", 0.16999999999999998 ] ], [ "http://seg.sharethis.com/", [ "http://b.scorecardresearch.com/", 0.08499999999999999 ] ], [ "http://wsuvalert.worcester.local/", [ "http://forecast.weather.gov/", 0.16999999999999998, "http://www.facebook.com/", 0.0561 ] ], [ "http://www.boston.com/", [ "http://admin.brightcove.com/", 0.16999999999999998, "http://b.scorecardresearch.com/", 0.16999999999999998, "http://bs.serving-sys.com/", 0.319226, "http://c.brightcove.com/", 0.319226, "http://cache.boston.com/", 27.513698739446287, "http://metrics.boston.com/", 0.319226, "http://rmedia.boston.com/", 0.508693697424, "http://secure-us.imrworldwide.com/", 0.319226, "http://www.adobe.com/", 0.2822, "http://www.facebook.com/", 0.39151326975007994 ] ], [ "http://www.dineoncampus.com/", [ "http://www.dineoncampus.com/", 10.297383340369883, "http://www.google-analytics.com/", 0.9807031752733224 ] ], [ "http://www.facebook.com/", [ "http://external.ak.fbcdn.net/", 2.519950481423889, "http://photos-a.ak.fbcdn.net/", 0.31495744917668145, "http://photos-d.ak.fbcdn.net/", 0.31495744917668145, "http://photos-f.ak.fbcdn.net/", 0.31495744917668145, "http://photos-g.ak.fbcdn.net/", 0.9448723475300441, "http://profile.ak.fbcdn.net/", 2.8348352085979616, "http://static.ak.fbcdn.net/", 7.115428771024597 ] ], [ "http://www.telegram.com/", [ "http://admin.brightcove.com/", 0.16999999999999998, "http://ads.yldmgrimg.net/", 1.5231999999999997, "http://c.brightcove.com/", 0.16999999999999998, "http://cf.telegram.com/", 0.16999999999999998, "http://csc.beap.ad.yieldmanager.net/", 0.9043999999999999, "http://nytrworcester.112.2o7.net/", 0.16999999999999998, "http://q1digital.checkm8.com/", 0.16999999999999998, "http://us.bc.yahoo.com/", 1.8053999999999994, "http://www.insideworcester.com/", 21.009445545826587, "http://www.telegram.com/", 52.378297700363106 ] ], [ "http://www.weather.com/", [ "http://ar.voicefive.com/", 0.16999999999999998, "http://b.imwx.com/", 2.0399999999999996, "http://b.voicefive.com/", 0.16999999999999998, "http://cdn.gigya.com/", 0.16999999999999998, "http://d.imwx.com/", 0.33999999999999997, "http://i.imwx.com/", 6.998133939199998, "http://s.imwx.com/", 29.656469878716518, "http://s0.2mdn.net/", 0.6799999999999999, "http://www.weather.com/", 7.073418047175535, "http://www2.sesamestats.com/", 0.16999999999999998 ] ], [ "http://www.weather.gov/", [ "http://forecast.weather.gov/", 0.8423202287403939, "http://www.weather.gov/", 3.3692809149615752 ] ], [ "http://www.worcester.edu/", [ "http://a.www.trumba.com/", 0.10532293733687183, "http://b.www.trumba.com/", 0.10532293733687183, "http://worcester.edu/", 1.1787571627104911, "http://www.google-analytics.com/", 0.9897833353059995, "http://www.trumba.com/", 0.31596881201061544, "http://www.worcester.edu/", 13.626660055259237 ] ], [ "http://wwwfac.worcester.edu/", [ "http://solarsplash.fatspaniel.net/", 19.030005473632443, "http://www.weather.gov/", 1.2409574928906701, "http://wwwfac.worcester.edu/", 0.4136945773760813, "https://insight.fatspaniel.net/", 2.482167464256487 ] ] ],
+      "startup_list": [ 1, "http://forecast.weather.gov/", "http://photos-g.ak.fbcdn.net/", "http://profile.ak.fbcdn.net/", "http://static.ak.fbcdn.net/", "http://worcester.edu/", "http://wsuvalert.worcester.local/", "http://www.dineoncampus.com/", "http://www.facebook.com/", "http://www.google-analytics.com/", "http://www.worcester.edu/" ]
+   },
+   "download": {
+      "directory_upgrade": true,
+      "extensions_to_open": ""
+   },
+   "extensions": {
+      "autoupdate": {
+         "last_check": "13043511951766245",
+         "next_check": "13043527951205358"
+      },
+      "blacklistupdate": {
+         "lastpingday": "13043487600294768",
+         "version": "0.0.0.149"
+      },
+      "chrome_url_overrides": {
+         "bookmarks": [ "chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html" ]
+      },
+      "settings": {
+         "aakhlmakppmkkmfkoibponkmmpgpmjgl": {
+            "blacklist": true
+         },
+         "aandpgohbohmlknpjbblpmoladhoochg": {
+            "blacklist": true
+         },
+         "aangdcfipmfploijfkoonkajgpdkfmbm": {
+            "blacklist": true
+         },
+         "abciiempgohamehppammbkhkicmkgkob": {
+            "blacklist": true
+         },
+         "abfclfmhaemoockhhinpplncjehfpdbd": {
+            "blacklist": true
+         },
+         "abidmaanmbfeddegmapgpjhdmgjaloen": {
+            "blacklist": true
+         },
+         "acchaoeabgiclhngknbkegekbfphgndl": {
+            "blacklist": true
+         },
+         "acmpfcamncegnhjdeiodgilikjafcamg": {
+            "blacklist": true
+         },
+         "acomnmbomlajgjbcijkflekoojdfcldj": {
+            "blacklist": true
+         },
+         "aconhjfogglfnkjhkjipaifepjklolog": {
+            "blacklist": true
+         },
+         "aebfkgcamgnimcbnbiopgdakknjgggnm": {
+            "blacklist": true
+         },
+         "aemcjbfajnnmhblifaejadoecfoaebld": {
+            "blacklist": true
+         },
+         "afenhmponmfmdmbmccbmglppcmjhmhmh": {
+            "blacklist": true
+         },
+         "aflggcagbchmcfoofchfckelknhhajca": {
+            "allowFileAccess": true,
+            "app_launcher_index": 6,
+            "incognito": false,
+            "install_time": "12954818711048128",
+            "location": 4,
+            "path": "C:\\AlertStationClient\\ChromeExtension",
+            "state": 1
+         },
+         "aglmapjbjphdidmnileogpjkgpdoliep": {
+            "blacklist": true
+         },
+         "agmhonoepgcnakccfpidhjehlocaeaaj": {
+            "blacklist": true
+         },
+         "agodbcffjkjcnceklapkjfcmkfepmbgm": {
+            "blacklist": true
+         },
+         "ahjfgnikolodijnpakeknpilnemojlhc": {
+            "blacklist": true
+         },
+         "aieglpnmmhleoenpbmfaffppfomgjmba": {
+            "blacklist": true
+         },
+         "aieihijcjcccdiepockaiekhpflicdii": {
+            "blacklist": true
+         },
+         "aifmjmboebdkdelpjenakhaodgneempp": {
+            "blacklist": true
+         },
+         "ajlkjjdbgcjdiklbcomhnfghjigfccoh": {
+            "blacklist": true
+         },
+         "ajneiojjdhceikkgmhnjhgaacpfhldpi": {
+            "blacklist": true
+         },
+         "akadaakimgegecohlifeejdnnjbnobop": {
+            "blacklist": true
+         },
+         "akbdojiajlefghcdclgkgmbbljamgehd": {
+            "blacklist": true
+         },
+         "alcbnnpmipohgdllkkglhkbncijplago": {
+            "blacklist": true
+         },
+         "aldalonecchncedclgcndcndgilaclnk": {
+            "blacklist": true
+         },
+         "alfahpoknocfdebmiclonikapcnljlob": {
+            "blacklist": true
+         },
+         "aljdncnajablgppdcfbehhmidlmbndda": {
+            "blacklist": true
+         },
+         "amfgdngndpfldigimkcindjalokfnmem": {
+            "blacklist": true
+         },
+         "amoobcjlpgloocplpikcldcpjjdnoeii": {
+            "blacklist": true
+         },
+         "anmjpohfnlopdfaojooicpemopnliimn": {
+            "blacklist": true
+         },
+         "aofechiiopolnegcjcddgedjabmkemhf": {
+            "blacklist": true
+         },
+         "aojicjocmihiopalnhjikigammkhgckb": {
+            "blacklist": true
+         },
+         "aokenbhllkgpooaacldiamnpmmgkjblo": {
+            "blacklist": true
+         },
+         "apdebchnkegjokdjplmfmepcdgneemhe": {
+            "blacklist": true
+         },
+         "apdmgffkfhjfeejmbjidennfjdkmmmbl": {
+            "blacklist": true
+         },
+         "aphncaagnlabkeipnbbicmcahnamibgb": {
+            "blacklist": true
+         },
+         "bccdgfmbcjkfkinkkagaflgdaoaamogo": {
+            "blacklist": true
+         },
+         "bcddmcejgphfgofbpoocakaeapfomlek": {
+            "blacklist": true
+         },
+         "bckhfnghfdponbaldednpnljadgfjecj": {
+            "blacklist": true
+         },
+         "bdgijcibmhjjccgbdohofncdjcophknj": {
+            "blacklist": true
+         },
+         "benclngoadbppljglhphhnfknoppmjoa": {
+            "blacklist": true
+         },
+         "bhdkpmneahdelgdgfhddianklldfoell": {
+            "blacklist": true
+         },
+         "bhkdpodceenlocjmmgodpbbpkafkpljc": {
+            "blacklist": true
+         },
+         "bhmahaiplmeodpakkcchmolaihbhkpdl": {
+            "blacklist": true
+         },
+         "biiponhbbifajapmbggbgaepiedinifm": {
+            "blacklist": true
+         },
+         "bilgncckogfgfipdlejkffnbkgjkmflh": {
+            "blacklist": true
+         },
+         "bioeopenmokdgbekbgpgnacecjmpckbb": {
+            "blacklist": true
+         },
+         "bjihddggcgnblgojnmhpnngonofbnkaj": {
+            "blacklist": true
+         },
+         "bkhafliomebnpccanacmlfaemgfiofko": {
+            "blacklist": true
+         },
+         "bkkchglolnigbfncnbnnbhhempjkdpkf": {
+            "blacklist": true
+         },
+         "bkplhcigeaiiliajeehehiikokgocbhb": {
+            "blacklist": true
+         },
+         "bldgnkigdcpgnbfehgbameigoohecdfl": {
+            "blacklist": true
+         },
+         "bmjhmeeepkkbmjdajachipfgihmpokpd": {
+            "blacklist": true
+         },
+         "bndahdijlcnncjbpammoedeapmlobllc": {
+            "blacklist": true
+         },
+         "bnffnggkphadlnoopcoakdnkellnifjp": {
+            "blacklist": true
+         },
+         "boaoagnmpennjoigkkmnjhecapibhfko": {
+            "blacklist": true
+         },
+         "boclfockfmgcppbajihcgajhpggaakgl": {
+            "blacklist": true
+         },
+         "bokkificjhapflinbdejegngffgkcgfe": {
+            "blacklist": true
+         },
+         "bpfadpmhabiajakhgnaipdplkcjaklnj": {
+            "blacklist": true
+         },
+         "canhmdgddepdjikkjhpmhcfdkkjdbppi": {
+            "blacklist": true
+         },
+         "caphkimknlmnhpjoneddiaakmcaajagb": {
+            "blacklist": true
+         },
+         "cbbbpmlnlpnjojeplppgeilanlihoojg": {
+            "blacklist": true
+         },
+         "cbbjhegipokkofhhicbckicchjpcpeni": {
+            "blacklist": true
+         },
+         "cbhhdkemlehgodemcigfabmcdnohhhef": {
+            "blacklist": true
+         },
+         "cbjlfaogacjpkplebfbijaakaifoflno": {
+            "blacklist": true
+         },
+         "cconecmbohgadkjghlfbchmjpgbobkaf": {
+            "blacklist": true
+         },
+         "cdogaeccgljmkecjmoedambgiekkllij": {
+            "blacklist": true
+         },
+         "cedclbokcakighlpbnbhfjffdjeihfdp": {
+            "blacklist": true
+         },
+         "cekdjgnecpoooikhmceokdhojckkkhmh": {
+            "blacklist": true
+         },
+         "cepfogmgfkddnllaopgknbdfkceejmhk": {
+            "blacklist": true
+         },
+         "cfbdodejdeejbkffcmiaknpmojjeibpn": {
+            "blacklist": true
+         },
+         "cfdedhfmaeiheeklgodcmcgfpedooocj": {
+            "blacklist": true
+         },
+         "cfhdojbkjhnklbpkdaibdccddilifddb": {
+            "app_launcher_index": 8,
+            "granted_permissions": {
+               "api": [ "contextMenus", "tabs" ],
+               "full": false,
+               "host": [ "http://*.youtube-nocookie.com/*", "http://*.youtube.com/*", "http://*/*", "https://*.youtube-nocookie.com/*", "https://*.youtube.com/*", "https://*/*" ]
+            },
+            "incognito": false,
+            "install_time": "12958114992222862",
+            "lastpingday": "13043487600292768",
+            "location": 1,
+            "manifest": {
+               "background_page": "background.html",
+               "content_scripts": [ {
+                  "all_frames": true,
+                  "js": [ "contentScript1.js" ],
+                  "matches": [ "http://*.youtube.com/*", "https://*.youtube.com/*", "http://*.youtube-nocookie.com/*", "https://*.youtube-nocookie.com/*" ],
+                  "run_at": "document_start"
+               }, {
+                  "all_frames": true,
+                  "js": [ "contentScript2.js" ],
+                  "matches": [ "http://*/*", "https://*/*" ],
+                  "run_at": "document_start"
+               }, {
+                  "all_frames": true,
+                  "js": [ "contentScript3.js" ],
+                  "matches": [ "http://*/*", "https://*/*" ],
+                  "run_at": "document_end"
+               } ],
+               "current_locale": "en_US",
+               "default_locale": "en",
+               "description": "Ads were yesterday! The successful extension Adblock Plus is now available for Google Chrome\u2122.",
+               "icons": {
+                  "128": "icons/abp-128.png",
+                  "16": "icons/abp-16.png",
+                  "32": "icons/abp-32.png",
+                  "48": "icons/abp-48.png"
+               },
+               "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCxGWIIBRUVzQIXITqE6+js1FA24fsZC58G0fxcO1Duwfps+9gip5tedTziErKEpeAQVkgasdT4kk+b6Lw27yp3oysAj6zD9j+j4W+EMArTXqMIc6SMYD7Z8bPcwPb3tC1MUxMSpO6oOVpFE23UhKe91SYnrK92nHI2cmsor5elXQIDAQAB",
+               "minimum_chrome_version": "6.0",
+               "name": "Adblock Plus for Google Chrome\u2122 (Beta)",
+               "options_page": "options.html",
+               "page_action": {
+                  "default icon": "icons/abp-16.png",
+                  "default title": "Adblock Plus",
+                  "popup": "popup.html"
+               },
+               "permissions": [ "tabs", "http://*/*", "https://*/*", "contextMenus", "unlimitedStorage" ],
+               "update_url": "http://clients2.google.com/service/update2/crx",
+               "version": "1.1.4"
+            },
+            "path": "cfhdojbkjhnklbpkdaibdccddilifddb\\1.1.4_0",
+            "state": 1
+         },
+         "cfnfobbpdaccoljfahpmfjdmbfmmkeof": {
+            "blacklist": true
+         },
+         "cfogpbanfnocakdckmgafapdlmclpiln": {
+            "blacklist": true
+         },
+         "cgnegjfmdfenjojhjffejinpnpoglmlh": {
+            "blacklist": true
+         },
+         "cgnkbnaiipmfbakpmhllalggoepniemh": {
+            "blacklist": true
+         },
+         "chhniecmnighakmlnhkifeogjddhoajn": {
+            "blacklist": true
+         },
+         "chlplighidmhpgmidehfmjfdlahakjog": {
+            "blacklist": true
+         },
+         "cidnoinjdbalndcidafahfnoeehfblfl": {
+            "blacklist": true
+         },
+         "cihlkpohodpdkdnfalhdkhhlhmhffmbe": {
+            "blacklist": true
+         },
+         "cjhklhdjonhcohlacgggcbklpnldleck": {
+            "blacklist": true
+         },
+         "cjohbbapkbkkhpohinffggbphnhoblea": {
+            "blacklist": true
+         },
+         "ckckpgefkpjfopjppjfcikppehdhceah": {
+            "blacklist": true
+         },
+         "ckphhghhpjbfddcgkpfbelfeojcciglo": {
+            "blacklist": true
+         },
+         "clapnamcglekekmamicmbahkghdcjaeh": {
+            "blacklist": true
+         },
+         "clfhanhcjmgjnbpjfopldmnabimhmcmp": {
+            "blacklist": true
+         },
+         "cmjphjljejnfgdbkdgdlclaabimpknna": {
+            "blacklist": true
+         },
+         "cmlokmkdolieoaoddlfhaidnlmiadhik": {
+            "blacklist": true
+         },
+         "cmnfphnmpedeolmelllmgkghmjcnlajp": {
+            "blacklist": true
+         },
+         "cnimdnlablahacgompaahbgohcokcclp": {
+            "blacklist": true
+         },
+         "cniodhfhdiidogekcjkplecimemfocpn": {
+            "blacklist": true
+         },
+         "coajchbkdbfhmhbgcjepiofllfjjcpfp": {
+            "blacklist": true
+         },
+         "copjbedljgpkaakkmbhgkpoaadeahido": {
+            "blacklist": true
+         },
+         "cpiiakoibaohkfoaijaigdnocfolnmll": {
+            "blacklist": true
+         },
+         "dadcalgappognjbjpalfophhcfakoeac": {
+            "blacklist": true
+         },
+         "danapgfidmepmcfbjjacceiaiiioieio": {
+            "blacklist": true
+         },
+         "dbanhghadfmjndnjmmejdgfdmgidlbpm": {
+            "blacklist": true
+         },
+         "dbiblcmlcgdjjbdpbmbcpineegngkiip": {
+            "blacklist": true
+         },
+         "dbmdicehacbaohlockjgdglcobimmjkh": {
+            "blacklist": true
+         },
+         "dcfefnkefopibnlcjhjcfegckhanekld": {
+            "blacklist": true
+         },
+         "dcpjokbfgfnbaekphjgehhjaokkcifbj": {
+            "blacklist": true
+         },
+         "dejippphmhbpgckbhdidnjmdcpfccbaj": {
+            "blacklist": true
+         },
+         "deocpjmfifplhepinpkmpinpnbiemfje": {
+            "blacklist": true
+         },
+         "deonbedlmakdddidplniclflladdjoep": {
+            "blacklist": true
+         },
+         "dfafokiagoiocidlpglcanjkcdbdnioi": {
+            "blacklist": true
+         },
+         "dfjhgoeofgmepmcngkhnaiphbhdbonhp": {
+            "blacklist": true
+         },
+         "dfoegfajplmijblljfancdapbdaopebb": {
+            "blacklist": true
+         },
+         "dgaehaeahdegbdlenicbmkbakhdgoeml": {
+            "blacklist": true
+         },
+         "dgcfmgdfbfbgcpbendbhbkfjppboebed": {
+            "blacklist": true
+         },
+         "dgkemngdheppgohkjjelnkjmdeimmfml": {
+            "blacklist": true
+         },
+         "dhclobcklknojliojkkclgjndemadnig": {
+            "blacklist": true
+         },
+         "dhdepfaagokllfmhfbcfmocaeigmoebo": {
+            "blacklist": true
+         },
+         "dhmghpedmigfknfpolfmkihcaeiccjgf": {
+            "blacklist": true
+         },
+         "dibljdngacjhpccjckmlmeklpgjeinjd": {
+            "blacklist": true
+         },
+         "digmihafmlfkgdbjjdgbcojghcgcoeoa": {
+            "blacklist": true
+         },
+         "diinokaoicgobepmadnmedlhdfnpehcj": {
+            "blacklist": true
+         },
+         "dinhjcapnfbffhiihdlnbdfjdjjfhcbk": {
+            "blacklist": true
+         },
+         "djjddbeligongockkakmbfdngdjdnagb": {
+            "blacklist": true
+         },
+         "djnahdkbfgnhgpakidinfonfcjbagkgp": {
+            "blacklist": true
+         },
+         "djpnjilhooodipllnjedjeiabkboakok": {
+            "blacklist": true
+         },
+         "dkhkecikbdfpoiopnnpoeglbdphgflmf": {
+            "blacklist": true
+         },
+         "dkpdmjefniplpkalcgnainfmmclllpnn": {
+            "blacklist": true
+         },
+         "dlobhinihbmedmheccecfnkcadpehmbf": {
+            "blacklist": true
+         },
+         "dlopielgodpjhkbapdlbbicpiefpaack": {
+            "blacklist": true
+         },
+         "dmabikjmolgegjajdhmgpmgffajlmmkb": {
+            "blacklist": true
+         },
+         "dmhgenmamfphbclmhdgmffajkfommkom": {
+            "blacklist": true
+         },
+         "dmhjdbigobajgnfoabodjgmcdgoeoljm": {
+            "blacklist": true
+         },
+         "dmkdhgkknhnfpdjeicefnpmhcpbimden": {
+            "blacklist": true
+         },
+         "dnemhlkdpajbbniphgkgceplmnkfnhfo": {
+            "blacklist": true
+         },
+         "doneghboglgnflpdicnkaojmmljgejkj": {
+            "blacklist": true
+         },
+         "dpaphgcjeeochbiafgbochohgmpcmlbj": {
+            "blacklist": true
+         },
+         "dpcdiabehkofdddfhdmkgkndjilfoppd": {
+            "blacklist": true
+         },
+         "dpfanoongnoofcdhgijjdjmbnfekdejj": {
+            "blacklist": true
+         },
+         "dpgenihgggagjjggfocjceeobjkadcbc": {
+            "blacklist": true
+         },
+         "dpmloehicimdjkibmobhmpgdndgbcced": {
+            "blacklist": true
+         },
+         "eagmciolnojfofmggkffclbonhleeank": {
+            "blacklist": true
+         },
+         "ebdcdchjcndpjhehacedepnggfdbfkpn": {
+            "blacklist": true
+         },
+         "ebhdpnhjbfkchfamjcpebpeddhhicnab": {
+            "blacklist": true
+         },
+         "echjhfifjidfhoappglfmoffcpmpkigb": {
+            "blacklist": true
+         },
+         "echngajnlpjeacbanjejlhcajjfoedcc": {
+            "blacklist": true
+         },
+         "ecinfbhalenfhdhnljmkglajfjjfehoj": {
+            "blacklist": true
+         },
+         "edmnikahahfkfilbbjbdoiabnghbkmjc": {
+            "blacklist": true
+         },
+         "efbeabpbbkahnnjalakldjfhljboclkf": {
+            "blacklist": true
+         },
+         "efcnjdcimjmggfdkahncpoikhehcfgnh": {
+            "blacklist": true
+         },
+         "efhjelcghjkfigiagdfbfilndaffpmdj": {
+            "blacklist": true
+         },
+         "efnaljpgehfilpmkhobibbjceeeondmn": {
+            "blacklist": true
+         },
+         "efonemhbokfedckpfpohpmcamfihnnlm": {
+            "blacklist": true
+         },
+         "egljdhfnbjahogjahnigfnbpidlmdagi": {
+            "blacklist": true
+         },
+         "ehgoiaffgjoinpkllmmnikghgpghnabc": {
+            "blacklist": true
+         },
+         "ehmjnpjodmgeocfphkjjnheiheehcoid": {
+            "blacklist": true
+         },
+         "ehomcoocpagnlcakcbecdaknmacmedld": {
+            "blacklist": true
+         },
+         "eiflkkehgogioennialfbilppmegcpoa": {
+            "blacklist": true
+         },
+         "eihjeehdobnpkonebmpanonopghepfle": {
+            "blacklist": true
+         },
+         "eijbdinddjecmebnlienfoijpjjobkjh": {
+            "blacklist": true
+         },
+         "einmhcleeonenkkldjlmhhcmgolhblhh": {
+            "blacklist": true
+         },
+         "ejakhnjbomgngodiidgbkapjgbdckhnh": {
+            "blacklist": true
+         },
+         "ejijgghlncnaphklndknkbkclebfboca": {
+            "blacklist": true
+         },
+         "ejlekamipdcfcfpgfepjmklllbpeecaj": {
+            "blacklist": true
+         },
+         "ekikoahmboikmmclhnijlmldpmleahnh": {
+            "blacklist": true
+         },
+         "elcaigjcaijbfpjngaekbblphmfjdhfo": {
+            "blacklist": true
+         },
+         "emcdpbapjmnjgoannclkongdfboaabho": {
+            "blacklist": true
+         },
+         "eofejpelggimkodeojpeojnbijgiglgh": {
+            "blacklist": true
+         },
+         "eopmhecjnginkckggjmhombbopmkjpam": {
+            "blacklist": true
+         },
+         "epbmnbdplhcomkedpjfceakddnbgfjmf": {
+            "blacklist": true
+         },
+         "fafoohpbicgbcejffcplajonhhooddle": {
+            "blacklist": true
+         },
+         "fakdahljemjliginkgdehfoocmjgloam": {
+            "blacklist": true
+         },
+         "fbhiehmngojjcmljddjmgpmcockbccmo": {
+            "blacklist": true
+         },
+         "fbjjhbijaiopkcdolheliknnjlkaekeb": {
+            "blacklist": true
+         },
+         "fbmgoajoadbjhoachcdiplofcblaihdc": {
+            "blacklist": true
+         },
+         "fbmimoidopbghbcmdmpkjaffffmcbmbg": {
+            "blacklist": true
+         },
+         "fcfepemfihgibdacjlnlecebknaaepmj": {
+            "blacklist": true
+         },
+         "fcijaeofmfihkldhkofkjoibdoeoflha": {
+            "blacklist": true
+         },
+         "fclheclkknbgfndeahkfdomollhmfkcn": {
+            "blacklist": true
+         },
+         "febmhchodibcbchcofonaamfglbjhggg": {
+            "blacklist": true
+         },
+         "fekjidlkjnecepnlmdmjohmgpkdlbegi": {
+            "blacklist": true
+         },
+         "ffgfbfakpcnngelphjnppokmoicdollk": {
+            "blacklist": true
+         },
+         "fhlkffpjoajppmhcakbkjndbjfljccpi": {
+            "blacklist": true
+         },
+         "fhpclkemjlhmbfbjakbmdjihocinkmim": {
+            "blacklist": true
+         },
+         "fiapkdjniadkodmdibdnchoifkpfoiid": {
+            "blacklist": true
+         },
+         "fibgploapkhokkbncddlkcmbmiengcfp": {
+            "blacklist": true
+         },
+         "fihepkmlkmciffbhijldnpmifhbkiinp": {
+            "blacklist": true
+         },
+         "fiiblakkkkgeljngobmpeljjapemenhi": {
+            "blacklist": true
+         },
+         "fjhfnfakmfcejgmfkmnapemgblmehppf": {
+            "blacklist": true
+         },
+         "fjjeecfjmgfnleghoellhldedkaocjfc": {
+            "blacklist": true
+         },
+         "fjpofaghniailakahnhkjjfbfonpfglo": {
+            "blacklist": true
+         },
+         "flalbhkmnijcnpialgakicllnabckmhi": {
+            "blacklist": true
+         },
+         "fleljamdchegbjeiipbnmiebnhgheeld": {
+            "blacklist": true
+         },
+         "flmmgcfcpbfddenepkfmgfpbaceolcoe": {
+            "blacklist": true
+         },
+         "fmcccidacjgnfiafddkngmeolkoiihil": {
+            "blacklist": true
+         },
+         "fmonlemffgbabjifjfaoamdflijecdbk": {
+            "blacklist": true
+         },
+         "fngolbdmkneakeaoiieafkilnogbocda": {
+            "blacklist": true
+         },
+         "fnhcgnmfccojojojacgeiaaeacefdohb": {
+            "blacklist": true
+         },
+         "fnihpenllbnplcglabekelhhblcdndbb": {
+            "blacklist": true
+         },
+         "fnkaadkanmfgpfbmdcllhjdgmdbgljpi": {
+            "blacklist": true
+         },
+         "fnnmbghphdnmmjdapccfobgjemjadeli": {
+            "blacklist": true
+         },
+         "fnoadkjdjfgafomgmablhmffooijcfbn": {
+            "blacklist": true
+         },
+         "foenbafkkmajnmfnlcmejonkfaipdmme": {
+            "blacklist": true
+         },
+         "folhciaicehdnoalhbkbgkakfcockopc": {
+            "blacklist": true
+         },
+         "fomljmklmcefndkgpakgifbiiidgbjej": {
+            "blacklist": true
+         },
+         "fommcgokigkhmnhlhlkckfjhefnmfohd": {
+            "blacklist": true
+         },
+         "fopgndklnkecillfbdmfknhmadmenikm": {
+            "blacklist": true
+         },
+         "fpbippbofbmgmbojjmgfcifpmdaelcmd": {
+            "blacklist": true
+         },
+         "fpbkafpphnhlpakobppekmkebmbhkoco": {
+            "blacklist": true
+         },
+         "fpjdackpllilinpkgmhkpidkanmccblc": {
+            "blacklist": true
+         },
+         "fpmajanjndhgpifbcbnklbiehgnpkgmf": {
+            "blacklist": true
+         },
+         "fpoajjnnpmledpmohlgpgbmlhbgkgahg": {
+            "blacklist": true
+         },
+         "fpokembamndopkflopmplkklbdngnknd": {
+            "blacklist": true
+         },
+         "gagalgomhifgcmeciklindhpaihmecgi": {
+            "blacklist": true
+         },
+         "gaicmfjflflabagobdiodejfpjikheeo": {
+            "blacklist": true
+         },
+         "gandihaiobadcggbfkhpbkocmiemjlnf": {
+            "blacklist": true
+         },
+         "gbenikfjhilhpgagllmfgggdjaflbmbi": {
+            "blacklist": true
+         },
+         "gchbiabnbdikkgfhnkclecjncojnkmhb": {
+            "blacklist": true
+         },
+         "gdggdkkjecogagaffaemnbfmllcoihjp": {
+            "blacklist": true
+         },
+         "gdlgbpbmiiagaikjbednkikinokbkbcb": {
+            "blacklist": true
+         },
+         "geggofhlfbcmanadhknllmlajiafopoh": {
+            "blacklist": true
+         },
+         "gekkhpjigmckhgmgngadbeknekgpgolb": {
+            "blacklist": true
+         },
+         "gfjfhihpkmehdmblhfaikkipeplpdcla": {
+            "blacklist": true
+         },
+         "gfmmoiakbmdohkgeoekiokjgljcminig": {
+            "blacklist": true
+         },
+         "ggkpicnfnljflddbdoeeaajjgepapcbf": {
+            "blacklist": true
+         },
+         "ghgphbmpcfgkfneodjpbdanmdoemklio": {
+            "blacklist": true
+         },
+         "ghmaokcegalalefnhlfcnjhnpdbanjkj": {
+            "blacklist": true
+         },
+         "gifglngcdbggmlgkcombebegdaoknkho": {
+            "blacklist": true
+         },
+         "gjkbghdignnlcknknflbigpammebiolo": {
+            "blacklist": true
+         },
+         "gjmhdmobkhfhkpfmfegnkkimlamjdldi": {
+            "blacklist": true
+         },
+         "gkcfodgjdcijjlliehfhgohlkemcbobl": {
+            "blacklist": true
+         },
+         "gkhbgnodbilglgholifcjdblbgdaieah": {
+            "blacklist": true
+         },
+         "gkjeccpmibljcfpfapfljciimedljpnm": {
+            "blacklist": true
+         },
+         "gkjmgdpdndoaiholejnmdbbpdaafahmm": {
+            "blacklist": true
+         },
+         "gklphmokmaaepjgandocpneomjlidjag": {
+            "blacklist": true
+         },
+         "glhhlafadlhkgbklgbjnmblfhnkfknbm": {
+            "blacklist": true
+         },
+         "gmghjgfdialcnhadahmjefeflgnhcjeb": {
+            "blacklist": true
+         },
+         "gnapdhmknipknfmhhnhdmhakdfhgeing": {
+            "blacklist": true
+         },
+         "gncfgndgeoddelbfhlndhljnecoednaa": {
+            "blacklist": true
+         },
+         "gngfmjidncdccdlfjcjbnngeaaclfgpl": {
+            "blacklist": true
+         },
+         "gngmkbiihflpghldjnbpemaicedhdddk": {
+            "blacklist": true
+         },
+         "gobjcjhhebpjbmjdgmejhebbleadnceo": {
+            "blacklist": true
+         },
+         "goedioiidkokkbobdnopnlnaaalniegm": {
+            "blacklist": true
+         },
+         "gomkbnfeifchddfokcicibjnlgbolhol": {
+            "blacklist": true
+         },
+         "gompblemgafijijmlgbaepcijfgfgljf": {
+            "blacklist": true
+         },
+         "gpdcodmabpgmncbkhpipakhehepmpopk": {
+            "blacklist": true
+         },
+         "gpgehbjbkfhngdlfpfeokjgbkmmokjhe": {
+            "blacklist": true
+         },
+         "gplgjmecjpbfcdikpbicknafcnfcidek": {
+            "blacklist": true
+         },
+         "hbaajkahagmlkdekmbdabikbopdgpaac": {
+            "blacklist": true
+         },
+         "hbdhabpmbbanaopgkbaondabkkepjfaf": {
+            "blacklist": true
+         },
+         "hbmlheccjkodhfejcmblndjodllmnlnl": {
+            "blacklist": true
+         },
+         "hcapokajkngndbglnfglpfdpoeidmpha": {
+            "blacklist": true
+         },
+         "hcpndbchnlgojmnijaldkicigmihmdca": {
+            "blacklist": true
+         },
+         "hdijkiondgomjpehfhopomicjbiodmcm": {
+            "blacklist": true
+         },
+         "hdnbmmfjbblajkjkcaeofolgfnljpnim": {
+            "blacklist": true
+         },
+         "hecijapnccjhonbmacmkmffooodfokoo": {
+            "blacklist": true
+         },
+         "hefmoncdemhjembgbnkgglhlookbipdc": {
+            "blacklist": true
+         },
+         "hfcgbiofoebieldldghfocjfnnajmpej": {
+            "blacklist": true
+         },
+         "hfjpjodbolkmheaehcnmfhjakjileoof": {
+            "blacklist": true
+         },
+         "hfpfbhnmbbigpmoodjemilggabklpopj": {
+            "blacklist": true
+         },
+         "hgbaomphocgmdpmiohjclchaaljpaelp": {
+            "blacklist": true
+         },
+         "hgboiaecclcbjphldpbgfgggcbihmnai": {
+            "blacklist": true
+         },
+         "hgjgaeknhmidehalnmokomhpfhbfmpcm": {
+            "blacklist": true
+         },
+         "hhbihfbjoifhhebcnchglobmkmapgjkm": {
+            "blacklist": true
+         },
+         "hhfffemhgkginfafaoapljdllodppana": {
+            "blacklist": true
+         },
+         "hhfiljkpjapjjphcocclhhaldpfkkjbi": {
+            "blacklist": true
+         },
+         "hhjmkijkgojfifipdgmiemghfikbohcm": {
+            "blacklist": true
+         },
+         "hhlgbfcfbkhlmajakkcjippgpcmejkko": {
+            "blacklist": true
+         },
+         "hhommgjjeekpmpcbdmfnhpchijdkgaei": {
+            "blacklist": true
+         },
+         "hilncbjbdpnfepdidfchmdclhpnlegpj": {
+            "blacklist": true
+         },
+         "himgjpdejpikenoibmolgmfblolpahno": {
+            "blacklist": true
+         },
+         "hjkhligcnpfjhjlapmejaiaiigibofif": {
+            "blacklist": true
+         },
+         "hjnigaibahdeadcdnpnommdehajodlhc": {
+            "blacklist": true
+         },
+         "hkbgccpdcpbdckohbknjlamamelcnlki": {
+            "blacklist": true
+         },
+         "hkjcejgfmaanpncnpoidgbhoikcaeepd": {
+            "blacklist": true
+         },
+         "hkjfdgjkgpbbdmadbglcgljjjddkcdha": {
+            "blacklist": true
+         },
+         "hmmoglffhpmacaacfbbmbbkcbdkjphnc": {
+            "blacklist": true
+         },
+         "hnbcdmfeoldeppcbnnjmjkdofohaljbn": {
+            "blacklist": true
+         },
+         "hncomkjbbkchfjelocejkbbflmjhlhfp": {
+            "blacklist": true
+         },
+         "hnipgljcblpgnnojcfldehpeknhakbgj": {
+            "blacklist": true
+         },
+         "hnkcpoijaeegompjgbjjhkdmljldaccg": {
+            "blacklist": true
+         },
+         "hnnebfeppcbhhbhiifeaajgcjnkljlld": {
+            "blacklist": true
+         },
+         "hnonhhpgjnjcjfbkjdpfbkfpaodcmncb": {
+            "blacklist": true
+         },
+         "hnpgphegniamplngojaffllhjahkgbfl": {
+            "blacklist": true
+         },
+         "hpcdoodjfcmpcpkeendjnjkeinimhkih": {
+            "blacklist": true
+         },
+         "hphibigbodkkohoglgfkddblldpfohjl": {
+            "blacklist": true
+         },
+         "hpibmhghjndideebpackbdlpncgkcppp": {
+            "blacklist": true
+         },
+         "iablioliielnhdianpbiijaoncbmfend": {
+            "blacklist": true
+         },
+         "ibnhidklhjoopebonemhliklfbhndjjd": {
+            "blacklist": true
+         },
+         "iccblehkchfmjgfafjcpjlkjcponhdhl": {
+            "blacklist": true
+         },
+         "icihfeaofpcfehanhbnjigdlpfahjlee": {
+            "blacklist": true
+         },
+         "idbdlnkdnaodonmgnimcfelpngbmcpjk": {
+            "blacklist": true
+         },
+         "iedogbkombgmapifenoojnmpcnjighfm": {
+            "blacklist": true
+         },
+         "iemfpgbdjfoihicbocpbjppipdbfimeh": {
+            "blacklist": true
+         },
+         "ifbkndkaolfbjjhnnhfmkbkoclpdkpli": {
+            "blacklist": true
+         },
+         "ifeijfpkjckedpclgncedmgdiaoeahmk": {
+            "blacklist": true
+         },
+         "igaajdmlejbjcbmpmnigopikfdaccdcm": {
+            "blacklist": true
+         },
+         "igbaoknfddliiaoimhehfbkfekpmmfll": {
+            "blacklist": true
+         },
+         "igghanohiioehififjoalfkdoicafjof": {
+            "blacklist": true
+         },
+         "iggjepemmdkieakihpomccndhdfcljdp": {
+            "blacklist": true
+         },
+         "igjhgaoajaccjllfkfffboldnmncmhoh": {
+            "blacklist": true
+         },
+         "igkdgkdiiolilocklmiolkpoohacojop": {
+            "blacklist": true
+         },
+         "ihnembcpodnfgkafmiojebccomjekopm": {
+            "blacklist": true
+         },
+         "iiiinekimabooeihccihfopoadcaaphn": {
+            "blacklist": true
+         },
+         "ijecjbcgpblkacpijljpaienknanaloa": {
+            "blacklist": true
+         },
+         "ijenlpgidnapbndonoinbkhekgjonojg": {
+            "blacklist": true
+         },
+         "ijjmbbddenkbenbcfldgghhjgjmcnioo": {
+            "blacklist": true
+         },
+         "ilhjicgcglhjigdehkcehjdokmkahbjl": {
+            "blacklist": true
+         },
+         "iljfgjkppapinhcgonhjnipfppfmfedh": {
+            "blacklist": true
+         },
+         "ilmknaabackgdbnkgbihgpgiopnlkjek": {
+            "blacklist": true
+         },
+         "imfbomjbodpfgfhfahlgkkcllmhbelhk": {
+            "blacklist": true
+         },
+         "imkffpjpdngdkpgadcmnlkhhmhdocijn": {
+            "blacklist": true
+         },
+         "inbhlfpapeikbbgpfionabkigakepbbm": {
+            "blacklist": true
+         },
+         "indfhnliadamglhalanplbajgenpjdml": {
+            "blacklist": true
+         },
+         "iobnpmeeecphddicmhhmdjbnlbdhjlne": {
+            "blacklist": true
+         },
+         "iomejadoamfilglofmeaffghddcgapmf": {
+            "blacklist": true
+         },
+         "jabpdgllijbnknhkgjideeajfofafckp": {
+            "blacklist": true
+         },
+         "jaejgaoiipdjjlbnapngknalafalbkej": {
+            "blacklist": true
+         },
+         "jafnimahlamccccjbkhjjpeiipiedpik": {
+            "blacklist": true
+         },
+         "janhdpmhnighonkkbkdpnljcoenpfkbh": {
+            "blacklist": true
+         },
+         "jaoiiahdoamhobamdkmcmielddmnelko": {
+            "blacklist": true
+         },
+         "jbfebbkjjmkcoldeaeelhpconkmgjhbg": {
+            "blacklist": true
+         },
+         "jbmbiepnidbnhbbfdbgioomdkgnbcacj": {
+            "blacklist": true
+         },
+         "jbnafcjbcfgejacaanogofkkehcomamp": {
+            "blacklist": true
+         },
+         "jcboabfdpacfllpebogimbnfdneihjkh": {
+            "allowFileAccess": true,
+            "app_launcher_index": 9,
+            "incognito": false,
+            "install_time": "12966051307940941",
+            "location": 4,
+            "path": "C:\\AlertStationClient\\ChromePortable\\ChromeExtension",
+            "state": 1
+         },
+         "jcmipejepoimfflnoapdmkdephgjinck": {
+            "blacklist": true
+         },
+         "jddbdddmbfencninofcgnodekclofpaj": {
+            "blacklist": true
+         },
+         "jdiakcmbpmcnniggjcmcjknnklpdlogc": {
+            "blacklist": true
+         },
+         "jeehjhnmgohgpfpjneglogiholalkeip": {
+            "blacklist": true
+         },
+         "jfalnphfjdoalcdhlnhdpekbmmopkgkj": {
+            "blacklist": true
+         },
+         "jfhmafmjfdblceidmfdmoihamolaaeco": {
+            "blacklist": true
+         },
+         "jfjagidcpadkoaonbogmbgfimmnefeie": {
+            "blacklist": true
+         },
+         "jgdkappiifgomhgikcjbanhnmlekpeje": {
+            "blacklist": true
+         },
+         "jgmpapdckakiohhebmeoemejibommimi": {
+            "blacklist": true
+         },
+         "jgoljhcbgajhbhnchplgjdkknendhjnn": {
+            "blacklist": true
+         },
+         "jhhabiomopkibeecgngiggmopkeofacl": {
+            "blacklist": true
+         },
+         "jihmekmccilkocefjpejdebpapohlhjb": {
+            "blacklist": true
+         },
+         "jiiccolbjkhpgockodneljpejdeaaodf": {
+            "blacklist": true
+         },
+         "jindbcpkhnnnjgcjgmkjedbibibiojjf": {
+            "blacklist": true
+         },
+         "jiofcofpcbijcnlpekdkpmgjdppajbjb": {
+            "blacklist": true
+         },
+         "jjahldbngdicbnejidklgkienpkdcpba": {
+            "blacklist": true
+         },
+         "jjhackoobdibnnndjopfjldbjmohkpdk": {
+            "blacklist": true
+         },
+         "jjnkfllhcgkgnfbekpnmoikpfihpjfli": {
+            "blacklist": true
+         },
+         "jkihmglffmfjedfbpbpdbbimcodjbmdh": {
+            "blacklist": true
+         },
+         "jkkfmenldnihjkgnolhlakhaepomhoob": {
+            "blacklist": true
+         },
+         "jkmhalpofmlfeglboejbchpoijnkmcgh": {
+            "blacklist": true
+         },
+         "jljfnkmkkdkppfndippkedacgfkafped": {
+            "blacklist": true
+         },
+         "jmbkhogpjgjpfjhpdikloblkbkljkgao": {
+            "blacklist": true
+         },
+         "jmeanodbelbflfmnkfdjgpikmldgjjko": {
+            "blacklist": true
+         },
+         "jmifipgdcllamghkhdplfjffkciekbgo": {
+            "blacklist": true
+         },
+         "jnehbnhjkefckoljkcmjfgkkeejhipgi": {
+            "blacklist": true
+         },
+         "jokbafidjfknjbchmcakabjgdiiacgek": {
+            "blacklist": true
+         },
+         "jolgdmpdhloiienhblmiimamomhdphlk": {
+            "blacklist": true
+         },
+         "jpehgolpfgnknboibogccapmdcadjkbd": {
+            "blacklist": true
+         },
+         "jpeijjbllejgmokmahkeommcodahoobm": {
+            "blacklist": true
+         },
+         "jpgidahfcgiajlcbleeiaibpmmblcmnb": {
+            "blacklist": true
+         },
+         "jpiedgcdjigcoeagojmlokclbljokpon": {
+            "blacklist": true
+         },
+         "jpkdlckejfjidmplieobnhijmoiecbhl": {
+            "blacklist": true
+         },
+         "kbipembkfhbdmkkkfbigmohilmknjnof": {
+            "blacklist": true
+         },
+         "kbmkecfipofebpaikgifajmahdmadlnb": {
+            "blacklist": true
+         },
+         "kcanfkmhccbaheheaackijegkclkaeic": {
+            "blacklist": true
+         },
+         "kcfnnanmpghdnoompcfclakpacapnfbn": {
+            "blacklist": true
+         },
+         "kcgplbmkmfcpngilmhjmebdgkkpbdemp": {
+            "blacklist": true
+         },
+         "kcmnkpehkjhodoodchlmgnicaifckhdj": {
+            "blacklist": true
+         },
+         "kdchmeaiapjkejkcbeclgjklemecieeg": {
+            "blacklist": true
+         },
+         "kdcnnmifdmlmjffdgeieikcokcogpbej": {
+            "blacklist": true
+         },
+         "kdfahjokahcbmecgaandpobmgiiknagf": {
+            "blacklist": true
+         },
+         "kdicckonacionpoompfoopggkgimjpcb": {
+            "blacklist": true
+         },
+         "kdjhalklkkcmodeicjiaekcgifkcepaf": {
+            "blacklist": true
+         },
+         "kdpcgcpfnkolljkhgdbbgimplfkhakec": {
+            "blacklist": true
+         },
+         "keknhkokjnjhgpcofobpcbelddppeolp": {
+            "blacklist": true
+         },
+         "kelcbonmemlciepjdmfcifnhloeammhj": {
+            "blacklist": true
+         },
+         "kelljdoinjlkmkncffgadbebgpmlcang": {
+            "blacklist": true
+         },
+         "keoimpnicgbcjamfdgpcecihicnbmhej": {
+            "blacklist": true
+         },
+         "kffhenjbibjnbnjhlkcdlmpeccpaohio": {
+            "blacklist": true
+         },
+         "kfodnkhdfdgeaegehjjnkjkieloddelg": {
+            "blacklist": true
+         },
+         "kgbkdabomfdpfoibliicpmibceaoohgh": {
+            "blacklist": true
+         },
+         "kgbmmcjgkkecjcafigegjphkmkdpnggo": {
+            "blacklist": true
+         },
+         "kgdhnhadbnpeibkghaebmhmngobdafag": {
+            "blacklist": true
+         },
+         "kgdkcodealpfjolmiagcogfbgmaamegh": {
+            "blacklist": true
+         },
+         "kgdmldjagfciieddcnlhampgkajkpanc": {
+            "blacklist": true
+         },
+         "khgjomcpjblpoaipanicbfjfgcfbpegp": {
+            "blacklist": true
+         },
+         "kibgmcdcfmcglajcfbecilngejnfppjp": {
+            "blacklist": true
+         },
+         "kiipngoehgkgkackngaidmhmnchfbmio": {
+            "blacklist": true
+         },
+         "kincjchfokkeneeofpeefomkikfkiedl": {
+            "blacklist": true
+         },
+         "kinhljbhjmcmoddhdoodekeklmjapjff": {
+            "blacklist": true
+         },
+         "kkhejjmlcfbcleolhadhekjbcanoopna": {
+            "blacklist": true
+         },
+         "kkhomejdleoonmbdhcigkhkjcghngncf": {
+            "blacklist": true
+         },
+         "kkkeikdkpjenmoiicggnnodbkebafgpc": {
+            "blacklist": true
+         },
+         "kleaapgdkahaekcocmkbgfainbhihccj": {
+            "blacklist": true
+         },
+         "kljhmdlkclaglodecegamnpioaflmage": {
+            "blacklist": true
+         },
+         "kmlebjoghkhpapfhbdikannggmmffnco": {
+            "blacklist": true
+         },
+         "kojkdbedffnppdoalcfkkeelbhbklhgp": {
+            "blacklist": true
+         },
+         "kolbbghckjilleabphhgeggcgpfidofi": {
+            "blacklist": true
+         },
+         "kpbfifeiomkhocgkkffocfinoedcjebg": {
+            "blacklist": true
+         },
+         "laicaenbonaajhkmfhhbpiapobdieffm": {
+            "blacklist": true
+         },
+         "lambangeielkjcnmioccboaphdfcffib": {
+            "blacklist": true
+         },
+         "lbaddolhebpnhdcdkicpcflhnfamcemn": {
+            "blacklist": true
+         },
+         "lbcmmpmjjaockhkcofljpakjcbmjmgla": {
+            "blacklist": true
+         },
+         "lbficnmfealeidppcbgdcbemgfjodbkg": {
+            "blacklist": true
+         },
+         "lcbfjcekjncehfbcimlogajbekmoeblm": {
+            "blacklist": true
+         },
+         "lcccggoiffkhgfkefgbicjdgdnfpoihn": {
+            "blacklist": true
+         },
+         "lceaiepehinnomgijphkmjccbigkljkj": {
+            "blacklist": true
+         },
+         "lcfkojlnjnedeoepfemhdgkhiabkeadc": {
+            "blacklist": true
+         },
+         "lcmpleboacinanffcdgenhhbkboclkjb": {
+            "blacklist": true
+         },
+         "ldgfapfmnplpaohbbadnecegcpfkfall": {
+            "blacklist": true
+         },
+         "ldmoahefokhfelhpbgfjpelcdbahdofk": {
+            "blacklist": true
+         },
+         "leccghfplhenabeogpibljliijgapfgb": {
+            "blacklist": true
+         },
+         "lfechjkgjjijfjoandhakaghdeimjcod": {
+            "blacklist": true
+         },
+         "lfggokjjaanlfikbbapgnfemifmddalf": {
+            "blacklist": true
+         },
+         "lgalokbapphhklmilicdefmgbjkcmldf": {
+            "blacklist": true
+         },
+         "lgcnahanhlfpceencjmlehpfklokhojk": {
+            "blacklist": true
+         },
+         "lhajoamjgchgljkdjigcgmmcehjkagan": {
+            "blacklist": true
+         },
+         "lhgbajoidigcpmgbnnonllfkndhahmie": {
+            "blacklist": true
+         },
+         "likifpgnijjfbdegfepoalpamlgnfofi": {
+            "blacklist": true
+         },
+         "liomofjeffddiiccaolcnllbhnipbkhe": {
+            "blacklist": true
+         },
+         "ljcicfibknpmlcmcecddjlbgkejehhpa": {
+            "blacklist": true
+         },
+         "ljeihpebkahejeacdalhkhmckmggppif": {
+            "blacklist": true
+         },
+         "ljlppmpjdogefnanekncklkjgpnhpcpd": {
+            "blacklist": true
+         },
+         "ljmjoloiepllcndinchenhomcdcgbgef": {
+            "blacklist": true
+         },
+         "lkdimamelhbiijkiljlnedmhnnkkmlbl": {
+            "blacklist": true
+         },
+         "lkfdchejjogilmloogbbjlnlpbhgjfab": {
+            "blacklist": true
+         },
+         "lkhcbijhgfchgdmklonlobkfbcadbokg": {
+            "blacklist": true
+         },
+         "lljnngafekbnkpdfophmcdlbfebcbcld": {
+            "blacklist": true
+         },
+         "lmhdacagnmfmomeodbgmlghejdbmldge": {
+            "blacklist": true
+         },
+         "lnahlgmhpghkhmafjppdidhcoaomipfg": {
+            "blacklist": true
+         },
+         "lnbeebaenahmkbffnimghceldeeihfak": {
+            "blacklist": true
+         },
+         "lncjcfkpannmofmpgdfoonkniofdnaba": {
+            "blacklist": true
+         },
+         "lndempehphjoeimfchjflohpmhamiamf": {
+            "blacklist": true
+         },
+         "lnjgjionmhobdfdegbciceafphgemjnc": {
+            "blacklist": true
+         },
+         "lnlaeblencbjjjeaanegaldcjfekeled": {
+            "blacklist": true
+         },
+         "lodollblmkailkkdiijmoccefdfjohgk": {
+            "blacklist": true
+         },
+         "loggadfheaoeabmkgolecncpfdfioefa": {
+            "blacklist": true
+         },
+         "lojppnndedobolgfepahepphhloediji": {
+            "blacklist": true
+         },
+         "loldehkdjdncebfnncknlkdchjclifbn": {
+            "blacklist": true
+         },
+         "lookpbabilcplifjdeifacodednpacmk": {
+            "blacklist": true
+         },
+         "lpgiafapdmlapiokjnmpbbfkomiceoml": {
+            "blacklist": true
+         },
+         "lplmcpcnhpbffpcfiaddbeaplhhbengd": {
+            "blacklist": true
+         },
+         "maakimnachffhlgdhfomaejeeaikgjap": {
+            "blacklist": true
+         },
+         "mafccdbbhekjhemajjejkaidndokeena": {
+            "blacklist": true
+         },
+         "magllcifjcllaafcdplnajmobccbcdlo": {
+            "blacklist": true
+         },
+         "mamfageekafifnickhgkibkofcclfefe": {
+            "blacklist": true
+         },
+         "mandondadnlimicalgkbkaohmeopdojj": {
+            "blacklist": true
+         },
+         "mbifidpgmfiielflaipknojhpfcljmgo": {
+            "blacklist": true
+         },
+         "mbmdaiddhfoljplpdhohimgieioblfif": {
+            "blacklist": true
+         },
+         "mcbkimglepddodbiongpohpeidioafgk": {
+            "blacklist": true
+         },
+         "mcknnlhkkdbcppajgefagceglahcafjd": {
+            "blacklist": true
+         },
+         "mdiehnlecbjlppbpaaipmlnhhjgepfcg": {
+            "blacklist": true
+         },
+         "mdngbiejioalifclonjepjjfppmbgned": {
+            "blacklist": true
+         },
+         "megkcfpbmemnpkgadkoompnoajcolpni": {
+            "blacklist": true
+         },
+         "mfffdpnblflpobcnekhekiahepofaane": {
+            "blacklist": true
+         },
+         "mfgkkephjfnkggbmahehnjhdcmkioaff": {
+            "blacklist": true
+         },
+         "mfhfkclojmdocagbmecgcnlofppebebd": {
+            "blacklist": true
+         },
+         "mfncimdpmknolnnnccdmkpnpkaofonkc": {
+            "blacklist": true
+         },
+         "mfooalpniplhaaealemjpchkchmmgdko": {
+            "blacklist": true
+         },
+         "mgdgiplcofghdmpekdeeceolepakodcb": {
+            "blacklist": true
+         },
+         "mhbffdldpckobeihgebaamjalehefnia": {
+            "blacklist": true
+         },
+         "mhldlgmggplfkkjgpgjjpebflplpgekg": {
+            "blacklist": true
+         },
+         "mickhiflmjglhpdpfigpkpjiipfdlphj": {
+            "blacklist": true
+         },
+         "mikpklndmiopinkkmalgoophegfnmmfh": {
+            "blacklist": true
+         },
+         "mjalegijammcloleihdmooifidcjggjp": {
+            "blacklist": true
+         },
+         "mjgobkikdipfikmaoakdcdbicpioljgg": {
+            "blacklist": true
+         },
+         "mjhlngjakabhonjagnlimeicooahajpl": {
+            "blacklist": true
+         },
+         "mjolnadmlahbpepjaemohnkhpjkbhmef": {
+            "blacklist": true
+         },
+         "mknjbohhleiicbpagpgmhoaigbblmnic": {
+            "blacklist": true
+         },
+         "mkobblpffgbncfhijabakfafmkjdmmnm": {
+            "blacklist": true
+         },
+         "mlmegahemifabfmdnndafagnncfbnahn": {
+            "blacklist": true
+         },
+         "mlmmbepkgelpbenpobinockmiehdahai": {
+            "blacklist": true
+         },
+         "mlnndjkcclbekgoebkenkdgiggaomaed": {
+            "blacklist": true
+         },
+         "mlnoedbhndgbjcbeadjfnmjloejlgojk": {
+            "blacklist": true
+         },
+         "mmjodihhmnpkldljaifiajmlnpflfhpm": {
+            "blacklist": true
+         },
+         "mndoohjdoechinpkfbkolflbonciahfo": {
+            "blacklist": true
+         },
+         "mnhcgaghminpdabllkbkecahjfkdiabk": {
+            "blacklist": true
+         },
+         "mnichagcickblneeijmfnmoiakigmmhf": {
+            "blacklist": true
+         },
+         "mnllienogacopjnkmhgnniopjpgjpopp": {
+            "blacklist": true
+         },
+         "mogepbcllienegdibkfpmombhefhcoic": {
+            "blacklist": true
+         },
+         "mokdlfbphidpiopnlfejpcmadcbomckn": {
+            "blacklist": true
+         },
+         "mpcglemopeoeapmagdbeenepkdbajape": {
+            "blacklist": true
+         },
+         "mpgehpkneknbopplhmmkfijfiniddipf": {
+            "blacklist": true
+         },
+         "mplhbhmkccidaokcelbcbcmhhedebcng": {
+            "blacklist": true
+         },
+         "mplpabdbfbloeiboikmdbnggfnjbjmlh": {
+            "blacklist": true
+         },
+         "naopgnjebjeeedbbhcadkhkmeefmloho": {
+            "blacklist": true
+         },
+         "nbfcehkihbmpebblmfkihadebllgfmgl": {
+            "blacklist": true
+         },
+         "nbieffehfdniifkgdckbndjhojohbfjj": {
+            "blacklist": true
+         },
+         "nbjnehjmelkfjggedillcpjeelfnempb": {
+            "blacklist": true
+         },
+         "nckmikohoilfkcoahbjpbgbpegcjgngm": {
+            "blacklist": true
+         },
+         "ncpdanjmicnihdlijomcggnnekloephc": {
+            "blacklist": true
+         },
+         "ndhkiimgbjnendpcfbiadlifmangejoa": {
+            "blacklist": true
+         },
+         "ndiogongcmocdgjciemhagfhpjamehpe": {
+            "blacklist": true
+         },
+         "negkalblfongjbphdcbbhddlickhlamd": {
+            "blacklist": true
+         },
+         "nepfiodmbijheamafkiglonfkjebdjmf": {
+            "blacklist": true
+         },
+         "nfecfkjnlkbphobjbcnphimihniieehc": {
+            "blacklist": true
+         },
+         "nhbfbnmmdjkjahhfdeklgphihfodfgnb": {
+            "blacklist": true
+         },
+         "nhboiakpmibkbkbeehchlfkggmhphpnk": {
+            "blacklist": true
+         },
+         "nhkmojkfnknbbmhbnacjdlodokeophkl": {
+            "blacklist": true
+         },
+         "nhooocacdhkpbmoocdclodjlddcebfoe": {
+            "blacklist": true
+         },
+         "nibohffepnilngkecenfdgnokfhmnkod": {
+            "blacklist": true
+         },
+         "nidmbljkkcbdfklgdkklgjgmhejmbojn": {
+            "blacklist": true
+         },
+         "nidodbfomffkfabciljelkbdiabkeehe": {
+            "blacklist": true
+         },
+         "nifbebeekindefklojhchehidpikbjfc": {
+            "blacklist": true
+         },
+         "nihhbeikpchdddoillfdcdinnnnllmna": {
+            "blacklist": true
+         },
+         "nlefocohkhlgmjdhgkjgdodobmffjbod": {
+            "blacklist": true
+         },
+         "nlgapikcofpablcmfgaoodlhiejiehhh": {
+            "blacklist": true
+         },
+         "nloaaepkhcnmoakooihnefhhggbmemed": {
+            "blacklist": true
+         },
+         "nmgpbidjnaebdlbdbpjggenmbaolmfoi": {
+            "blacklist": true
+         },
+         "nmmnodocfckpoddcgihiihcdinaonckb": {
+            "blacklist": true
+         },
+         "nmphbnbmgfccfhcmibikmhcgajjpelpf": {
+            "blacklist": true
+         },
+         "nnioepmjbjjlflmdgjanlcmbjahljeeo": {
+            "blacklist": true
+         },
+         "nochkknnbahbhmmknnmdhagelcnfagom": {
+            "blacklist": true
+         },
+         "noefghcilkpcabnhhilojimkkjplhcnd": {
+            "blacklist": true
+         },
+         "npadaghbcdejfngcjpbnoikajdnongca": {
+            "blacklist": true
+         },
+         "npfpmgjnfcklmaipcffpjhapedmpjggj": {
+            "blacklist": true
+         },
+         "npolaghondefgiomhkbiiompikfjneep": {
+            "blacklist": true
+         },
+         "oafccdmmjdpialdmgenjfhijoondgncj": {
+            "blacklist": true
+         },
+         "oakhllhnbcpgagdafgbninlpjdemdmjk": {
+            "blacklist": true
+         },
+         "oanjogmonneelfpnfmdlalfddkeckdej": {
+            "blacklist": true
+         },
+         "obfnipbbnnhkbafmdbbfpgfgbjmmkgpm": {
+            "blacklist": true
+         },
+         "obgljnmbldahelaakfdbjkplokjoneip": {
+            "blacklist": true
+         },
+         "obhplmafmpmelgapjjbfhcdkicnhakhf": {
+            "blacklist": true
+         },
+         "oblicopoaionpjoapgjmmoncjadpdioh": {
+            "blacklist": true
+         },
+         "ochmdkhojipfibbplgpeeggeimnagcfd": {
+            "blacklist": true
+         },
+         "ocmhjnhildbnglmlfimkjnnfgddelacb": {
+            "blacklist": true
+         },
+         "ocnlnkjmfnolmbclblfhfhcakldceiec": {
+            "blacklist": true
+         },
+         "odeckaficnaplobiiaomegfbokokehhb": {
+            "blacklist": true
+         },
+         "odefpckfdnfkeandbeccopcpncnbkonn": {
+            "blacklist": true
+         },
+         "odnamglmogfldajnhkfodmloofeokcmm": {
+            "blacklist": true
+         },
+         "oebmjchahlpmalnjpeagiibojcbfmema": {
+            "blacklist": true
+         },
+         "oelhhkgiajkjfbccafjgggcpkbkjgpij": {
+            "blacklist": true
+         },
+         "oeoibdmcpaofjgcdncagknlmlmngkgfm": {
+            "app_launcher_index": 4,
+            "granted_permissions": {
+               "api": [ "tabs" ],
+               "full": false,
+               "host": [ "http://*/*", "https://*/*" ]
+            },
+            "incognito": false,
+            "install_time": "12950741978093200",
+            "lastpingday": "13043487600292768",
+            "location": 1,
+            "manifest": {
+               "background_page": "main.html",
+               "content_scripts": [ {
+                  "css": [ "overlay.css" ],
+                  "js": [ "contentScript.js" ],
+                  "matches": [ "http://*/*", "https://*/*" ]
+               } ],
+               "description": "Why not skip the login page? Automatically logs you into sites that Chrome has a saved password for.",
+               "icons": {
+                  "128": "icon128.png",
+                  "19": "icon19.png",
+                  "48": "icon48.png"
+               },
+               "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFSgaLV7xTJjKs50l4Jwm+3WB7bOYLCZMYifElP+krvZ6U8MT0J1Eg8ua9HHXVh0H0CItJx6KwiuF0cItUJTSUc+OVx9VnBcZ5Ft7lBqky7a+AVxuQik/tnHRfhRQzI4CLa5AtH/YGevcQ2r8TqMJbrVf1GUQO2pNB75yWAcsFqwIDAQAB",
+               "name": "Auto Login",
+               "options_page": "options.html",
+               "page_action": {
+                  "default_icon": "icon19.png",
+                  "default_title": "Log in to this page automatically.",
+                  "popup": "popup.html"
+               },
+               "permissions": [ "tabs" ],
+               "update_url": "http://clients2.google.com/service/update2/crx",
+               "version": "1.5.1"
+            },
+            "path": "oeoibdmcpaofjgcdncagknlmlmngkgfm\\1.5.1_0",
+            "state": 1
+         },
+         "oghphhcagopecifjblgdcfihjnlcbcfc": {
+            "blacklist": true
+         },
+         "ogjbodghhojomghbdfnlkppdagkfjede": {
+            "blacklist": true
+         },
+         "oidjdpbndkjhmhmgdoggibcjnippkcgo": {
+            "blacklist": true
+         },
+         "oilfokmpgejhjhecdjjpikloibggpenf": {
+            "blacklist": true
+         },
+         "oimplfccampifgkgndlamabnkcibkngc": {
+            "blacklist": true
+         },
+         "ojglppmhgfohhfeinlhklglifnbfebak": {
+            "blacklist": true
+         },
+         "ojmdhklabgbnnkkilmkcfcemdhognifc": {
+            "blacklist": true
+         },
+         "omceiakkomngangmllpgbjcoeloglald": {
+            "blacklist": true
+         },
+         "omnicnmbagoinlpamknknbcgopadcoci": {
+            "blacklist": true
+         },
+         "oncmkbmjpjlihkpbohlpmjghiiogmoie": {
+            "blacklist": true
+         },
+         "onfbaaifbbahonepmednhkjbhdgogkbl": {
+            "blacklist": true
+         },
+         "onjaecbdddgibdijafoemfiachlbcgkj": {
+            "blacklist": true
+         },
+         "onpnpccdagncipgnoofbhchlbajcjnkd": {
+            "blacklist": true
+         },
+         "oocfbmollajebjjpkahmlnclfhkjijea": {
+            "blacklist": true
+         },
+         "ookcgejbfhcmcanfkfmmmpahflnlajbl": {
+            "blacklist": true
+         },
+         "oomelpjfeldbopnleifpjibbpekflhlg": {
+            "blacklist": true
+         },
+         "opnnngnphijodjhemhdafpnnpdjggofe": {
+            "blacklist": true
+         },
+         "painakdmkedalbggbejpphgjikkmafhc": {
+            "blacklist": true
+         },
+         "pajgiddgjidlcajihkjoacjbplimkgfe": {
+            "blacklist": true
+         },
+         "pbdgmppmccanplobanhfkjndjkmmabgk": {
+            "blacklist": true
+         },
+         "pbekednmpdekknlffkiopooofokfmkla": {
+            "blacklist": true
+         },
+         "pbglijbamgmlcpnnpbfjkbdeheejjloj": {
+            "blacklist": true
+         },
+         "pbipaboekjdfhkfifpkofbfnpbnlolji": {
+            "blacklist": true
+         },
+         "pcaedgdgamlfffkfblocmakhgieggoak": {
+            "blacklist": true
+         },
+         "pcojpoljjgnicbhaffkiphphplijgbcc": {
+            "blacklist": true
+         },
+         "pdhjoamffhjhlkiiminjhmihalkfjaee": {
+            "blacklist": true
+         },
+         "peahabnpipmmfiajjjhgfggbeigbmbgp": {
+            "blacklist": true
+         },
+         "peiijdmlgbelnnmnkighhkpeihmmamio": {
+            "blacklist": true
+         },
+         "pfaooklcbjnkgconjjepimkohgcjmdji": {
+            "blacklist": true
+         },
+         "pfcelnbmkeoaeicedjomcjkcammlkdbk": {
+            "blacklist": true
+         },
+         "pfckhplmfbblecglndaigpojefidapai": {
+            "blacklist": true
+         },
+         "pfgmgcnbngcnhjddppmnloflcidemopc": {
+            "blacklist": true
+         },
+         "pfhlnanelpgjbhndafjamnpfhkjadoip": {
+            "blacklist": true
+         },
+         "pfoiaildicnbcjojocjlpcibenphhbln": {
+            "blacklist": true
+         },
+         "pfonklmafadkmcedjlodommcoipgbcde": {
+            "blacklist": true
+         },
+         "pgelifedkjaohmjehecojkfldinjlamn": {
+            "blacklist": true
+         },
+         "pgjpnfpidejcmjibaaohcmehfohacckf": {
+            "blacklist": true
+         },
+         "pgkcfihepeihdlfphbndagmompiakeci": {
+            "blacklist": true
+         },
+         "pgldfhecfiofkhnbgcncepnkjkeoahlk": {
+            "blacklist": true
+         },
+         "pgmfkblbflahhponhjmkcnpjinenhlnc": {
+            "blacklist": true
+         },
+         "pgmpnhbchhaningbkefchpdalnimjijd": {
+            "blacklist": true
+         },
+         "phkpgooenaonkpnabopdbjjfmphclela": {
+            "blacklist": true
+         },
+         "pihcfdffalbcnmbghijdfcaanagapelf": {
+            "blacklist": true
+         },
+         "pjdhkkcnlbfebiokpeghfffajaabahfo": {
+            "blacklist": true
+         },
+         "pjgbfgdpkbfimabdalhjmmeeelbmkcac": {
+            "blacklist": true
+         },
+         "pjloefkigphblpjminnlpbhjchjafcfc": {
+            "blacklist": true
+         },
+         "pkbbbncikcipejaiiiioboongndhmjgl": {
+            "blacklist": true
+         },
+         "pkbkgagehkkoajkpgnmjegibihpalfdk": {
+            "blacklist": true
+         },
+         "pkbkkendemaimikinaefldfljliecapm": {
+            "blacklist": true
+         },
+         "pkcbihpffghlanbclfmkegjmbijcpobj": {
+            "blacklist": true
+         },
+         "pkdlpbfmpolnhligegklimbccminkioc": {
+            "blacklist": true
+         },
+         "pkhidkonipdjidjglnkfcfhnkfnlefbk": {
+            "blacklist": true
+         },
+         "plfijddblbcdcnammpdmfccchkbdekmm": {
+            "blacklist": true
+         },
+         "pmbjemmaclljifpmnlagkcgpbcipdldb": {
+            "blacklist": true
+         },
+         "pnaaalnkbgjaphhmahecamecmaldknkc": {
+            "blacklist": true
+         },
+         "pnaiiipilbpcceggeanphcpkkihnojan": {
+            "blacklist": true
+         },
+         "pndadpldhngimdmhnajebjldbmcbpjol": {
+            "blacklist": true
+         },
+         "pnnbdjcjeiobikdfikegpclkcimgafpp": {
+            "blacklist": true
+         },
+         "pnpfkfanlgljpkpilhgiimfadggfmhcd": {
+            "blacklist": true
+         },
+         "pnpgiaejfbdapllkchhgchjpdbcpiooa": {
+            "blacklist": true
+         },
+         "pobponmhkpmphbnfhpjdagklbkmjhked": {
+            "blacklist": true
+         },
+         "ppmfajacidhcjbddpgmcmigffpppcadd": {
+            "blacklist": true
+         }
+      },
+      "toolbar": [ "jcboabfdpacfllpebogimbnfdneihjkh" ],
+      "toolbarsize": -1,
+      "ui": {
+         "developer_mode": true
+      }
+   },
+   "google": {
+      "services": {
+         "username": ""
+      }
+   },
+   "homepage": "http://unsserver/uns/index.php?id=4c6a8a77381e6e6f41a536ef50891279",
+   "homepage_is_newtabpage": false,
+   "ntp": {
+      "alt_logo_end": 0.0,
+      "alt_logo_resource_server": "https://www.google.com/support/chrome/bin/topic/30248/inproduct",
+      "alt_logo_start": 0.0,
+      "pinned_urls": {
+         "http://portableapps.com/": 0
+      },
+      "pref_version": 3,
+      "promo_build": 7,
+      "promo_closed": false,
+      "promo_end": 0.0,
+      "promo_group": 6,
+      "promo_group_timeslice": 0,
+      "promo_line": "We\u2019ve remodeled! \u003Ca href=\"https://support.google.com/chromeos/?p=ntp19\"\u003ELearn more about the latest features\u003C/a\u003E on your Chromebook.",
+      "promo_resource_cache_update": "1391058160.393774",
+      "promo_start": 0.0,
+      "shown_sections": 1,
+      "web_resource_cache_update": "1289679884.902772"
+   },
+   "plugins": {
+      "enabled_internal_pdf3": true,
+      "last_internal_directory": "C:\\Users\\ACalcutt\\Documents\\GitHub\\UNS\\Client\\AlertStationClient\\ChromePortable\\App\\Chrome-bin\\11.0.696.68",
+      "plugins_list": [ {
+         "enabled": true,
+         "name": "Shockwave Flash",
+         "path": "C:\\Users\\ACalcutt\\Documents\\GitHub\\UNS\\Client\\AlertStationClient\\ChromePortable\\App\\Chrome-bin\\11.0.696.68\\gcswf32.dll",
+         "version": "10,3,181,14"
+      }, {
+         "enabled": true,
+         "name": "Shockwave Flash",
+         "path": "C:\\Windows\\SysWOW64\\Macromed\\Flash\\NPSWF32.dll",
+         "version": "10,2,159,1"
+      }, {
+         "enabled": true,
+         "name": "Java Deployment Toolkit 6.0.220.4",
+         "path": "C:\\Program Files (x86)\\Java\\jre6\\bin\\new_plugin\\npdeployJava1.dll",
+         "version": "6.0.220.4"
+      }, {
+         "enabled": true,
+         "name": "Java(TM) Platform SE 6 U22",
+         "path": "C:\\Program Files (x86)\\Java\\jre6\\bin\\new_plugin\\npjp2.dll",
+         "version": "6.0.220.4"
+      }, {
+         "enabled": false,
+         "name": "Adobe Acrobat",
+         "path": "C:\\Program Files (x86)\\Adobe\\Reader 10.0\\Reader\\Browser\\nppdf32.dll",
+         "version": "10.0.1.434"
+      }, {
+         "enabled": true,
+         "name": "Silverlight Plug-In",
+         "path": "c:\\Program Files (x86)\\Microsoft Silverlight\\4.0.60129.0\\npctrl.dll",
+         "version": "4.0.60129.0"
+      }, {
+         "enabled": true,
+         "name": "2007 Microsoft Office system",
+         "path": "C:\\Program Files (x86)\\Mozilla Firefox\\plugins\\NPOFF12.DLL",
+         "version": "12.0.4518.1014"
+      }, {
+         "enabled": true,
+         "name": "Microsoft Office 2010",
+         "path": "C:\\PROGRA~2\\MICROS~1\\Office14\\NPAUTHZ.DLL",
+         "version": "14.0.4730.1010"
+      }, {
+         "enabled": true,
+         "name": "Microsoft Office 2010",
+         "path": "C:\\PROGRA~2\\MICROS~1\\Office14\\NPSPWRAP.DLL",
+         "version": "14.0.4761.1000"
+      }, {
+         "enabled": true,
+         "name": "Chrome PDF Viewer",
+         "path": "C:\\Users\\ACalcutt\\Documents\\GitHub\\UNS\\Client\\AlertStationClient\\ChromePortable\\App\\Chrome-bin\\11.0.696.68\\pdf.dll",
+         "version": ""
+      }, {
+         "enabled": false,
+         "name": "Chrome NaCl",
+         "path": "C:\\Users\\ACalcutt\\Documents\\GitHub\\UNS\\Client\\AlertStationClient\\ChromePortable\\App\\Chrome-bin\\11.0.696.68\\ppGoogleNaClPluginChrome.dll",
+         "version": ""
+      }, {
+         "enabled": true,
+         "name": "Google Gears 0.5.33.0",
+         "path": "C:\\Users\\ACalcutt\\Documents\\GitHub\\UNS\\Client\\AlertStationClient\\ChromePortable\\App\\Chrome-bin\\11.0.696.68\\gears.dll",
+         "version": "0.5.33.0"
+      }, {
+         "enabled": true,
+         "name": "National Instruments LabVIEW 8.0 Netscape Plug-in for Windows",
+         "path": "C:\\Program Files (x86)\\Mozilla Firefox\\plugins\\NPLV80Win32.dll",
+         "version": "8, 0, 0, 8001"
+      }, {
+         "enabled": true,
+         "name": "National Instruments LabVIEW 8.2 Netscape Plug-in for Windows",
+         "path": "C:\\Program Files (x86)\\Mozilla Firefox\\plugins\\NPLV82Win32.dll",
+         "version": "8, 2, 0, 8001"
+      }, {
+         "enabled": true,
+         "name": "Google Earth Plugin",
+         "path": "C:\\Program Files (x86)\\Google\\Google Earth\\plugin\\npgeplugin.dll",
+         "version": "1, 0, 0, 1"
+      }, {
+         "enabled": true,
+         "name": "Google Update",
+         "path": "C:\\Program Files (x86)\\Google\\Update\\1.3.21.53\\npGoogleUpdate3.dll",
+         "version": "1.3.21.53"
+      }, {
+         "enabled": true,
+         "name": "Default Plug-in",
+         "path": "default_plugin",
+         "version": "1"
+      }, {
+         "enabled": true,
+         "name": "Flash"
+      }, {
+         "enabled": true,
+         "name": "Java"
+      }, {
+         "enabled": false,
+         "name": "Adobe Acrobat"
+      }, {
+         "enabled": true,
+         "name": "Silverlight"
+      }, {
+         "enabled": true,
+         "name": "Microsoft Office"
+      }, {
+         "enabled": true,
+         "name": "Chrome PDF Viewer"
+      }, {
+         "enabled": false,
+         "name": "Chrome NaCl"
+      }, {
+         "enabled": true,
+         "name": "Google Gears 0.5.33.0"
+      }, {
+         "enabled": true,
+         "name": "National Instruments LabVIEW 8.0 Netscape Plug-in for Windows"
+      }, {
+         "enabled": true,
+         "name": "National Instruments LabVIEW 8.2 Netscape Plug-in for Windows"
+      }, {
+         "enabled": true,
+         "name": "Google Earth Plugin"
+      }, {
+         "enabled": true,
+         "name": "Google Update"
+      }, {
+         "enabled": true,
+         "name": "Default Plug-in"
+      } ]
+   },
+   "profile": {
+      "content_settings": {
+         "pref_version": 1
+      },
+      "exited_cleanly": true,
+      "per_host_zoom_levels": {
+         "wsuvalert.worcester.local": 1.0,
+         "www.boston.com": 2.0,
+         "www.dineoncampus.com": 2.0,
+         "www.facebook.com": 2.0,
+         "www.nws.noaa.gov": 2.0,
+         "www.telegram.com": 2.0,
+         "www.weather.com": 1.0,
+         "www.weather.gov": 2.0,
+         "www.worcester.edu": 2.0
+      }
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "tabs": {
+      "use_vertical_tabs": false
+   }
+}

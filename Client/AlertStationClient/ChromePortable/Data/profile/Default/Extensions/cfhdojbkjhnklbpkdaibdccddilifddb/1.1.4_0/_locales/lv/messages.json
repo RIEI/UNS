@@ -1,0 +1,171 @@
+{
+   "add": {
+      "description": "This is the label for the 'Add' buttons.",
+      "message": "Pievienot"
+   },
+   "add_a_filter_list": {
+      "message": "Pierakst\u012Bties Firefox Adblock Plus \u003Ca href='$url$'\u003Efiltru sarakstam\u003C/a\u003E:",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "add_domain_button": {
+      "message": "Pievienot dom\u0113nu"
+   },
+   "add_filter_button": {
+      "message": "Pievienot filtru"
+   },
+   "add_filters_msg": {
+      "message": "Pievienot filtru(s)?"
+   },
+   "add_url_button": {
+      "message": "Pievienot URL"
+   },
+   "add_your_own_filters": {
+      "message": "Pievieno savus filtrus"
+   },
+   "apply_changes": {
+      "message": "Pielietot izmai\u0146as"
+   },
+   "block_element": {
+      "description": "Label for 'Block Element' context menu item",
+      "message": "Blo\u0137\u0113t elementu"
+   },
+   "block_youtube": {
+      "message": "Blo\u0137\u0113t rekl\u0101mas YouTube videoklipos"
+   },
+   "cancel": {
+      "description": "Cancel button label",
+      "message": "Atcelt"
+   },
+   "clickhide_instructions": {
+      "message": "P\u0113c \u0161\u012B aizv\u0113r\u0161anas, noklik\u0161\u0137iniet (vai noklik\u0161\u0137iniet ar labo pogu) uz elementa \u0161aj\u0101 lap\u0101."
+   },
+   "delete": {
+      "description": "Word for 'delete'.",
+      "message": "izdz\u0113st"
+   },
+   "description": {
+      "message": "Rekl\u0101mas bija vakardiena! Veiksm\u012Bgais papildin\u0101jums Adblock Plus tagad ir pieejams Google Chrome\u2122."
+   },
+   "disable_inline": {
+      "message": "Atsp\u0113jot iek\u0161-rindu teksta rekl\u0101mas"
+   },
+   "disabled_for_these_domains": {
+      "message": "Adblock Plus J\u016Bsu izv\u0113l\u0113tajos dom\u0113nos ir atsl\u0113gts. J\u016Bs varat pievienot dom\u0113nu izmantojot Adblock Plus, kas atrodas adreses josl\u0101, vai ievadot dom\u0113nu (nevis URL) kast\u0113 un noklik\u0161\u0137inot uz pogas \"Pievienot dom\u0113nu\"."
+   },
+   "easy_create_filter": {
+      "description": "Button label in popup balloon",
+      "message": "Viegli izveidot filtru"
+   },
+   "edit_filters_raw": {
+      "message": "Labot filtrus k\u0101 j\u0113lu tekstu"
+   },
+   "enable_only_the": {
+      "message": "Iesp\u0113jo tikai vajadz\u012Bgos filtru sarakstus. P\u0101r\u0101k daudzi var padar\u012Bt Chrome nerea\u0123\u0113jo\u0161u."
+   },
+   "enabled_for_site": {
+      "description": "Popup balloon checkbox label",
+      "message": "Iesp\u0113jots \u0161aj\u0101 vietn\u0113"
+   },
+   "filter_list_desc": {
+      "description": "e.g. FooList by Mr. Foo",
+      "message": "$title$ no autora $author$",
+      "placeholders": {
+         "author": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "filter_lists": {
+      "description": "This is a tab heading.",
+      "message": "Filtru saraksts"
+   },
+   "filter_must_follow_syntax": {
+      "message": "J\u016Bsu filtram ir j\u0101atbilst \u003Ca href='$url$'\u003EAdblock Plus filtru sintaksei\u003C/a\u003E. Atsevi\u0161\u0137i filtru tipi, k\u0101 objekta apak\u0161-piepras\u012Bjums, nav atbalst\u012Bti.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "found_a_bug": {
+      "message": "Atradi defektu? V\u0113lies iztulkot Adblock Plus sav\u0101 valod\u0101? L\u016Bdzu \u003Ca href='$url$'\u003Eiesniedz piepras\u012Bjumu \u0161eit\u003C/a\u003E.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "general": {
+      "description": "This is a tab heading.",
+      "message": "Visp\u0101r\u012Bgi"
+   },
+   "hovercraft": {
+      "description": "This is a sample translatable string. It happens to have comedic value.",
+      "message": "Mans transportl\u012Bdzeklis uz gaisa spilvena ir pilns ar zu\u0161iem."
+   },
+   "last_updated_at": {
+      "description": "e.g. Last updated at 3:00pm on Apr 1, 2011",
+      "message": "P\u0113d\u0113jo reiz atjaunin\u0101ts $time$ $date$",
+      "placeholders": {
+         "date": {
+            "content": "$2"
+         },
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "last_updated_at_today": {
+      "description": "e.g. Last updated at 3:00pm today",
+      "message": "P\u0113d\u0113jo reiz atjaunin\u0101ts \u0161odien plkst. $time$",
+      "placeholders": {
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "name": {
+      "message": "Adblock Plus for Google Chrome\u2122 (Beta)"
+   },
+   "new_filters_added": {
+      "message": "Jauni filtri pievienoti; lai tos p\u0101rvald\u012Btu, skatiet \u003Ca id='options_url' target='_blank'\u003EOpcijas\u003C/a\u003E."
+   },
+   "not_a_filter_list": {
+      "description": "In options.html, error displayed when filter list fetcher receives something not a filter list",
+      "message": "Nav filtra saraksts"
+   },
+   "not_found_on_server": {
+      "description": "In options.html, error displayed when filter list fetcher can't find filter list on server",
+      "message": "Nav atrasts uz servera"
+   },
+   "options": {
+      "message": "Adblock Plus Opcijas"
+   },
+   "out_of_date_lists": {
+      "message": "Novecoju\u0161ie saraksti tiek periodiski atjaunin\u0101ti."
+   },
+   "remove_button": {
+      "description": "This is the label for the 'Remove selected' buttons.",
+      "message": "No\u0146emt izv\u0113l\u0113to"
+   },
+   "show_block_element_menu": {
+      "message": "R\u0101d\u012Bt 'Blo\u0137\u0113t elementu''lab\u0101 klik\u0161\u0137a izv\u0113ln\u0113"
+   },
+   "show_icon": {
+      "message": "R\u0101d\u012Bt ikonu adreses josl\u0101"
+   },
+   "update_now": {
+      "message": "Atjaunin\u0101t tagad"
+   },
+   "whitelisted_domains": {
+      "description": "This is a tab heading.",
+      "message": "Dom\u0113ni baltaj\u0101 sarakst\u0101"
+   }
+}

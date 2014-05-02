@@ -30,7 +30,7 @@ a.side_links {
     background-color: greenyellow;
 }
 .navtd {
-    width: 14%;
+    width: 16%;
     align: center;
     color: #9BAB9B;
 }
@@ -72,53 +72,4 @@ table.all_tables {
     background-color: #334433;
     border: 1px;
     vertical-align: top;
-}
-
-.td {
-    
-    border-right-style: solid;
-    border-left-style: solid;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    width: 200px;
-    margin-right: 2px;
-    margin-left: 2px;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    padding-right: 2px;
-    padding-left: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    border-right-color: black;
-    border-left-color: black;
-    border-bottom-color: black;
-    border-top-color: black;
-    border-right-width: 1px;
-    border-left-width: 1px;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
-}
-
-.msg {
-    border-right-style: solid;
-    border-left-style: solid;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    width: 600px;
-    margin-right: 2px;
-    margin-left: 2px;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    padding-right: 2px;
-    padding-left: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    border-right-color: black;
-    border-left-color: black;
-    border-bottom-color: black;
-    border-top-color: black;
-    border-right-width: 1px;
-    border-left-width: 1px;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
 }

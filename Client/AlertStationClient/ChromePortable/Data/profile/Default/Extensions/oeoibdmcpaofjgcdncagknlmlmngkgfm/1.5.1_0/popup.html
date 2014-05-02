@@ -1,0 +1,15 @@
+<html>
+<head>
+    <style>
+        body {
+            width: 260px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>Auto Login</h2>
+    <input type="button" value="Automatically log in when this page is visited" onclick="chrome.extension.getBackgroundPage().savePage();window.close();"/>
+    <p>You can undo this later in the options page.</p>
+</body>
+</html>

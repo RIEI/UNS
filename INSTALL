@@ -1,60 +1,35 @@
----------------------
 Things you will need
 ---------------------
-HTTP Server ( IIS or Apache)
+HTTP Server ( ie IIS or Apache)
 MySQL 5
-PHP 5 (XML, LDAP [optional] )
-PHPmyadmin (for easy MySQL management, not really needed, just useful)
-A Browser ( ie Firefox, Chrome, or IE if you really wanted to)
-
-Confused? Need extra help? Contact us on the forums: http://forum.techidiots.net/forum/viewforum.php?f=55
+PHP 5
+PHPmyadmin (for easy MySQL management)
+A Browser ( ie Firefox or Chrome)
 
 
----------------------
 Instructions
 ---------------------
 I am assuming that you already have your SQL server and HTTP server with PHP set up and working.
 
-The installer is working, I suggest you use that. http://[uns path]/install.php
+    Step 1
+Insert setup.sql into your database (this will create the UNS DB and all the tables)
 
-If you really really know what you are doing, you can take the setup.sql file to create the tables,
-but you will also need create the conn.php and var.php files in configs/. you will also need to setup
-the UNS sql user. The setup.sql file is used in the instillation, so dont modify it either unless you 
-know what you are doing, or just want to hack around.
+    Step 2
+Create a MySQL user for UNS to connect with.
+Permissions needed are all (minus grant) for the UNS database and none for global.
 
-If you want to have just your admin folder ssl'd, there is an example apache config file in the configs folder.
-As for IIS, google and a few clicks of the mouse, should give you the same thing.
+    Step 3
+Edit the config/conn.php file
+*See file for details*
 
+    Step 4
+Edit the config/vars.php file
+*See file for details*
 
----------------------
-LEDs
----------------------
-If you are using linux and have uns running on a physical machine, you can use the LPT code to have some LEDs blink.
-lpt is to set the values on the parallel port
-portctl is to read the value of the parallel port, it is optional, not used by UNS, just for debuging and development of the code.
+    Step 5
+Login with the default User of UNS_Admin
+Password UNS_Pass
+Add more users and disable the built-in Admin.
 
-Compiling LED binaries:
-  [not-uns]# cd [uns]/bin/
-  [uns]/bin# make
-  [uns]/bin# make install
-
-Finally run your respective rc-update command so it runs on startup.
-This is needed so on boot all LEDs attached to the LPT port are turned off, unless your LEDs are off by default, mine are not, so I need this init script.
-If you did a manual build and copy to a different location then where the makefile puts the, you will need to modify the init.d script.
-
-If you have your LEDs being driven by a logical high on the LPT port then you will either need to reverse the LEDs to be driven by a logic low, or modify
-the source code in shared.php so that it does the opposite of what it does now
-
-
-Details about LPT Port LEDs
------------------------------------------
-LPT pin     Decimal Value    Description
------------------------------------------
-8              128           Emergency Messages Enabled
-7              64            Admin Panel Access
-6              32            Client Group #6
-5              16            Client Group #5
-4              8             Client Group #4
-3              4             Client Group #3
-2              2             Client Group #2
-1              1             Client Group #1
+    Step 6
+Add Viewing Clients and set them up as you like.

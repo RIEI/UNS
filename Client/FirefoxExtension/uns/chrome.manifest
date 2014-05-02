@@ -1,4 +1,0 @@
-content   uns   chrome/content/
-overlay chrome://browser/content/browser.xul chrome://uns/content/unsOverlay.xul
-
-skin uns classic/1.0 chrome/skin/classic/

@@ -1,13 +1,7 @@
--- --------------------------------------------------------
---
--- UNS SQL INSTALL FILE
--- VER: 1.1
--- 
--- --------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `allowed_clients` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `client_name` varchar(255) NOT NULL,
-  `led` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `client_name` (`client_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
@@ -28,9 +22,7 @@ CREATE TABLE IF NOT EXISTS `allowed_users` (
   `edit_users` tinyint(4) NOT NULL DEFAULT '0',
   `edit_options` tinyint(4) NOT NULL DEFAULT '0',
   `c_messages` tinyint(4) NOT NULL DEFAULT '1',
-  `img_messages` tinyint(4) NOT NULL DEFAULT '1',
   `rss_feeds` tinyint(4) NOT NULL DEFAULT '1',
-  `api_key` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
 
@@ -71,22 +63,6 @@ CREATE TABLE IF NOT EXISTS `connections` (
 --
 
 CREATE TABLE IF NOT EXISTS `c_messages` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `refresh` int(255) NOT NULL,
-  `wrapper` tinyint(4) NOT NULL DEFAULT '1',
-  UNIQUE KEY `name` (`name`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `img_messages`
---
-
-CREATE TABLE IF NOT EXISTS `img_messages` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `body` text NOT NULL,
@@ -184,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 
 INSERT INTO `settings` (`id`, `emerg`, `built_in_admin`, `uns_ver`, `svn_rev`) VALUES
-(1, 0, 0, '2.0', '81');
+(1, 0, 0, '1.0', '80');
 
 -- --------------------------------------------------------
 

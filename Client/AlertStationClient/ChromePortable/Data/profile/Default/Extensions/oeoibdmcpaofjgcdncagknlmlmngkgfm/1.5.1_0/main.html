@@ -1,0 +1,79 @@
+<html>
+<body>
+<script>
+// initialize options
+defaultOptions = {
+    'overlay' : true,
+    'wait' : 0
+}
+
+// clean up bad data in localStorage from version 1.1
+if(localStorage.getItem('options') && localStorage.getItem('options') == '"options"')
+    localStorage.removeItem('options');
+
+if(o = localStorage.getItem('options'))
+{
+    options = JSON.parse(o);
+
+    if(!options.overlay)
+        options.overlay = defaultOptions.overlay;
+    if(!options.wait)
+        options.wait = defaultOptions.wait;
+}
+else
+{
+    options = defaultOptions;
+    localStorage.setItem('options', JSON.stringify(defaultOptions));        
+}
+// add new tab listener
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    if (tab.status == "complete") {
+        for (i = 0; i < localStorage.length; i++) 
+        {
+            url = localStorage.key(i);
+
+            if (url.indexOf("*") > -1) 
+            {
+                url = url.split('*')[0];
+                if (tab.url.indexOf(url) == 0) // if the tab URL starts with the wildcarded URL, request log in
+                {
+                    chrome.tabs.sendRequest(tab.id, options);
+                    break;
+                }
+            }
+            else 
+            {
+                if (url == tab.url) // if URL is in the list, send a request to log in
+                {
+                    chrome.tabs.sendRequest(tab.id, options);
+                    break;
+                }
+            }
+        }
+    }
+});
+
+
+// Respond to request to display "page action" icon from the content script
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) 
+    {
+        if (request.showIcon) // if password field is present, present icon
+            chrome.pageAction.show(sender.tab.id);
+    }
+);
+
+
+// function to save page to localStorage.  called by the popup.
+function savePage() 
+{
+    chrome.tabs.getSelected(null, function(tab)
+    {
+        localStorage.setItem(tab.url, tab.title);
+        chrome.tabs.update(tab.id,{'url':tab.url});
+    });
+}
+
+</script>
+</body>
+</html>

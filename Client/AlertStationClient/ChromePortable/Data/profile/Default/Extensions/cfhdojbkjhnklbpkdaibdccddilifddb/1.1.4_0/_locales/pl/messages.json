@@ -1,0 +1,165 @@
+{
+   "add": {
+      "description": "This is the label for the 'Add' buttons.",
+      "message": "Dodaj"
+   },
+   "add_a_filter_list": {
+      "message": "Subskrybuj \u003Ca href='$url$'\u003Einne filtry\u003C/a\u003E Firefox Adblock Plus:",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "add_domain_button": {
+      "message": "Dodaj domene"
+   },
+   "add_filter_button": {
+      "message": "Dodaj filtr"
+   },
+   "add_filters_msg": {
+      "message": "Doda\u0107 taki filtr?"
+   },
+   "add_url_button": {
+      "message": "Dodaj URL"
+   },
+   "add_your_own_filters": {
+      "message": "Dodaj w\u0142asne filtry"
+   },
+   "apply_changes": {
+      "message": "Zakceptuj zmiany"
+   },
+   "block_element": {
+      "description": "Label for 'Block Element' context menu item",
+      "message": "Blokuj Element"
+   },
+   "block_youtube": {
+      "message": "Blokuj reklamy w filmach YouTube"
+   },
+   "cancel": {
+      "description": "Cancel button label",
+      "message": "Anuluj"
+   },
+   "clickhide_instructions": {
+      "message": "Po zamkni\u0119ciu tego okna, kliknij lewym (lub prawym) przyciskiem myszy w niechciany element na stronie."
+   },
+   "delete": {
+      "description": "Word for 'delete'.",
+      "message": "Usu\u0144"
+   },
+   "description": {
+      "message": "Blokuj reklamy korzystaj\u0105c z filtr\u00F3w Adblock Plus. Po\u017Cegnaj si\u0119 z reklamami i serwuj w spokoju!"
+   },
+   "disable_inline": {
+      "message": "Wy\u0142\u0105cz reklamy tekstowe"
+   },
+   "disabled_for_these_domains": {
+      "message": "Adblock Plus is disabled for the domains listed below. You can add a domain either via the Adblock Plus icon in the address bar or by typing the domain (not a URL) in the box and clicking the \"Add domain\" button."
+   },
+   "easy_create_filter": {
+      "description": "Button label in popup balloon",
+      "message": "Kreator filtr\u00F3w"
+   },
+   "edit_filters_raw": {
+      "message": "Edytuj filtry jako zwyk\u0142y tekst"
+   },
+   "enable_only_the": {
+      "message": "W\u0142\u0105cz tylko te filtry kt\u00F3rych potrzebujesz. Za du\u017Ca ilo\u015B\u0107 mo\u017Ce spowolni\u0107 dzia\u0142anie przegl\u0105darki."
+   },
+   "enabled_for_site": {
+      "description": "Popup balloon checkbox label",
+      "message": "W\u0142\u0105cz dla tej strony"
+   },
+   "filter_list_desc": {
+      "description": "e.g. FooList by Mr. Foo",
+      "message": "$title$ by $author$",
+      "placeholders": {
+         "author": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "filter_lists": {
+      "description": "This is a tab heading.",
+      "message": "Listy filtr\u00F3w"
+   },
+   "filter_must_follow_syntax": {
+      "message": "Tw\u00F3j filtr musi by\u0107 zgodny \u003Ca href='$url$'\u003Eze sk\u0142adni\u0105 filtru Adblock Plus\u003C/a\u003E. Niekt\u00F3re typy filtr\u00F3w, jak obiect-subrequest, nie s\u0105 obs\u0142ugiwane.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "found_a_bug": {
+      "message": "Znalaz\u0142e\u015B b\u0142\u0105d? Zg\u0142o\u015B prosz\u0119 \u003Ca href='$url$'\u003Eproblem tutaj\u003C/a\u003E.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "general": {
+      "description": "This is a tab heading.",
+      "message": "Og\u00F3lne"
+   },
+   "hovercraft": {
+      "description": "This is a sample translatable string. It happens to have comedic value.",
+      "message": "My hovercraft is full of eels."
+   },
+   "last_updated_at": {
+      "description": "e.g. Last updated at 3:00pm on Apr 1, 2011",
+      "message": "Ostatnia aktualizacja: $date$ o $time$",
+      "placeholders": {
+         "date": {
+            "content": "$2"
+         },
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "last_updated_at_today": {
+      "description": "e.g. Last updated at 3:00pm today",
+      "message": "Ostatnia aktualizacja: dzisiaj o $time$",
+      "placeholders": {
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "new_filters_added": {
+      "message": "Dodano nowe filtry; Zajrzyj do \u003Ca id='options_url' target='_blank'\u003EOpcji\u003C/a\u003E."
+   },
+   "not_a_filter_list": {
+      "description": "In options.html, error displayed when filter list fetcher receives something not a filter list",
+      "message": "Brak listy filtr\u00F3w"
+   },
+   "not_found_on_server": {
+      "description": "In options.html, error displayed when filter list fetcher can't find filter list on server",
+      "message": "Nie znaleziono serwera"
+   },
+   "options": {
+      "message": "Adblock Plus Opcje"
+   },
+   "out_of_date_lists": {
+      "message": "Po pewnym czasie filtry aktualizowane s\u0105 automatycznie."
+   },
+   "remove_button": {
+      "description": "This is the label for the 'Remove selected' buttons.",
+      "message": "Usu\u0144 zaznaczone"
+   },
+   "show_icon": {
+      "message": "Pokazuj ikon\u0119 na pasku adresu"
+   },
+   "update_now": {
+      "message": "Zaktualizuj"
+   },
+   "whitelisted_domains": {
+      "description": "This is a tab heading.",
+      "message": "Wykluczone strony"
+   }
+}

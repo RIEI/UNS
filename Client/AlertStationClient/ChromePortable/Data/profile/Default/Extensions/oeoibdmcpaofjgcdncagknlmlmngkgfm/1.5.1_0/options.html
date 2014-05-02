@@ -1,0 +1,133 @@
+<html>
+<head>
+<style>
+body {
+    font-family: sans-serif;
+}
+#header {
+    text-align: center;
+    background-color: black;
+    color: white;
+    text-align: left;
+}
+h1, h3 {
+    padding: 10px;
+    margin: 0px;
+}
+h3 {
+    text-align: right;
+}
+td a {
+    color: red;
+    text-decoration: none;
+}
+p {   
+    width: 500px;
+}
+p.center {
+    margin: 20px auto;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.url {
+    width: 100%;
+}
+</style>
+</head>
+<body>
+<table id="header"><tr>
+    <td valign="middle"><h1><img src="icon48.png" align="center"/>&nbsp;&nbsp;&nbsp;Auto Login Options</h1></td>
+    <td valign="middle"><h3>(close this tab to save)</h3></td>
+</tr></table>
+
+<h4>
+    Display message while login page is being submitted?
+    <label><input type="radio" name="overlay" value="true">Yes</label>
+    <label><input type="radio" name="overlay" value="false">No</label>
+</h4>
+<h4>
+    <label>Seconds to wait before auto submitting 
+        (only active if message is displayed)&nbsp; <input type="text" name="wait" value="0" size="1"></label>
+</h4>
+
+<script>
+// radio buttons
+var options = chrome.extension.getBackgroundPage().options;
+buttons = document.getElementsByTagName('input');
+if(options.overlay) {
+    buttons[0].checked = true;
+} else {
+    buttons[1].checked = true;
+}
+buttons[2].value = options.wait;
+
+window.onunload = function saveOptions() 
+{
+    localStorage.clear()
+
+    options.overlay = buttons[0].checked;
+    options.wait = buttons[2].value;
+    localStorage.setItem('options', JSON.stringify(options));
+
+    urlList = document.getElementsByClassName('url');
+    titleList = document.getElementsByClassName('title');
+    for (i = 0; i < urlList.length; i++) {
+        localStorage.setItem(urlList[i].value, titleList[i].innerText);
+    }
+}
+</script>
+
+<h2>Login pages to bypass</h2>
+<p>If you'd like to match the beginning of an URL, add a * to the end of it.
+For example, "http://www.facebook.com/*" will log you in to "http://www.facebook.com/" and "http://www.facebook.com/index.php"</p>
+
+<script>
+function removePage(element, key)
+{
+    row = element.parentElement.parentElement;
+    row.parentElement.removeChild(row);
+    localStorage.removeItem(key);
+    
+    if(localStorage.length == 1) // reload to show instructions if list empty
+        window.location=window.location;
+}
+// list of pages
+if(localStorage.length == 1) // there will always be options
+{
+    document.write('<p style="font-weight:bold">No sites are set for auto login yet.</p>');
+    document.write('<p>To add a site, navigate to the login page of a site which Chrome has saved the password for ');
+    document.write('and click the Auto Login icon that will appear next to the site\'s URL')
+}
+else
+{
+    document.write('<table border="1" cellspacing="0" cellpadding="3">');
+    document.write('<tr><th>Remove</th><th>Page Title</th><th>Page URL <small>(add * after the URL to enable partial matching)</small></th></tr>');    
+    for(i=0; i<localStorage.length; i++)
+    {
+        if(localStorage.key(i) == 'options')
+            continue;
+        
+        document.write('<tr>');
+        //document.write('<td align="center"><a href="javascript:localStorage.removeItem(\'' + localStorage.key(i) + '\');window.location=window.location;">X</a></td>');
+        document.write('<td align="center"><a href="#" onclick="removePage(this, \'' + localStorage.key(i) + '\');">X</a></td>');
+        document.write('<td><small class="title">' + localStorage.getItem(localStorage.key(i)) + '</small></td>');
+        document.write('<td><input class="url" value="' + localStorage.key(i) + '"/></td>');
+        document.write('</tr>');
+    }
+    document.write('</table>');
+}
+</script>
+<p>&nbsp;</p>
+<p class="center">
+    <b>Note:</b> your password must be saved by the browser to be automatically logged in.  
+    The <a href="https://chrome.google.com/extensions/detail/ecpgkdflcnofdbbkiggklcfmgbnbabhh">"Autocomplete = on"</a> extension can help
+    for pages that disallow saving your password.
+</p>
+<p>&nbsp;</p>
+<p class="center">
+    Bugs? Feature requests? Praise? <a href="mailto:autologin@plaidweb.com">Tell me what you think</a>
+</p>
+</body>
+</html>

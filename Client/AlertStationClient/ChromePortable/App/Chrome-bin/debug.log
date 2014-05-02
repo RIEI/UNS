@@ -1,0 +1,14 @@
+[0502/114302:ERROR:client_util.cc(298)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0502/114312:ERROR:client_util.cc(298)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0502/114335:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114336:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114336:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114336:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114336:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114348:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114348:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114348:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114348:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114348:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114355:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2
+[0502/114355:WARNING:app_command.cc(47)] Error reading SendsPings value from registry: 2

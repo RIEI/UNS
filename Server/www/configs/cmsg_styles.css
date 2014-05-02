@@ -14,3 +14,26 @@
 a {
     color: Black;
 }
+
+/* 
+    Created on : Oct 18, 2010
+    Author     : Andrew Calcutt
+    Description: WSU specific styles for Custom messages
+*/
+
+.wsuheader {
+	text-align: center;
+	background-color: #003466;
+}
+.InfoCell {
+	text-align: center;
+	background-color: #FFFFFF;
+}
+.MessageTitle {
+	text-align: center;
+	font-size: 42px;
+	font-weight: bold;
+}
+.MessageText {
+	font-size: 36px;
+}

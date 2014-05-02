@@ -1,0 +1,25 @@
+{
+   "background_page": "main.html",
+   "content_scripts": [ {
+      "css": [ "overlay.css" ],
+      "js": [ "contentScript.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   } ],
+   "description": "Why not skip the login page? Automatically logs you into sites that Chrome has a saved password for.",
+   "icons": {
+      "128": "icon128.png",
+      "19": "icon19.png",
+      "48": "icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFSgaLV7xTJjKs50l4Jwm+3WB7bOYLCZMYifElP+krvZ6U8MT0J1Eg8ua9HHXVh0H0CItJx6KwiuF0cItUJTSUc+OVx9VnBcZ5Ft7lBqky7a+AVxuQik/tnHRfhRQzI4CLa5AtH/YGevcQ2r8TqMJbrVf1GUQO2pNB75yWAcsFqwIDAQAB",
+   "name": "Auto Login",
+   "options_page": "options.html",
+   "page_action": {
+      "default_icon": "icon19.png",
+      "default_title": "Log in to this page automatically.",
+      "popup": "popup.html"
+   },
+   "permissions": [ "tabs" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.5.1"
+}

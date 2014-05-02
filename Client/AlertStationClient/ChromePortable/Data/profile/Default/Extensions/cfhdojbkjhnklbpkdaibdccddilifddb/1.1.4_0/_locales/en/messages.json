@@ -1,0 +1,171 @@
+{
+   "add": {
+      "description": "This is the label for the 'Add' buttons.",
+      "message": "Add"
+   },
+   "add_a_filter_list": {
+      "message": "Subscribe to a Firefox Adblock Plus \u003Ca href='$url$'\u003Efilter list\u003C/a\u003E:",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "add_domain_button": {
+      "message": "Add domain"
+   },
+   "add_filter_button": {
+      "message": "Add filter"
+   },
+   "add_filters_msg": {
+      "message": "Add filter(s)?"
+   },
+   "add_url_button": {
+      "message": "Add URL"
+   },
+   "add_your_own_filters": {
+      "message": "Add your own filters"
+   },
+   "apply_changes": {
+      "message": "Apply changes"
+   },
+   "block_element": {
+      "description": "Label for 'Block Element' context menu item",
+      "message": "Block Element"
+   },
+   "block_youtube": {
+      "message": "Block ads inside YouTube videos"
+   },
+   "cancel": {
+      "description": "Cancel button label",
+      "message": "Cancel"
+   },
+   "clickhide_instructions": {
+      "message": "After closing this popup, click (or right-click) an element on the page."
+   },
+   "delete": {
+      "description": "Word for 'delete'.",
+      "message": "delete"
+   },
+   "description": {
+      "message": "Ads were yesterday! The successful extension Adblock Plus is now available for Google Chrome\u2122."
+   },
+   "disable_inline": {
+      "message": "Disable inline text ads"
+   },
+   "disabled_for_these_domains": {
+      "message": "Adblock Plus is disabled for the domains listed below. You can add a domain either via the Adblock Plus icon in the address bar or by typing the domain (not a URL) in the box and clicking the \"Add domain\" button."
+   },
+   "easy_create_filter": {
+      "description": "Button label in popup balloon",
+      "message": "Easy create filter"
+   },
+   "edit_filters_raw": {
+      "message": "Edit filters as raw text"
+   },
+   "enable_only_the": {
+      "message": "Enable only the filter lists you need. Too many can make Chrome unresponsive."
+   },
+   "enabled_for_site": {
+      "description": "Popup balloon checkbox label",
+      "message": "Enabled for this site"
+   },
+   "filter_list_desc": {
+      "description": "e.g. FooList by Mr. Foo",
+      "message": "$title$ by $author$",
+      "placeholders": {
+         "author": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "filter_lists": {
+      "description": "This is a tab heading.",
+      "message": "Filter lists"
+   },
+   "filter_must_follow_syntax": {
+      "message": "Your filter must follow the \u003Ca href='$url$'\u003EAdblock Plus filter syntax\u003C/a\u003E. Certain filter types, like object-subrequest, are not supported.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "found_a_bug": {
+      "message": "Found a bug? Want to translate Adblock Plus into your language? Please \u003Ca href='$url$'\u003Efile a request here\u003C/a\u003E.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "general": {
+      "description": "This is a tab heading.",
+      "message": "General"
+   },
+   "hovercraft": {
+      "description": "This is a sample translatable string. It happens to have comedic value.",
+      "message": "My hovercraft is full of eels."
+   },
+   "last_updated_at": {
+      "description": "e.g. Last updated at 3:00pm on Apr 1, 2011",
+      "message": "Last updated at $time$ on $date$",
+      "placeholders": {
+         "date": {
+            "content": "$2"
+         },
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "last_updated_at_today": {
+      "description": "e.g. Last updated at 3:00pm today",
+      "message": "Last updated at $time$ today",
+      "placeholders": {
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "name": {
+      "message": "Adblock Plus for Google Chrome\u2122 (Beta)"
+   },
+   "new_filters_added": {
+      "message": "New filters added; see \u003Ca id='options_url' target='_blank'\u003EOptions\u003C/a\u003E to manage them."
+   },
+   "not_a_filter_list": {
+      "description": "In options.html, error displayed when filter list fetcher receives something not a filter list",
+      "message": "Not a filter list"
+   },
+   "not_found_on_server": {
+      "description": "In options.html, error displayed when filter list fetcher can't find filter list on server",
+      "message": "Not found on server"
+   },
+   "options": {
+      "message": "Adblock Plus Options"
+   },
+   "out_of_date_lists": {
+      "message": "Out-of-date lists are updated periodically."
+   },
+   "remove_button": {
+      "description": "This is the label for the 'Remove selected' buttons.",
+      "message": "Remove selected"
+   },
+   "show_block_element_menu": {
+      "message": "Show 'Block Element' right-click menu item"
+   },
+   "show_icon": {
+      "message": "Show icon in address bar"
+   },
+   "update_now": {
+      "message": "Update now"
+   },
+   "whitelisted_domains": {
+      "description": "This is a tab heading.",
+      "message": "Whitelisted domains"
+   }
+}

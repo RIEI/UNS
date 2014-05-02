@@ -1,0 +1,171 @@
+{
+   "add": {
+      "description": "This is the label for the 'Add' buttons.",
+      "message": "\uCD94\uAC00"
+   },
+   "add_a_filter_list": {
+      "message": "\uC560\uB4DC\uBE14\uB85D \uD50C\uB7EC\uC2A4\uC758 \uAD6C\uB3C5 \uD544\uD130 \uCD94\uAC00 : \u003Ca href='$url$'\u003E\uC804\uCCB4 \uAD6C\uB3C5 \uD544\uD130 \uBAA9\uB85D\u003C/a\u003E",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "add_domain_button": {
+      "message": "\uB3C4\uBA54\uC778 \uCD94\uAC00"
+   },
+   "add_filter_button": {
+      "message": "\uD544\uD130 \uCD94\uAC00"
+   },
+   "add_filters_msg": {
+      "message": "\uC0C8 \uD544\uD130\uB97C \uCD94\uAC00\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
+   },
+   "add_url_button": {
+      "message": "URL \uCD94\uAC00"
+   },
+   "add_your_own_filters": {
+      "message": "\uC0AC\uC6A9\uC790 \uD544\uD130"
+   },
+   "apply_changes": {
+      "message": "\uC801\uC6A9"
+   },
+   "block_element": {
+      "description": "Label for 'Block Element' context menu item",
+      "message": "\uC694\uC18C \uC228\uAE40"
+   },
+   "block_youtube": {
+      "message": "\uC720\uD29C\uBE0C \uB3D9\uC601\uC0C1 \uB0B4\uBD80\uC758 \uAD11\uACE0 \uCC28\uB2E8"
+   },
+   "cancel": {
+      "description": "Cancel button label",
+      "message": "\uCDE8\uC18C"
+   },
+   "clickhide_instructions": {
+      "message": "\uC774 \uD31D\uC5C5\uC744 \uB2EB\uC740 \uD6C4 \uC6F9 \uD398\uC774\uC9C0\uC5D0\uC11C HTML \uC694\uC18C\uB97C \uD074\uB9AD\uD558\uC2ED\uC2DC\uC624."
+   },
+   "delete": {
+      "description": "Word for 'delete'.",
+      "message": "\uC0AD\uC81C"
+   },
+   "description": {
+      "message": "\uCE68\uC785\uD615 \uAD11\uACE0, \uC774\uC81C \uC548\uB155! Adblock Plus \uD655\uC7A5 \uD504\uB85C\uADF8\uB7A8\uC744 \uC774\uC81C \uAD6C\uAE00 \uD06C\uB86C\uC5D0\uC11C \uC774\uC6A9\uD558\uC2ED\uC2DC\uC624."
+   },
+   "disable_inline": {
+      "message": "\uC778\uB77C\uC778 \uD14D\uC2A4\uD2B8 \uAD11\uACE0\uB97C \uBCF4\uC9C0 \uC54A\uC74C"
+   },
+   "disabled_for_these_domains": {
+      "message": "\uB2E4\uC74C \uB3C4\uBA54\uC778\uC5D0\uC11C\uB294 \uAD11\uACE0\uB97C \uCC28\uB2E8\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uC8FC\uC18C \uD45C\uC2DC\uC904\uC758 \uC560\uB4DC\uBE14\uB85D \uD50C\uB7EC\uC2A4 \uC544\uC774\uCF58 \uB610\uB294 \uD5C8\uC6A9 \uB3C4\uBA54\uC778 \uD0ED\uC5D0\uC11C \uB3C4\uBA54\uC778\uC744 \uC785\uB825\uD55C \uD6C4 \"\uB3C4\uBA54\uC778 \uCD94\uAC00\" \uBC84\uD2BC\uC744 \uB204\uB974\uC2ED\uC2DC\uC624."
+   },
+   "easy_create_filter": {
+      "description": "Button label in popup balloon",
+      "message": "\uAD11\uACE0 \uC601\uC5ED \uC228\uAE30\uAE30"
+   },
+   "edit_filters_raw": {
+      "message": "\uD544\uD130 \uD3B8\uC9D1"
+   },
+   "enable_only_the": {
+      "message": "\uD544\uC694\uD55C \uAD6C\uB3C5 \uD544\uD130\uB9CC \uCD94\uAC00\uD558\uC2ED\uC2DC\uC624. \uAD6C\uB3C5 \uD544\uD130\uB97C \uD544\uC694 \uC774\uC0C1\uC73C\uB85C \uB9CE\uC774 \uCD94\uAC00\uD558\uBA74 \uD398\uC774\uC9C0\uC758 \uB85C\uB529 \uC18D\uB3C4\uAC00 \uB290\uB824\uC9C8 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+   },
+   "enabled_for_site": {
+      "description": "Popup balloon checkbox label",
+      "message": "\uC774 \uC0AC\uC774\uD2B8\uC5D0 \uD544\uD130 \uC801\uC6A9"
+   },
+   "filter_list_desc": {
+      "description": "e.g. FooList by Mr. Foo",
+      "message": "$title$ - \uD544\uD130 \uC720\uC9C0\uC790 : $author$",
+      "placeholders": {
+         "author": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "filter_lists": {
+      "description": "This is a tab heading.",
+      "message": "\uAD6C\uB3C5 \uD544\uD130"
+   },
+   "filter_must_follow_syntax": {
+      "message": "\uC0AC\uC6A9\uC790 \uD544\uD130\uB294 \u003Ca href='$url$'\u003E\uC560\uB4DC\uBE14\uB85D \uD50C\uB7EC\uC2A4\uC758 \uD544\uD130 \uC791\uC131 \uBC29\uBC95\u003C/a\u003E\uC744 \uB530\uB77C\uC57C \uD569\uB2C8\uB2E4. \uD544\uD130\uC758 \uD2B9\uC815 \uAD6C\uBB38\uC740 \uC9C0\uC6D0\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "found_a_bug": {
+      "message": "\uBC84\uADF8\uB97C \uBC1C\uACAC\uD558\uC168\uC2B5\uB2C8\uAE4C? \uC560\uB4DC\uBE14\uB85D \uD50C\uB7EC\uC2A4\uB97C \uC5EC\uB7EC\uBD84\uC758 \uC5B8\uC5B4\uB85C \uBC88\uC5ED\uD558\uACE0 \uC2F6\uC2B5\uB2C8\uAE4C? \u003Ca href='$url$'\u003E\uC5F0\uB77D\uD558\uAE30\u003C/a\u003E",
+      "placeholders": {
+         "url": {
+            "content": "$1"
+         }
+      }
+   },
+   "general": {
+      "description": "This is a tab heading.",
+      "message": "\uC77C\uBC18"
+   },
+   "hovercraft": {
+      "description": "This is a sample translatable string. It happens to have comedic value.",
+      "message": "\uBA54\uC774\uBE44\uB294 \uCD5C\uACE0\uC758 \uD314\uC0C9\uC870 \uAC00\uC218\uC774\uB2E4."
+   },
+   "last_updated_at": {
+      "description": "e.g. Last updated at 3:00pm on Apr 1, 2011",
+      "message": "$date$ $time$\uC5D0 \uB9C8\uC9C0\uB9C9\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uB428",
+      "placeholders": {
+         "date": {
+            "content": "$2"
+         },
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "last_updated_at_today": {
+      "description": "e.g. Last updated at 3:00pm today",
+      "message": "\uC624\uB298 $time$\uC5D0 \uB9C8\uC9C0\uB9C9\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uB428",
+      "placeholders": {
+         "time": {
+            "content": "$1"
+         }
+      }
+   },
+   "name": {
+      "message": "Adblock Plus for Google Chrome\u2122 (\uBCA0\uD0C0)"
+   },
+   "new_filters_added": {
+      "message": "\uC0C8 \uD544\uD130\uAC00 \uCD94\uAC00\uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uD544\uD130 \uAD00\uB9AC : \u003Ca id='options_url' target='_blank'\u003E\uC635\uC158\u003C/a\u003E"
+   },
+   "not_a_filter_list": {
+      "description": "In options.html, error displayed when filter list fetcher receives something not a filter list",
+      "message": "\uC62C\uBC14\uB978 \uD615\uC2DD\uC758 \uAD6C\uB3C5 \uD544\uD130\uAC00 \uC544\uB2D9\uB2C8\uB2E4."
+   },
+   "not_found_on_server": {
+      "description": "In options.html, error displayed when filter list fetcher can't find filter list on server",
+      "message": "\uC11C\uBC84\uC5D0 \uAD6C\uB3C5 \uD544\uD130\uAC00 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+   },
+   "options": {
+      "message": "Adblock Plus - \uC560\uB4DC\uBE14\uB85D \uD50C\uB7EC\uC2A4 \uC635\uC158"
+   },
+   "out_of_date_lists": {
+      "message": "\uAD6C\uB3C5 \uD544\uD130\uB294 \uC8FC\uAE30\uC801\uC73C\uB85C \uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8\uB429\uB2C8\uB2E4."
+   },
+   "remove_button": {
+      "description": "This is the label for the 'Remove selected' buttons.",
+      "message": "\uC120\uD0DD \uD56D\uBAA9 \uC81C\uAC70"
+   },
+   "show_block_element_menu": {
+      "message": "\uBB38\uB9E5 \uBA54\uB274\uC5D0 '\uC694\uC18C \uC228\uAE40' \uD56D\uBAA9 \uD45C\uC2DC"
+   },
+   "show_icon": {
+      "message": "\uC8FC\uC18C \uD45C\uC2DC\uC904\uC5D0 \uC544\uC774\uCF58 \uD45C\uC2DC"
+   },
+   "update_now": {
+      "message": "\uC9C0\uAE08 \uC5C5\uB370\uC774\uD2B8"
+   },
+   "whitelisted_domains": {
+      "description": "This is a tab heading.",
+      "message": "\uD5C8\uC6A9 \uB3C4\uBA54\uC778"
+   }
+}

@@ -1,0 +1,8 @@
+1.) Move the AlertStationClient folder to c:\
+2.) temporarily turn off chrome kiosk mode. In "AlertStationClient\ChromePortable\GoogleChromePortable.ini", replace "AdditionalParameters=-kiosk" with ";AdditionalParameters=-kiosk"
+3.) Run "AlertStationClient\ChromePortable\GoogleChromePortable.exe" and edit the homepage. set the homepage to your uns url (eg. http://unsserver/uns/index.php?id=4c6a8a77381e6e6f41a536ef50891279 )
+4.) close chrome turn kisok mode back on. In "AlertStationClient\ChromePortable\GoogleChromePortable.ini", replace ";AdditionalParameters=-kiosk" with "AdditionalParameters=-kiosk"
+5.) edit the url stored in the chrome plugin. edit "AlertStationClient\ChromePortable\ChromeExtension\background.html". set alertxml to the uns xml url (eg. http://unsserver/uns/index.php?id=4c6a8a77381e6e6f41a536ef50891279&out=xml )
+6.) Log into the user you want to run UNS as and set uns to automatically start by running "AlertStationClient\uns_client_shell.reg"
+7.) Set default cursors to blank or a small dot(AlertStationClient\tinycursors) so they don't show on the sceen.
+8.) Use Autologon "AlertStationClient\Autologon" to make the computer automatically log on as the user you set up.

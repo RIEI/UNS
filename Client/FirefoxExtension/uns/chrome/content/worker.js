@@ -1,1 +1,0 @@
-setInterval(function() {UNS.run();}, 1*60*1000);

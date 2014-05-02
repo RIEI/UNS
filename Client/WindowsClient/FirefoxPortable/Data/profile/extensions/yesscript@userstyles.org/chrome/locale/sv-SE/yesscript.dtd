@@ -1,7 +1,0 @@
-<!ENTITY addSite "Lägg till">
-<!ENTITY addSite.ak "Ä">
-<!ENTITY delete "Ta bort">
-<!ENTITY delete.ak "B">
-<!ENTITY intro "Följande platser tillåts inte köra JavaScript">
-<!ENTITY site "Plats">
-<!ENTITY title "&yesscript; Svartlistning">
