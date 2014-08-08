@@ -1,0 +1,5 @@
+[0807/182441:ERROR:client_util.cc(328)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0807/182807:ERROR:client_util.cc(328)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0807/183325:ERROR:client_util.cc(328)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0807/183420:ERROR:client_util.cc(328)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0807/183841:ERROR:client_util.cc(328)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
