@@ -1,6 +1,6 @@
 echo off
 TASKKILL /F /IM Chrome.exe
-set homepage=http://http://uns.techidiots.net/
+set homepage=http://uns.techidiots.net/
 set switches=--user-data-dir=%~dp0Chromium\_ChromeProfile\ --disk-cache-dir=%~dp0Chromium\_ChromeCache\ --disk-cache-size=100000000 --always-authorize-plugins
 
 
